@@ -1,6 +1,15 @@
+*{
+    box-sizing: border-box;
+}
 .page-top {
     background-image: url('../img/x-and-o.jpg');
     background-size: 100% 50%;
     background-attachment: fixed;
     color: white;
+}
+.player {
+    height: 500px;
+}
+.run {
+    padding-left: 8.33%;
 }
