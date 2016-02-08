@@ -36,4 +36,16 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
     console.log(playerFactory.hi)
     console.log(playerFactory.player.avg)
     console.log(playerFactory.defense.avg)
+    
+    var options =  {
+        url: "players.json",
+        getValue: "name",
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        theme: "square"
+    }
+    $("#players").easyAutocomplete(options)
 }])

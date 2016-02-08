@@ -33,6 +33,15 @@
         <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- JS file -->
+    <script src="node_modules/easy-autocomplete/lib/"></script> 
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="path/to/easy-autocomplete.min.css"> 
+
+    <!-- Additional CSS Themes file - not required-->
+    <link rel="stylesheet" href="path/to/easy-autocomplete.themes.min.css"> 
 
 </head>
 
@@ -117,7 +126,7 @@
                 </div>
             </div>
             <div class="row">
-                <input class="search" type="text" placeholder="Search for players" ng-autocomplete ng-model="playerFactory.player.name">
+                <input class="search"  id="players" type="text" placeholder="Search for players">
                 <button  class="btn btn-success" type="submit" ng-click="loadPlayer()">Submit</button>
             </div>
 <!--
