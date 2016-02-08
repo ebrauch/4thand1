@@ -5,7 +5,6 @@ app.factory('playerFactory', [function() {
     var player = {
         fname: 'Emmanuel',
         lname: 'Sanders',
-        name : this.fname + ' ' + this.lname,
         pos  : 'WR',
         team : 'DEN',
         sl   : [8, 8],
@@ -45,7 +44,11 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
                 enabled: true
             }
         },
-        theme: "plate-dark"
+        theme: "sqare"
     }
     $("#players").easyAutocomplete(options)
+    $scope.playerArray = [playerFactory.player]
+    $scope.defense = [playerFactory.defense]
+    console.log($scope.playerArray)
+    console.log($scope.defense)
 }])
