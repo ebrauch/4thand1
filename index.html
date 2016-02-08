@@ -123,15 +123,12 @@
                     <h1>Analyze</h1>
                 </div>
             </div>
-            <div class="row search">
-                <input class="search"  id="players" type="text" placeholder="Search for players">
-                <button  class="btn btn-success search" type="submit" ng-click="loadPlayer()">Submit</button>
-            </div>
-<!--
-                <div class="container-fluid player">
+            <div class="container-fluid" ng-repeat="player in playerArray">
+                {{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}
+            <div class="container-fluid player">
                     <div class="row">
                         <div class="col-xs-4 pass" style="background-color: yellow">
-                            md-4
+                            
                         </div>
                         <div class="col-xs-4 pass" style="background-color: yellow">
                             md-4
@@ -175,7 +172,15 @@
                         </div>
                     </div>
                 </div>
--->
+            </div>
+            
+            <div class="row search">
+                <input class="search"  id="players" type="text" placeholder="Search for players" ng-model="newPlayer">
+                <button  class="btn btn-success search" type="submit" ng-click="newPlayer()">Submit</button>
+                <br><br>
+            </div>
+<!--ng repeat-->
+                
                 
 <!--
                 <div class="container player">

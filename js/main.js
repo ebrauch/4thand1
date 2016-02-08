@@ -32,9 +32,6 @@ app.factory('playerFactory', [function() {
 }])
 
 app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope, playerFactory) {
-    console.log(playerFactory.hi)
-    console.log(playerFactory.player.avg)
-    console.log(playerFactory.defense.avg)
     
     var options =  {
         url: "players.json",
@@ -47,8 +44,15 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
         theme: "sqare"
     }
     $("#players").easyAutocomplete(options)
-    $scope.playerArray = [playerFactory.player]
+    $scope.playerArray = []
     $scope.defense = [playerFactory.defense]
     console.log($scope.playerArray)
     console.log($scope.defense)
+    
+    $scope.newPlayer = function() {
+        $scope.playerArray.push(playerFactory.player)
+        $scope.playerArray.opp = playerFactory.defense
+        console.log($scope.playerArray)
+    }
+    
 }])
