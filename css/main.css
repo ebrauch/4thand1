@@ -25,6 +25,8 @@
 .search {
     height: 35px;
     border-radius: 5px;
-    width: 200px;
-    border: 1px solid black;
+    width: 250px;
+    padding-left: 33%;
+    padding-right: 33%;
+    position: relative
 }

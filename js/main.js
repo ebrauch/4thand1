@@ -45,7 +45,7 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
                 enabled: true
             }
         },
-        theme: "square"
+        theme: "plate-dark"
     }
     $("#players").easyAutocomplete(options)
 }])
