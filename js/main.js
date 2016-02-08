@@ -39,7 +39,7 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
     
     var options =  {
         url: "players.json",
-        getValue: "name",
+        getValue: "display",
         list: {
             match: {
                 enabled: true
