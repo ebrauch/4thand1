@@ -22,3 +22,9 @@
     height: 166px;
     opacity: .5;
 }
+.search {
+    height: 35px;
+    border-radius: 5px;
+    width: 200px;
+    border: 1px solid black;
+}
