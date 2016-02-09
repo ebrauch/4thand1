@@ -8,10 +8,10 @@ app.factory('playerFactory', [function() {
         pos  : 'WR',
         team : 'DEN',
         sl   : [8, 8],
-        sm   : [],
+        sm   : [0],
         sr   : [0],
-        dl   : [],
-        dm   : [],
+        dl   : [0],
+        dm   : [0],
         dr   : [35, 16],
         avg  : [8, 0, 0, 0, 0, 25.5]
     }
@@ -22,7 +22,7 @@ app.factory('playerFactory', [function() {
         sm  : [17, 2, 10, 7, 7, 0, 11, 4, 8, 0],
         sr  : [10, 0, 0, 3, 7, 33],
         dl  : [16, 0],
-        dm  : [],
+        dm  : [0],
         dr  : [22, 0, 0, 0],
         avg : [7.85, 6.6, 8.83, 8, 0, 5.5]
     }
@@ -52,7 +52,7 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
     $scope.newPlayer = function() {
         $scope.playerArray.push(playerFactory.player)
         $scope.playerArray.opp = playerFactory.defense
+        document.getElementById('players').value=''
         console.log($scope.playerArray)
     }
-    
 }])

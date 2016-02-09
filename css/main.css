@@ -31,3 +31,14 @@
     display: inline-block;
     margin-bottom: 5px;
 }
+/*
+bootstrap green #5cb85c
+bootstrap red #d9534f
+*/
+.green-red {
+    width: 600px;
+}
+.about-top {
+    margin-top: 25px;
+    margin-bottom: 25px
+}
