@@ -47,7 +47,8 @@ bootstrap green #5cb85c
 bootstrap red #d9534f
 */
 .green-red {
-    width: 600px;
+    width: 100%;
+    max-width: 600px
 }
 .about-top {
     margin-top: 25px;

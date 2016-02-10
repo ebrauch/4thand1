@@ -7,6 +7,7 @@ app.factory('playerFactory', [function() {
         lname: 'Sanders',
         pos  : 'WR',
         team : 'DEN',
+        defense: 'San Diego',
 //        sl   : [8, 8],
 //        sm   : [0],
 //        sr   : [0],

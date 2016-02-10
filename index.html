@@ -122,14 +122,14 @@
                     <h1>Analyze</h1>
                 </div>
             </div>
-            <div class="container-fluid" ng-repeat="player in playerArray">
+            <div class="container-fluid player-container" ng-repeat="player in playerArray">
                 {{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}
             <div class="container-fluid player">
                     <div class="row">
                         <div class="col-xs-4 pass pass-top-left">
                             {{player.fname}} {{player.lname}} catches {{playerAvg.dlCompPct}}% of targets and averages {{playerAvg.dlYPC}} yards per catch
                             <br>
-                            {{defense.team}} allows {{defAvg.dlCompPct}}% completion percentage and surrenders an average of {{defAvg.dlYPC}} yards per completion
+                            {{player.defense}} allows {{defAvg.dlCompPct}}% completion percentage and surrenders an average of {{defAvg.dlYPC}} yards per completion
                         </div>
                         <div class="col-xs-4 pass pass-top-left">
                             
