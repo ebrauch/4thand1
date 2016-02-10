@@ -104,4 +104,14 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
         document.getElementById('players').value=''
         console.log($scope.playerArray)
     }
+                //top pass, bottom pass, run
+    $scope.visibility = [true, true, true, false, false]
+                                            //pass display, run display
+    $scope.resetDisplay = function() {
+        $scope.visibility = [true, true, true, false, false]
+    }
+    $scope.displayPass = function(loc) {
+        $scope.visibility[2] = false
+        $scope.visibility[3] = true
+    }
 }])

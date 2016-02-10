@@ -54,3 +54,6 @@ bootstrap red #d9534f
     margin-top: 25px;
     margin-bottom: 25px
 }
+.pass-display {
+    z-index: 1;
+}
