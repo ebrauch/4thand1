@@ -14,18 +14,25 @@
     max-width: 1000px;
     margin-bottom: 25px;
 }
-.pass {
-    opacity: .3;
+.pass, .run{
     height: 166px;
-    background-color: limegreen;
-    border: 1px solid black
 }
 .run {
     padding-left: 8.33%;
-    height: 166px;
-    opacity: .5;
-    background-color: dodgerblue;
-    border: 1px solid black
+}
+.pass-top-left {
+    border-bottom: 3px dotted black;
+    border-right: 3px dotted black;
+}
+.pass-top-right {
+    border-bottom: 3px dotted black
+}
+.run-left {
+    border-left: 3px dotted black
+}
+.run-right {
+    border-right: 3px dotted black;
+    border-left: 3px dotted black
 }
 .search {
     height: 35px;

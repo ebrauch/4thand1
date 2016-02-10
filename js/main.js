@@ -38,7 +38,7 @@ app.factory('playerFactory', [function() {
     }
     
     var defense = {
-        team: 'San Diego Chargers',
+        team: 'San Diego',
 //        sl  : [0, 3, 7, 4, 3, 0, 14, 5, 0, 0, 3, 0, 8, 0],
 //        sm  : [17, 2, 10, 7, 7, 0, 11, 4, 8, 0],
 //        sr  : [10, 0, 0, 3, 7, 33],
@@ -71,7 +71,8 @@ app.factory('playerFactory', [function() {
            player   : player,
            defense  : defense,
            defAvg   : defAvg,
-           playerAvg: playerAvg}
+           playerAvg: playerAvg
+           }
 }])
 
 app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope, playerFactory) {
