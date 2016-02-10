@@ -57,3 +57,12 @@ bootstrap red #d9534f
 .pass-display {
     z-index: 1;
 }
+.placeholder {
+    border: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 50px;
+}
+.stats-overview {
+    text-align: left
+}

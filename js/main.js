@@ -21,7 +21,8 @@ app.factory('playerFactory', [function() {
         sr: [27, 17, 149],
         dl: [16, 5, 139],
         dm: [7, 3, 102],
-        dr: [22, 8, 271]
+        dr: [22, 8, 271],
+        gp: 15
     }
         var playerAvg = {
         slCompPct: Math.ceil(player.sl[1] / player.sl[0] * 100),
@@ -35,7 +36,8 @@ app.factory('playerFactory', [function() {
         srYPC    : Math.ceil(player.sr[2] / player.sr[1]),
         dlYPC    : Math.ceil(player.dl[2] / player.dl[1]),
         dmYPC    : Math.ceil(player.dm[2] / player.dm[1]),
-        drYPC    : Math.ceil(player.dr[2] / player.dr[1])
+        drYPC    : Math.ceil(player.dr[2] / player.dr[1]),
+        YPG      : Math.ceil((player.sl[2] + player.sm[2] + player.sr[2] + player.dl[2] + player.dm[2] + player.dr[2]) / player.gp)
     }
     
     var defense = {
@@ -104,14 +106,23 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
         document.getElementById('players').value=''
         console.log($scope.playerArray)
     }
-                //top pass, bottom pass, run
-    $scope.visibility = [true, true, true, false, false]
-                                            //pass display, run display
-    $scope.resetDisplay = function() {
-        $scope.visibility = [true, true, true, false, false]
-    }
-    $scope.displayPass = function(loc) {
-        $scope.visibility[2] = false
-        $scope.visibility[3] = true
+    $scope.visibility = [true, false]
+    $scope.displayLocStats = function(loc) {
+        $scope.visibility = [false, true]
+        $scope.compPct = playerFactory.playerAvg[loc + 'CompPct']
+        $scope.area = ''
+        switch (loc) {
+            case 'sl': $scope.area = 'short left'
+            break;
+            case 'sm': $scope.area = 'short middle'
+            break;
+            case 'sr': $scope.area = 'short right'
+            break;
+            case 'dl': $scope.area = 'deep left'
+            break;
+            case 'dm': $scope.area = 'deep middle'
+            break;
+            case 'dr': $scope.area = 'deep right'
+        }
     }
 }])

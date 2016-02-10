@@ -123,31 +123,46 @@
             <div class="container-fluid stats-container" ng-repeat="player in playerArray">
                 {{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}
                 <div class="container">
-                    <div class="row stats-overview">general stats here</div>
-                    <div class="row placeholder">aaa</div>
+                    <div class="row stats-overview">
+                        <div class="col-xs-12">
+                        <ul>
+                            <li>
+                                {{player.fname}} {{player.lname}} averages .4 TD receptions per game, {{player.defense}} surrenders an average of .48 TD receptions per game to opposing RWR-1s.
+                            </li>
+                            <li>
+                                {{player.fname}} {{player.lname}} averages {{playerAvg.YPG}} yards per game, {{player.defense}} surrenders an average of 77 yards per game to opposing RWR-1s.
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="row placeholder" ng-show="visibility[0]">Hover over an area of the field for location-specific stats
+                    </div>
+                    <div class="loc-stats" ng-show="visibility[1]">
+                        {{compPct}} {{area}}
+                    </div>
                 </div>
             
         
             <div class="container-fluid player">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayPass(sl)" ng-mouseleave="resetDisplay()">
+                        <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('dl')">
                         </div>
-                        <div class="col-xs-4 pass pass-top-left">
+                        <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('dm')">
                             
                         </div>
-                        <div class="col-xs-4 pass pass-top-right">
+                        <div class="col-xs-4 pass pass-top-right" ng-mouseover="displayLocStats('dr')">
                             
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4 pass pass-top-left">
+                        <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('sl')">
                             
                         </div>
-                        <div class="col-xs-4 pass pass-top-left">
+                        <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('sm')">
                             
                         </div>
-                        <div class="col-xs-4 pass pass-top-right">
+                        <div class="col-xs-4 pass pass-top-right" ng-mouseover="displayLocStats('sr')">
                             
                         </div>
                     </div>
