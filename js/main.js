@@ -110,19 +110,25 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function($scope
     $scope.displayLocStats = function(loc) {
         $scope.visibility = [false, true]
         $scope.compPct = playerFactory.playerAvg[loc + 'CompPct']
+        $scope.YPC = playerFactory.playerAvg[loc + 'YPC']
+        $scope.defCompPct = $scope.defAvg[loc + 'CompPct']
+        $scope.defYPC = $scope.defAvg[loc + 'YPC']
         $scope.area = ''
         switch (loc) {
-            case 'sl': $scope.area = 'short left'
+            case 'sl': $scope.area = 'Short left targets:'
             break;
-            case 'sm': $scope.area = 'short middle'
+            case 'sm': $scope.area = 'Short middle targets:'
             break;
-            case 'sr': $scope.area = 'short right'
+            case 'sr': $scope.area = 'Short right targets:'
             break;
-            case 'dl': $scope.area = 'deep left'
+            case 'dl': $scope.area = 'Deep left targets:'
             break;
-            case 'dm': $scope.area = 'deep middle'
+            case 'dm': $scope.area = 'Deep middle targets:'
             break;
-            case 'dr': $scope.area = 'deep right'
+            case 'dr': $scope.area = 'Deep right targets:'
         }
+    }
+    $scope.resetDisplay = function() {
+        $scope.visibility = [true, false]
     }
 }])

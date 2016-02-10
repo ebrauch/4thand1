@@ -58,11 +58,25 @@ bootstrap red #d9534f
     z-index: 1;
 }
 .placeholder {
-    border: 1px solid black;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 50px;
+    height: 83px;
 }
 .stats-overview {
     text-align: left
+}
+.pass-top-left:hover,
+.pass-top-right:hover,
+.run-left:hover,
+.run-right:hover {
+    background: rgba(131, 244, 0, 0.68)
+}
+.stats-table,
+.loc-stats{
+    width: 100%;
+    text-align: center;
+    max-width: 600px
+}
+th, td {
+    width: 150px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }

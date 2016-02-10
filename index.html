@@ -121,7 +121,7 @@
                 </div>
             </div>
             <div class="container-fluid stats-container" ng-repeat="player in playerArray">
-                {{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}
+                <h4>{{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}</h4>
                 <div class="container">
                     <div class="row stats-overview">
                         <div class="col-xs-12">
@@ -135,15 +135,32 @@
                         </ul>
                         </div>
                     </div>
-                    <div class="row placeholder" ng-show="visibility[0]">Hover over an area of the field for location-specific stats
+                    <div class="row placeholder" ng-show="visibility[0]"><strong>Hover over an area of the field for location-specific stats</strong>
                     </div>
-                    <div class="loc-stats" ng-show="visibility[1]">
-                        {{compPct}} {{area}}
+                    <div class="loc-stats row" ng-show="visibility[1]">
+                        {{area}}
+                        <table class="stats-table">
+                            <tr>
+                                <td><strong>Stat</strong></td>
+                                <td><strong>{{player.fname}} {{player.lname}}</strong></td>
+                                <td><strong>{{player.defense}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Completion percentage</td>
+                                <td>{{compPct}}%</td>
+                                <td>{{defCompPct}}%</td>
+                            </tr>
+                            <tr>
+                                <td>Yards per completion</td>
+                                <td>{{YPC}}</td>
+                                <td>{{defYPC}}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             
         
-            <div class="container-fluid player">
+            <div class="container-fluid player" ng-mouseleave="resetDisplay()">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('dl')">
