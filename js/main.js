@@ -8,13 +8,6 @@ app.factory('playerFactory', [function() {
         pos  : 'WR',
         team : 'DEN',
         defense: 'San Diego',
-//        sl   : [8, 8],
-//        sm   : [0],
-//        sr   : [0],
-//        dl   : [0],
-//        dm   : [0],
-//        dr   : [35, 16],
-//        avg  : [8, 0, 0, 0, 0, 25.5]
         //trg, comp, yds
         sl: [38, 24, 181],
         sm: [19, 14, 194],
@@ -42,13 +35,6 @@ app.factory('playerFactory', [function() {
     
     var defense = {
         team: 'San Diego',
-//        sl  : [0, 3, 7, 4, 3, 0, 14, 5, 0, 0, 3, 0, 8, 0],
-//        sm  : [17, 2, 10, 7, 7, 0, 11, 4, 8, 0],
-//        sr  : [10, 0, 0, 3, 7, 33],
-//        dl  : [16, 0],
-//        dm  : [0],
-//        dr  : [22, 0, 0, 0],
-//        avg : [7.85, 6.6, 8.83, 8, 0, 5.5]
         sl: [152, 109, 1135],
         sm: [71, 56, 533],
         sr: [153, 108, 1030],
