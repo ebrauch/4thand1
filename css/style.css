@@ -12,6 +12,7 @@
     background-image: url(../img/Football_Single_with_Space.jpg);
     background-size: 100% 100.5%;
     max-width: 1000px;
+    min-width: 476px;
     margin-bottom: 25px;
 }
 .pass, .run{
@@ -76,4 +77,8 @@ th, td {
     width: 150px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+}
+.location-stats {
+    min-width: 476px;
+    max-width: 1000px
 }
