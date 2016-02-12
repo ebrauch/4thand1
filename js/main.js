@@ -151,6 +151,27 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
                 break;
             case 'dr':
                 $scope.area = 'Deep right targets:'
+                break;
+            case 'le':
+                $scope.area = 'Rushes towards left end:'
+                break;
+            case 'lt':
+                $scope.area = 'Rushes towards left tackle:'
+                break;
+            case 'lg':
+                $scope.area = 'Rushes towards left guard:'
+                break;
+            case 'md':
+                $scope.area = 'Rushes up the middle:'
+                break;
+            case 'rg':
+                $scope.area = 'Rushes towards right guard:'
+                break;
+            case 'rt':
+                $scope.area = 'Rushes towards right tackle:'
+                break;
+            case 're':
+                $scope.area = 'Rushes towards right end:'
         }
     }
     $scope.resetDisplay = function () {
