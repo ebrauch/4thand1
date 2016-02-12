@@ -110,12 +110,12 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
     $("#players").easyAutocomplete(options)
     $scope.playerArray = []
     $scope.defense = [playerFactory.defense]
-    console.log($scope.playerArray)
-    console.log($scope.defense)
+//    console.log($scope.playerArray)
+//    console.log($scope.defense)
     $scope.defAvg = playerFactory.defAvg
-    console.log($scope.defAvg)
+//    console.log($scope.defAvg)
     $scope.playerAvg = playerFactory.playerAvg
-    console.log($scope.playerAvg)
+//    console.log($scope.playerAvg)
 
 //    $scope.i = 0
     $scope.newPlayer = function () {
