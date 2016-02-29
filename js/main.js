@@ -1,7 +1,7 @@
-var app = angular.module('app', [])
+var app = angular.module('app', []);
 
 app.factory('playerFactory', [function () {
-    var hello = 'hi from factory'
+    var hello = 'hi from factory';
     var player = {
             fname: 'Emmanuel',
             lname: 'Sanders',
@@ -23,7 +23,7 @@ app.factory('playerFactory', [function () {
 //            rt: [0, 0],
 //            re: [1, 24],
             gp: 15
-                    }
+                    };
 //,
 //        {
 //            fname: 'C.J',
@@ -61,7 +61,7 @@ app.factory('playerFactory', [function () {
         dmYPC: Math.ceil(player.dm[2] / player.dm[1]),
         drYPC: Math.ceil(player.dr[2] / player.dr[1]),
         YPG: Math.ceil((player.sl[2] + player.sm[2] + player.sr[2] + player.dl[2] + player.dm[2] + player.dr[2]) / player.gp)
-    }
+    };
 
     var defense = {
         team: 'San Diego',
@@ -71,7 +71,7 @@ app.factory('playerFactory', [function () {
         dl: [34, 17, 450],
         dm: [11, 7, 178],
         dr: [45, 12, 381],
-    }
+    };
     var defAvg = {
         slCompPct: Math.ceil(defense.sl[1] / defense.sl[0] * 100),
         smCompPct: Math.ceil(defense.sm[1] / defense.sm[0] * 100),
@@ -85,7 +85,7 @@ app.factory('playerFactory', [function () {
         dlYPC: Math.ceil(defense.dl[2] / defense.dl[1]),
         dmYPC: Math.ceil(defense.dm[2] / defense.dm[1]),
         drYPC: Math.ceil(defense.dr[2] / defense.dr[1])
-    }
+    };
     return {
         hi: hello,
         player: player,
@@ -93,7 +93,7 @@ app.factory('playerFactory', [function () {
         defAvg: defAvg,
         playerAvg: playerAvg
     }
-}])
+}]);
 
 app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scope, playerFactory) {
 
@@ -105,76 +105,76 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
                 enabled: true
             }
         },
-        theme: "square"
-    }
-    $("#players").easyAutocomplete(options)
-    $scope.playerArray = []
-    $scope.defense = [playerFactory.defense]
+//        theme: "square"
+    };
+    $("#players").easyAutocomplete(options);
+    $scope.playerArray = [];
+    $scope.defense = [playerFactory.defense];
 //    console.log($scope.playerArray)
 //    console.log($scope.defense)
-    $scope.defAvg = playerFactory.defAvg
+    $scope.defAvg = playerFactory.defAvg;
 //    console.log($scope.defAvg)
-    $scope.playerAvg = playerFactory.playerAvg
+    $scope.playerAvg = playerFactory.playerAvg;
 //    console.log($scope.playerAvg)
 
 //    $scope.i = 0
     $scope.newPlayer = function () {
-        $scope.playerArray.push(playerFactory.player)
-        $scope.playerArray.opp = playerFactory.defense
-        document.getElementById('players').value = ''
-        console.log($scope.playerArray)
+        $scope.playerArray.push(playerFactory.player);
+        $scope.playerArray.opp = playerFactory.defense;
+        document.getElementById('players').value = '';
+        console.log($scope.playerArray);
 //        $scope.i += 1
-    }
-    $scope.visibility = [true, false]
+    };
+    $scope.visibility = [true, false];
     $scope.displayLocStats = function (loc) {
-        $scope.visibility = [false, true]
-        $scope.compPct = playerFactory.playerAvg[loc + 'CompPct']
-        $scope.YPC = playerFactory.playerAvg[loc + 'YPC']
-        $scope.defCompPct = $scope.defAvg[loc + 'CompPct']
-        $scope.defYPC = $scope.defAvg[loc + 'YPC']
-        $scope.area = ''
+        $scope.visibility = [false, true];
+        $scope.compPct = playerFactory.playerAvg[loc + 'CompPct'];
+        $scope.YPC = playerFactory.playerAvg[loc + 'YPC'];
+        $scope.defCompPct = $scope.defAvg[loc + 'CompPct'];
+        $scope.defYPC = $scope.defAvg[loc + 'YPC'];
+        $scope.area = '';
         switch (loc) {
             case 'sl':
-                $scope.area = 'Short left targets:'
+                $scope.area = 'Short left targets:';
                 break;
             case 'sm':
-                $scope.area = 'Short middle targets:'
+                $scope.area = 'Short middle targets:';
                 break;
             case 'sr':
-                $scope.area = 'Short right targets:'
+                $scope.area = 'Short right targets:';
                 break;
             case 'dl':
-                $scope.area = 'Deep left targets:'
+                $scope.area = 'Deep left targets:';
                 break;
             case 'dm':
-                $scope.area = 'Deep middle targets:'
+                $scope.area = 'Deep middle targets:';
                 break;
             case 'dr':
-                $scope.area = 'Deep right targets:'
+                $scope.area = 'Deep right targets:';
                 break;
             case 'le':
-                $scope.area = 'Rushes towards left end:'
+                $scope.area = 'Rushes towards left end:';
                 break;
             case 'lt':
-                $scope.area = 'Rushes towards left tackle:'
+                $scope.area = 'Rushes towards left tackle:';
                 break;
             case 'lg':
-                $scope.area = 'Rushes towards left guard:'
+                $scope.area = 'Rushes towards left guard:';
                 break;
             case 'md':
-                $scope.area = 'Rushes up the middle:'
+                $scope.area = 'Rushes up the middle:';
                 break;
             case 'rg':
-                $scope.area = 'Rushes towards right guard:'
+                $scope.area = 'Rushes towards right guard:';
                 break;
             case 'rt':
-                $scope.area = 'Rushes towards right tackle:'
+                $scope.area = 'Rushes towards right tackle:';
                 break;
             case 're':
                 $scope.area = 'Rushes towards right end:'
         }
-    }
+    };
     $scope.resetDisplay = function () {
         $scope.visibility = [true, false]
     }
-}])
+}]);

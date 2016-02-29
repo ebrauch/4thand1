@@ -64,7 +64,7 @@
           .on('success.form.bv', function (e) {
               $('#success_message').slideDown({
                       opacity: "show"
-                  }, "slow") // Do something ...
+                  }, "slow"); // Do something ...
               $('#contact_form').data('bootstrapValidator').resetForm();
 
               // Prevent form submission
