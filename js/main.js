@@ -105,7 +105,7 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
                 enabled: true
             }
         },
-        theme: "sqare"
+        theme: "square"
     }
     $("#players").easyAutocomplete(options)
     $scope.playerArray = []
