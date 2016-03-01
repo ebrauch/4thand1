@@ -3,7 +3,7 @@
 }
 
 .page-top {
-    background-image: url('../img/x-and-o.jpg');
+    background-image: url('../../img/x-and-o.jpg');
     background-size: 100% 60%;
     background-attachment: fixed;
     color: white;
@@ -11,7 +11,7 @@
 
 .player {
     height: 500px;
-    background-image: url(../img/Football_Single_with_Space.jpg);
+    background-image: url(../../img/Football_Single_with_Space.jpg);
     background-size: 100% 100.5%;
     max-width: 1000px;
     min-width: 476px;
