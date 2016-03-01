@@ -98,15 +98,16 @@ app.factory('playerFactory', [function () {
 app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scope, playerFactory) {
 
     var options = {
-        url: "players.json",
+        url: "public/players.json",
         getValue: "display",
         list: {
             match: {
                 enabled: true
             }
         },
-//        theme: "square"
+        //theme: "square"
     };
+
     $("#players").easyAutocomplete(options);
     $scope.playerArray = [];
     $scope.defense = [playerFactory.defense];
