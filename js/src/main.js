@@ -96,13 +96,17 @@ app.factory('playerFactory', [function () {
 }]);
 
 app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scope, playerFactory) {
-
+    var playerID = '';
     var options = {
         url: "public/players.json",
         getValue: "display",
         list: {
             match: {
                 enabled: true
+            },
+            onSelectItemEvent: function() {
+                playerID = $("#players").getSelectedItemData().player;
+                //console.log(playerID);
             }
         },
         //theme: "square"
@@ -126,8 +130,8 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
 //        console.log($scope.playerArray);
 ////        $scope.i += 1
 //    };
-    $scope.newPlayer = function(arg) {
-        console.log(arg)
+    $scope.newPlayer = function() {
+        console.log(playerID);
     }
 
     $scope.visibility = [true, false];
