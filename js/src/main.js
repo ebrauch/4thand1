@@ -119,13 +119,17 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
 //    console.log($scope.playerAvg)
 
 //    $scope.i = 0
-    $scope.newPlayer = function () {
-        $scope.playerArray.push(playerFactory.player);
-        $scope.playerArray.opp = playerFactory.defense;
-        document.getElementById('players').value = '';
-        console.log($scope.playerArray);
-//        $scope.i += 1
-    };
+//    $scope.newPlayer = function () {
+//        $scope.playerArray.push(playerFactory.player);
+//        $scope.playerArray.opp = playerFactory.defense;
+//        document.getElementById('players').value = '';
+//        console.log($scope.playerArray);
+////        $scope.i += 1
+//    };
+    $scope.newPlayer = function(arg) {
+        console.log(arg)
+    }
+
     $scope.visibility = [true, false];
     $scope.displayLocStats = function (loc) {
         $scope.visibility = [false, true];

@@ -218,8 +218,8 @@
 
         </div>
         <div class="row search">
-            <input class="search" id="players" type="text" placeholder="Search for players">
-            <button class="btn btn-success search" type="submit" ng-click="newPlayer()">Submit</button>
+            <input class="search" id="players" type="text" placeholder="Search for players" ng-model="arg">
+            <button class="btn btn-success search" type="submit" ng-click="newPlayer(arg)">Submit</button>
             <br>
             <br>
         </div>
