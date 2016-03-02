@@ -96,7 +96,7 @@ app.factory('playerFactory', [function () {
 }]);
 
 app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scope, playerFactory) {
-    var playerID = '';
+    $scope.addPlayer = {};
     var options = {
         url: "public/players.json",
         getValue: "display",
@@ -105,7 +105,7 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
                 enabled: true
             },
             onSelectItemEvent: function() {
-                playerID = $("#players").getSelectedItemData().player;
+                $scope.addPlayer = $("#players").getSelectedItemData();
                 //console.log(playerID);
             }
         },
@@ -131,7 +131,10 @@ app.controller('analyze-controller', ['$scope', 'playerFactory', function ($scop
 ////        $scope.i += 1
 //    };
     $scope.newPlayer = function() {
-        console.log(playerID);
+        console.log($scope.addPlayer);
+        //
+        //
+        $scope.addPlayer = {};
     }
 
     $scope.visibility = [true, false];
