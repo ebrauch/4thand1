@@ -1,6 +1,6 @@
 var app = angular.module('app', []);
 
-app.controller('analyze-controller', ['$scope', function($scope){
+app.controller('analyze-controller', ['$scope', '$http', function($scope){
     $scope.addPlayer = {};
     var options = {
         url: "public/players.json",
