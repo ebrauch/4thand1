@@ -19,6 +19,9 @@ function playerController($scope, $http) {
     $scope.addPlayer = function() {
         console.log($scope.newPlayer.player);
         var playerID = $scope.newPlayer.player;
-        $http.get('/api/players/' + playerID);
+        $http.get('/api/players/' + playerID)
+            .then(function(serverResponse){
+                console.log(serverResponse);
+            });
     }
 }
