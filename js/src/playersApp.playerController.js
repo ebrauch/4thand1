@@ -17,6 +17,8 @@ function playerController($scope, $http) {
     }
     $('#players').easyAutocomplete(options);
     $scope.addPlayer = function() {
-        console.log($scope.newPlayer)
+        console.log($scope.newPlayer.player);
+        var playerID = $scope.newPlayer.player;
+        $http.get('/api/players/' + playerID);
     }
 }

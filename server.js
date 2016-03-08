@@ -14,7 +14,9 @@ app.get('/', function(req, res){
     res.render('index', {title: '4th and 1'});
 });
 
+var playersCtrl = require('./controllers/playersCtrl.js');
 
+app.get('/api/players/:playerID', playersCtrl.getPlayerData)
 
 var port = 3000;
 
