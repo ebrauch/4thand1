@@ -14,7 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
     <script src="js/src/jquery.easy-autocomplete.js"></script>
-    <script src="js/src/main.js"></script>
+    <!--<script src="js/src/main.js"></script>-->
+    <script src="js/dist/mini.js"></script>
     <link href="css/dist/mini.css" rel="stylesheet">
 
      <!--additional stylesheet -->
@@ -51,7 +52,7 @@
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-app="app">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-app="PlayersApp">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -118,7 +119,7 @@
         </div>
     </section>
 
-    <section id="analyze" class="analyze-section" ng-controller="analyze-controller">
+    <section id="analyze" class="analyze-section" ng-controller="playerController">
         <div class="row">
             <div class="col-lg-12">
                 <h1>Analyze</h1>
@@ -219,7 +220,7 @@
         </div>
         <div class="row search">
             <input class="search" id="players" type="text" placeholder="Search for players">
-            <button class="btn btn-success search" type="submit" ng-click="newPlayer()">Submit</button>
+            <button class="btn btn-success search" type="submit" ng-click="addPlayer()">Submit</button>
             <br>
             <br>
         </div>
