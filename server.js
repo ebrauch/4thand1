@@ -16,7 +16,9 @@ app.get('/', function(req, res){
 
 var playersCtrl = require('./controllers/playersCtrl.js');
 
-app.get('/api/players/:playerID', playersCtrl.getPlayerData);
+app.get('/api/rec/:playerID', playersCtrl.getRecData);
+app.get('/api/rush/:playerID', playersCtrl.getRushData);
+app.get('/api/pass/:playerID', playersCtrl.getPassData);
 
 
 var port = 3000;
