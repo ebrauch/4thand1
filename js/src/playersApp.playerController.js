@@ -22,7 +22,12 @@ function playerController($scope, $http) {
     $scope.addPlayer = function() {
         $http.get('/api/def/' + $scope.newPlayer.cteam).then(
             function(serverResponse) {
-                $scope.newPlayer.defense = serverResponse.data[0].h;
+                if ($scope.newPlayer.cteam == serverResponse.data[0].h) {
+                    $scope.newPlayer.defense = serverResponse.data[0].v;
+                }
+                else {
+                    $scope.newPlayer.defense = serverResponse.data[0].h;
+                }
             }
         );
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd ==
