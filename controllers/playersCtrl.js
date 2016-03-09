@@ -1,4 +1,5 @@
-var pbp = require('../models/pbp.js');
+var pbp = require('../models/pbp.js').pbp;
+var game = require('../models/pbp.js').game;
 
 //function getPlayerData(req, res) {
 //    pbp.find({$or: [{bc: req.params.playerID}, {trg: req.params.playerID}, {psr: req.params.playerID}]}, function (err, playerData) {
@@ -21,9 +22,22 @@ function getPassData(req, res) {
         res.send(data);
     })
 }
+function getDefData(req, res) {
+    game.find({
+        $and:[
+            {$or: [
+                {v:req.params.team},
+                {h:req.params.team}
+            ]},
+            {wk:17}
+        ]}, function(err, data){
+        res.send(data);
+    })
+}
 
 module.exports = {
     getRecData  : getRecData,
     getRushData : getRushData,
-    getPassData : getPassData
+    getPassData : getPassData,
+    getDefData  : getDefData
 };

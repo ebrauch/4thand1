@@ -20,6 +20,11 @@ function playerController($scope, $http) {
     };
     $('#players').easyAutocomplete(options);
     $scope.addPlayer = function() {
+        $http.get('/api/def/' + $scope.newPlayer.cteam).then(
+            function(serverResponse) {
+                $scope.newPlayer.defense = serverResponse.data[0].h;
+            }
+        );
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd ==
             'RWR' || $scope.newPlayer.posd == 'TE') {
             $scope.newPlayer.slTrg = 0;

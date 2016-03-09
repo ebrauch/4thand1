@@ -17,4 +17,26 @@ var pbpSchema = mongoose.Schema({
     ints : String
 });
 
-module.exports = mongoose.model('pbp', pbpSchema, 'pbp');
+var gameSchema = mongoose.Schema({
+    gid  : Number,
+    seas : Number,
+    wk   : Number,
+    day  : String,
+    v    : String,
+    h    : String,
+    stad : String,
+    temp : Number,
+    humd : Number,
+    wspd : Number,
+    wdir : String,
+    cond : String,
+    surf : String,
+    ptsv : Number,
+    ptsh : Number
+})
+
+//module.exports = mongoose.model('pbp', pbpSchema, 'pbp');
+module.exports = {
+    pbp  : mongoose.model('pbp', pbpSchema, 'pbp'),
+    game : mongoose.model('game', gameSchema, 'game')
+}
