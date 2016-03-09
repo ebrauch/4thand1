@@ -1,7 +1,8 @@
-var Player = require('../models/pbp.js');
+var pbp = require('../models/pbp.js');
 
 function getPlayerData(req, res) {
-    Player.findOne({player: req.params.playerID}, function (err, player) {
+    pbp.findOne({bc: req.params.playerID}, function (err, player) {
+        console.log(player);
         res.send(player);
 })
 }
