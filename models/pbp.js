@@ -7,7 +7,6 @@ var pbpSchema = mongoose.Schema({
     def  : String,
     type : String,
     yds  : Number,
-    succ : String,
     bc   : String,
     dir  : String,
     psr  : String,
