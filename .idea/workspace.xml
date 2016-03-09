@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d8cd6084-ba62-474f-94ad-a2b300edbaad" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/playersCtrl.js" afterPath="$PROJECT_DIR$/controllers/playersCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/pbp.js" afterPath="$PROJECT_DIR$/models/pbp.js" />
     </list>
     <ignored path="4thand1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +28,8 @@
           <file leaf-file-name="playersCtrl.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/controllers/playersCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28846154">
-                  <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+                <state vertical-scroll-proportion="0.17307693">
+                  <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -39,7 +38,7 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-3.125">
+                <state vertical-scroll-proportion="-11.25">
                   <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
                   <folding />
                 </state>
@@ -93,7 +92,7 @@
           <file leaf-file-name="pbp.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/models/pbp.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.42307693">
+                <state vertical-scroll-proportion="0.46153846">
                   <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
                   <folding />
                 </state>
@@ -140,8 +139,8 @@
         <option value="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/models/players.js" />
-        <option value="$PROJECT_DIR$/controllers/playersCtrl.js" />
         <option value="$PROJECT_DIR$/models/pbp.js" />
+        <option value="$PROJECT_DIR$/controllers/playersCtrl.js" />
       </list>
     </option>
   </component>
@@ -504,14 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125">
-          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33076924">
@@ -538,17 +529,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/playersCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28846154">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.17307693">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pbp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42307693">
+        <state vertical-scroll-proportion="0.46153846">
           <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding />
         </state>
