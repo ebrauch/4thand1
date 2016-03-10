@@ -40,6 +40,9 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <![endif]-->
 
 
@@ -137,6 +140,7 @@
             </div>
             <div class="container" ng-if="player.posd=='RB'">
                 {{player.display}} is a running back
+                <script src="js/src/graph.js"></script>
             </div>
             <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
                 {{player.display}} is a receiver of some sort
