@@ -272,6 +272,7 @@ function playerController($scope, $http) {
         qb.dmYds = 0;
         qb.drAtt = 0;
         qb.drYds = 0;
+        qb.qb = true;
         $http.get('/api/pass/' + qb.player)
             .then(function(serverResponse) {
                 serverResponse.data.forEach(function(data){

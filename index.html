@@ -132,97 +132,15 @@
             </div>
         </div>
         <div ng-repeat="player in playerArray">
-            <h4>{{player.fname}} {{player.lname}}-{{player.pos}}-{{player.team}}</h4>
-            <div class="container">
-                <div class="row stats-overview">
-                    <div class="col-xs-12">
-                        <ul>
-                            <li>
-                                {{player.fname}} {{player.lname}} averages .4 TD receptions per game, {{player.defense}} surrenders an average of .48 TD receptions per game to opposing RWR-1s.
-                            </li>
-                            <li>
-                                {{player.fname}} {{player.lname}} averages {{playerAvg.YPG}} yards per game, {{player.defense}} surrenders an average of 77 yards per game to opposing RWR-1s.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container location-stats">
-                    <div class="row placeholder" ng-show="visibility[0]"><strong>Hover over an area of the field for location-specific stats</strong>
-                    </div>
-                    <!--used to be loc-stats -->
-                    <div class="row placeholder" ng-show="visibility[1]">
-                        <div class="col-xs-12">{{area}}</div>
-                        <table class="stats-table">
-                            <tr>
-                                <td><strong>Stat</strong></td>
-                                <td><strong>{{player.fname}} {{player.lname}}</strong></td>
-                                <td><strong>{{player.defense}}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Completion percentage</td>
-                                <td>{{compPct}}%</td>
-                                <td>{{defCompPct}}%</td>
-                            </tr>
-                            <tr>
-                                <td>Yards per completion</td>
-                                <td>{{YPC}}</td>
-                                <td>{{defYPC}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+            <div class="container" ng-if="player.posd=='QB'">
+                {{player.display}} is a quarterback
             </div>
-
-
-            <div class="container-fluid player" ng-mouseleave="resetDisplay()">
-
-                <div class="row">
-                    <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('dl')">
-                    </div>
-                    <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('dm')">
-
-                    </div>
-                    <div class="col-xs-4 pass pass-top-right" ng-mouseover="displayLocStats('dr')">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('sl')">
-
-                    </div>
-                    <div class="col-xs-4 pass pass-top-left" ng-mouseover="displayLocStats('sm')">
-
-                    </div>
-                    <div class="col-xs-4 pass pass-top-right" ng-mouseover="displayLocStats('sr')">
-
-                    </div>
-                </div>
-                <div class="row run">
-                    <div class="col-xs-3 run run-left" ng-mouseover="displayLocStats('le')">
-
-                    </div>
-                    <div class="col-xs-1 run run-left" ng-mouseover="displayLocStats('lt')">
-
-                    </div>
-                    <div class="col-xs-1 run run-left" ng-mouseover="displayLocStats('lg')">
-
-                    </div>
-                    <div class="col-xs-1 run run-left" ng-mouseover="displayLocStats('md')">
-
-                    </div>
-                    <div class="col-xs-1 run run-left" ng-mouseover="displayLocStats('rg')">
-
-                    </div>
-                    <div class="col-xs-1 run run-left" ng-mouseover="displayLocStats('rg')">
-
-                    </div>
-                    <div class="col-xs-3 run run-right" ng-mouseover="displayLocStats('re')">
-
-                    </div>
-                </div>
-
+            <div class="container" ng-if="player.posd=='RB'">
+                {{player.display}} is a running back
             </div>
-
+            <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
+                {{player.display}} is a receiver of some sort
+            </div>
         </div>
         <div class="row search">
             <input class="search" id="players" type="text" placeholder="Search for players">
