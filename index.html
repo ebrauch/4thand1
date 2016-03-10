@@ -23,9 +23,6 @@
     <script src="js/src/jquery.easy-autocomplete.js"></script>
     <script src="js/src/playersApp.js"></script>
     <script src="js/src/playersApp.playerController.js"></script>
-    <script src="js/src/chartController.js"></script>
-
-
 
      <!--additional stylesheet -->
     <!--<link href="css/src/style.css" rel="stylesheet">-->
@@ -136,13 +133,15 @@
                 <h1>Analyze</h1>
             </div>
         </div>
-        <div ng-repeat="player in playerArray" ng-controller="chartController">
+        <div ng-repeat="player in playerArray">
             <div class="container" ng-if="player.posd=='QB'">
                 {{player.display}} is a quarterback
             </div>
             <div class="container" ng-if="player.posd=='RB'">
                 {{player.display}} is a running back
-                <highchart id="chart1" config="chartConfig"></highchart>
+                <div id="rbContainer" style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)">
+                    <!--<div class="container"  ng-init="buildRbChart(player)"></div>-->
+                </div>
             </div>
             <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
                 {{player.display}} is a receiver of some sort

@@ -21,7 +21,7 @@ $(function () {
         series: [{
             type: 'column',
             name: 'C.J. Anderson',
-            data: [y / x, 10.2, 8.8, 12.5, 13, 15.8, 11.3]
+            data: [8, 10.2, 8.8, 12.5, 13, 15.8, 11.3]
         }, {
             type: 'column',
             name: 'PIT',
