@@ -90,7 +90,57 @@ function playerController($scope, $http) {
     }
 
     $scope.addRb = function(rb) {
-
+        rb.leAtt = 0;
+        rb.leYds = 0;
+        rb.ltAtt = 0;
+        rb.ltYds = 0;
+        rb.lgAtt = 0;
+        rb.lgYds = 0;
+        rb.mdAtt = 0;
+        rb.mdYds = 0;
+        rb.rgAtt = 0;
+        rb.rgYds = 0;
+        rb.rtAtt = 0;
+        rb.rtYds = 0;
+        rb.reAtt = 0;
+        rb.reYds = 0;
+        $http.get('/api/rush/' + $scope.newPlayer.player).then(
+            function (serverResponse) {
+                serverResponse.data.forEach(function (data) {
+                    switch (data.dir) {
+                        case 'LE':
+                            $scope.newPlayer.leAtt++;
+                            $scope.newPlayer.leYds += data.yds;
+                            break;
+                        case 'LT':
+                            $scope.newPlayer.ltAtt++;
+                            $scope.newPlayer.ltYds += data.yds;
+                            break;
+                        case 'LG':
+                            $scope.newPlayer.lgAtt++;
+                            $scope.newPlayer.lgYds += data.yds;
+                            break;
+                        case 'MD':
+                            $scope.newPlayer.mdAtt++;
+                            $scope.newPlayer.mdYds += data.yds;
+                            break;
+                        case 'RG':
+                            $scope.newPlayer.rgAtt++;
+                            $scope.newPlayer.rgYds += data.yds;
+                            break;
+                        case 'RT':
+                            $scope.newPlayer.rtAtt++;
+                            $scope.newPlayer.rtYds += data.yds;
+                            break;
+                        case 'RE':
+                            $scope.newPlayer.reAtt++;
+                            $scope.newPlayer.reYds += data.yds;
+                            break;
+                    }
+                });
+            }).then(function() {
+            $scope.getDefRushStats(rb);
+        });
     }
 
     $scope.addQb = function(qb) {
@@ -111,7 +161,7 @@ function playerController($scope, $http) {
         player.defDrTrg = 0;
         player.defDrYds = 0;
 
-        $http.get('/api/defPassStats/' + arguments[0].defense).then(
+        $http.get('/api/defPassStats/' + player.defense).then(
             function(serverResponse) {
                 serverResponse.data.forEach(function(data){
                     switch (data.loc) {
@@ -138,6 +188,60 @@ function playerController($scope, $http) {
                         case 'DR':
                             $scope.newPlayer.defDrTrg++;
                             $scope.newPlayer.defDrYds += data.yds;
+                            break;
+                    }
+                })
+            });
+        $scope.playerArray.push(player);
+        console.log($scope.playerArray);
+    }
+    $scope.getDefRushStats = function(player) {
+        player.defLeAtt = 0;
+        player.defLeYds = 0;
+        player.defLtAtt = 0;
+        player.defLtYds = 0;
+        player.defLgAtt = 0;
+        player.defLgYds = 0;
+        player.defMdAtt = 0;
+        player.defMdYds = 0;
+        player.defRgAtt = 0;
+        player.defRgYds = 0;
+        player.defRtAtt = 0;
+        player.defRtYds = 0;
+        player.defReAtt = 0;
+        player.defReYds = 0;
+
+        $http.get('/api/defRushStats/' + player.defense).then(
+            function(serverResponse) {
+                serverResponse.data.forEach(function(data){
+                    switch (data.dir) {
+                        case 'LE':
+                            player.defLeAtt++;
+                            player.defLeYds += data.yds;
+                            break;
+                        case 'LT':
+                            player.defLtAtt++;
+                            player.defLtYds += data.yds;
+                            break;
+                        case 'LG':
+                            player.defLgAtt++;
+                            player.defLgYds += data.yds;
+                            break;
+                        case 'MD':
+                            player.defMdAtt++;
+                            player.defMdYds += data.yds;
+                            break;
+                        case 'RG':
+                            player.defRgAtt++;
+                            player.defRgYds += data.yds;
+                            break;
+                        case 'RT':
+                            player.defRtAtt++;
+                            player.defRtYds += data.yds;
+                            break;
+                        case 'RE':
+                            player.defReAtt++;
+                            player.defReYds += data.yds;
                             break;
                     }
                 })

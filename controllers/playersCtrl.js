@@ -35,6 +35,11 @@ function getDef(req, res) {
     })
 }
 function getDefPassStats(req, res) {
+    pbp.find({def: req.params.team}, function(err, data){
+        res.send(data);
+    })
+}
+function getDefRushStats(req, res) {
     console.log(req.params.team);
     pbp.find({def: req.params.team}, function(err, data){
         res.send(data);
@@ -46,5 +51,6 @@ module.exports = {
     getRushData     : getRushData,
     getPassData     : getPassData,
     getDef          : getDef,
-    getDefPassStats : getDefPassStats
+    getDefPassStats : getDefPassStats,
+    getDefRushStats : getDefRushStats
 };
