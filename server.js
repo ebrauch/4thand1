@@ -22,6 +22,7 @@ app.get('/api/pass/:playerID', playersCtrl.getPassData);
 app.get('/api/def/:team', playersCtrl.getDef);
 app.get('/api/defPassStats/:team', playersCtrl.getDefPassStats);
 app.get('/api/defRushStats/:team', playersCtrl.getDefPassStats);
+app.get('/api/leagueAvg/', playersCtrl.getLeagueAverage);
 
 
 var port = 3000;

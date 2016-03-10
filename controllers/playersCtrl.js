@@ -45,6 +45,11 @@ function getDefRushStats(req, res) {
         res.send(data);
     })
 }
+function getLeagueAverage(req, res) {
+    pbp.find({}, function(err, data){
+        res.send(data);
+    })
+}
 
 module.exports = {
     getRecData      : getRecData,
@@ -52,5 +57,6 @@ module.exports = {
     getPassData     : getPassData,
     getDef          : getDef,
     getDefPassStats : getDefPassStats,
-    getDefRushStats : getDefRushStats
+    getDefRushStats : getDefRushStats,
+    getLeagueAverage: getLeagueAverage
 };
