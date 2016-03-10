@@ -22,7 +22,7 @@ function getPassData(req, res) {
         res.send(data);
     })
 }
-function getDefData(req, res) {
+function getDef(req, res) {
     game.find({
         $and:[
             {$or: [
@@ -34,10 +34,17 @@ function getDefData(req, res) {
         res.send(data);
     })
 }
+function getDefPassStats(req, res) {
+    console.log(req.params.team);
+    pbp.find({def: req.params.team}, function(err, data){
+        res.send(data);
+    })
+}
 
 module.exports = {
-    getRecData  : getRecData,
-    getRushData : getRushData,
-    getPassData : getPassData,
-    getDefData  : getDefData
+    getRecData      : getRecData,
+    getRushData     : getRushData,
+    getPassData     : getPassData,
+    getDef          : getDef,
+    getDefPassStats : getDefPassStats
 };
