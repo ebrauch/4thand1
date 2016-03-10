@@ -151,6 +151,9 @@ function playerController($scope, $http) {
         if ($scope.newPlayer.posd == 'RB') {
             $scope.addRb($scope.newPlayer);
         }
+        if( $scope.newPlayer.posd == 'QB') {
+            $scope.addQb($scope.newPlayer);
+        }
     }
 
     $scope.addRec = function(receiver) {
@@ -257,7 +260,51 @@ function playerController($scope, $http) {
     }
 
     $scope.addQb = function(qb) {
-
+        qb.slAtt = 0;
+        qb.slYds = 0;
+        qb.smAtt = 0;
+        qb.smYds = 0;
+        qb.srAtt = 0;
+        qb.srYds = 0;
+        qb.dlAtt = 0;
+        qb.dlYds = 0;
+        qb.dmAtt = 0;
+        qb.dmYds = 0;
+        qb.drAtt = 0;
+        qb.drYds = 0;
+        $http.get('/api/pass/' + qb.player)
+            .then(function(serverResponse) {
+                serverResponse.data.forEach(function(data){
+                    switch (data.loc) {
+                        case 'SL':
+                            qb.slAtt++;
+                            qb.slYds += data.yds;
+                            break;
+                        case 'SM':
+                            qb.smAtt++;
+                            qb.smYds += data.yds;
+                            break;
+                        case 'SR':
+                            qb.srAtt++;
+                            qb.srYds += data.yds;
+                            break;
+                        case 'DL':
+                            qb.dlAtt++;
+                            qb.dlYds += data.yds;
+                            break;
+                        case 'DM':
+                            qb.dmAtt++;
+                            qb.dmYds += data.yds;
+                            break;
+                        case 'DR':
+                            qb.drAtt++;
+                            qb.drYds += data.yds;
+                            break;
+                    }
+                })
+            }).then(function() {
+            $scope.getDefPassStats(qb);
+        })
     }
 
     $scope.getDefPassStats = function(player) {
