@@ -1,7 +1,7 @@
-var x = 4;
-var y = 64;
-$(function () {
-    $('#container').highcharts({
+angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
+
+function chartController($scope) {
+    $scope.RB = {
         title: {
             text: 'Rushing Yards Per Game'
         },
@@ -21,7 +21,7 @@ $(function () {
         series: [{
             type: 'column',
             name: 'C.J. Anderson',
-            data: [y / x, 10.2, 8.8, 12.5, 13, 15.8, 11.3]
+            data: [11, 10.2, 8.8, 12.5, 13, 15.8, 11.3]
         }, {
             type: 'column',
             name: 'PIT',
@@ -58,5 +58,5 @@ $(function () {
                 enabled: false
             }
         }]
-    });
-})
+    }
+}
