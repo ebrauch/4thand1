@@ -19,6 +19,10 @@ function playerController($scope, $http) {
         }
         //theme: 'square'
     };
+    $scope.resetSearch = function() {
+        $('#players').val('');
+        return false
+    }
 
     $('#players').easyAutocomplete(options);
 
