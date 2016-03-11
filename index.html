@@ -138,6 +138,7 @@
                 {{player.display}} is a quarterback
             </div>
             <div class="container" ng-if="player.posd=='RB'">
+                <h3>{{player.display}}</h3>
                 <div id={{player.player}}  style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)"></div>
             </div>
             <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
