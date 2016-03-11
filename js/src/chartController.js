@@ -176,4 +176,90 @@ function chartController ($scope) {
                 })},0);
         })
     }
+    $scope.buildQbChart = function(qb) {
+        $(function () {
+            setTimeout(function(){$('#' + qb.player).highcharts(
+                {
+                    credits: {
+                        enabled: false
+                    },
+                    title: {
+                        text: 'Passing Yards Per Attempt'
+                    },
+                    xAxis: {
+                        categories: ['Short Left', 'Short Middle', 'Short Right', 'Deep Left', 'Deep Middle', 'Deep Right']
+                    },
+                    series: [
+                        {
+                            type: 'column',
+                            name: qb.display.split(' -')[0],
+                            data: [
+                                Math.floor(qb.slYds / qb.slAtt * 100) / 100,
+                                Math.floor(qb.smYds / qb.smAtt * 100) / 100,
+                                Math.floor(qb.srYds / qb.srAtt * 100) / 100,
+                                Math.floor(qb.dlYds / qb.dlAtt * 100) / 100,
+                                Math.floor(qb.dmYds / qb.dmAtt * 100) / 100,
+                                Math.floor(qb.drYds / qb.drAtt * 100) / 100,
+                            ]
+                        },
+                        {
+                            type: 'column',
+                            name: qb.defense,
+                            data: [
+                                Math.floor(qb.defSlYds / qb.defSlTrg * 100) / 100,
+                                Math.floor(qb.defSmYds / qb.defSmTrg * 100) / 100,
+                                Math.floor(qb.defSrYds / qb.defSrTrg * 100) / 100,
+                                Math.floor(qb.defDlYds / qb.defDlTrg * 100) / 100,
+                                Math.floor(qb.defDmYds / qb.defDmTrg * 100) / 100,
+                                Math.floor(qb.defDrYds / qb.defDrTrg * 100) / 100
+                            ]
+                        },
+                        {
+                            type: 'spline',
+                            name: 'League Average',
+                            data: [
+                                $scope.leagueAvgSlYds,
+                                $scope.leagueAvgSmYds,
+                                $scope.leagueAvgSrYds,
+                                $scope.leagueAvgDlYds,
+                                $scope.leagueAvgDmYds,
+                                $scope.leagueAvgDrYds
+                            ],
+                            marker: {
+                                lineWidth: 2,
+                                lineColor: Highcharts.getOptions().colors[3],
+                                fillColor: 'white'
+                            }
+                        },
+                        //    {
+                        //    type: 'pie',
+                        //    name: 'Total Rushing YPG',
+                        //    data: [{
+                        //        name: rb.display.split(' -')[0],
+                        //        y: (rb.leYds + rb.ltYds + rb.lgYds + rb.mdYds + rb.rgYds + rb.rtYds + rb.reYds) / 16,
+                        //        color: Highcharts.getOptions().colors[0]
+                        //    }, {
+                        //        name: rb.defense,
+                        //        y: (rb.defLeYds + rb.defLtYds + rb.defLgYds + rb.defMdYds + rb.defRgYds + rb.defRtYds + rb.defReYds) / 16,
+                        //        color: Highcharts.getOptions().colors[1]
+                        //    },
+                        //        {
+                        //        name: 'League Average',
+                        //        y: ($scope.leagueAvgLeYds + $scope.leagueAvgLtYds + $scope.leagueAvgLgYds + $scope.leagueAvgMdYds +
+                        //            $scope.leagueAvgRgYds + $scope.leagueAvgRtYds + $scope.leagueAvgReYds),
+                        //        color: Highcharts.getOptions().colors[2]
+                        //    }
+                        //    ],
+                        //    center: [25, 25],
+                        //    size: 33,
+                        //    showInLegend: false,
+                        //    dataLabels: {
+                        //        enabled: false
+                        //    }
+                        //
+                        //}
+                    ]
+                })},0);
+        })
+    }
 }
