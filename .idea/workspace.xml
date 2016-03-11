@@ -6,10 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8cd6084-ba62-474f-94ad-a2b300edbaad" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/src/chartController.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/src/graph.js" afterPath="$PROJECT_DIR$/js/src/graph.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/src/playersApp.playerController.js" afterPath="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
     </list>
     <ignored path="4thand1.iws" />
@@ -37,7 +34,7 @@
             <entry file="file://$PROJECT_DIR$/controllers/playersCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+                  <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
                   <folding />
                 </state>
               </provider>
@@ -56,8 +53,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5487805">
-                  <caret line="142" column="20" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="85" />
+                <state vertical-scroll-proportion="0.5884146">
+                  <caret line="140" column="130" selection-start-line="140" selection-start-column="130" selection-end-line="140" selection-end-column="130" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -73,14 +70,11 @@
             <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.5738636">
-                  <caret line="413" column="23" selection-start-line="413" selection-start-column="23" selection-end-line="413" selection-end-column="23" />
+                  <caret line="418" column="26" selection-start-line="418" selection-start-column="26" selection-end-line="418" selection-end-column="26" />
                   <folding>
                     <element signature="e#224#545#0" expanded="false" />
-                    <element signature="e#1473#4224#0" expanded="false" />
-                    <element signature="e#4242#5985#0" expanded="false" />
                     <element signature="e#6023#6790#0" expanded="false" />
                     <element signature="e#6831#8669#0" expanded="false" />
-                    <element signature="e#8703#10667#0" expanded="false" />
                     <element signature="e#12316#14177#0" expanded="false" />
                   </folding>
                 </state>
@@ -148,8 +142,8 @@
         <option value="$PROJECT_DIR$/js/src/chartController.js" />
         <option value="$PROJECT_DIR$/js/src/playersApp.js" />
         <option value="$PROJECT_DIR$/js/src/graph.js" />
-        <option value="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
       </list>
     </option>
   </component>
@@ -368,7 +362,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14166667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -582,14 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/playersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/src/playersApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -622,28 +608,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
+    <entry file="file://$PROJECT_DIR$/controllers/playersCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5738636">
-          <caret line="413" column="23" selection-start-line="413" selection-start-column="23" selection-end-line="413" selection-end-column="23" />
-          <folding>
-            <element signature="e#224#545#0" expanded="false" />
-            <element signature="e#1473#4224#0" expanded="false" />
-            <element signature="e#4242#5985#0" expanded="false" />
-            <element signature="e#6023#6790#0" expanded="false" />
-            <element signature="e#6831#8669#0" expanded="false" />
-            <element signature="e#8703#10667#0" expanded="false" />
-            <element signature="e#12316#14177#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5487805">
-          <caret line="142" column="20" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.5884146">
+          <caret line="140" column="130" selection-start-line="140" selection-start-column="130" selection-end-line="140" selection-end-column="130" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5738636">
+          <caret line="418" column="26" selection-start-line="418" selection-start-column="26" selection-end-line="418" selection-end-column="26" />
+          <folding>
+            <element signature="e#224#545#0" expanded="false" />
+            <element signature="e#6023#6790#0" expanded="false" />
+            <element signature="e#6831#8669#0" expanded="false" />
+            <element signature="e#12316#14177#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -406,71 +406,99 @@ function playerController($scope, $http) {
                             break;
                     }
                 })
-            });
-        $scope.playerArray.push(player);
-        console.log($scope.playerArray);
+            }).then(function() {
+                $scope.playerArray.push(player);
+                console.log($scope.playerArray);
+        });
     }
+
     $scope.buildRbChart = function(rb) {
         $(function () {
-            console.log('fuck this')
-            $('#rbContainer').highcharts({
+            setTimeout(function(){$('#' + rb.player).highcharts(
+                {
+                credits: {
+                    enabled: false
+                },
                 title: {
-                    text: 'Rushing Yards Per Game'
+                    text: 'Rushing Yards Per Attempt'
                 },
                 xAxis: {
                     categories: ['Left End', 'Left Tackle', 'Left Guard', 'Middle', 'Right Guard', 'Right Tackle', 'Right End']
                 },
-                labels: {
-                    items: [{
-                        html: 'Total yards',
-                        style: {
-                            left: '0px',
-                            top: '0px',
-                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-                        }
-                    }]
+                series: [
+                    {
+                    type: 'column',
+                    name: rb.display.split(' -')[0],
+                    data: [
+                        Math.floor(rb.leYds / rb.leAtt * 100) / 100,
+                        Math.floor(rb.ltYds / rb.ltAtt * 100) / 100,
+                        Math.floor(rb.lgYds / rb.lgAtt * 100) / 100,
+                        Math.floor(rb.mdYds / rb.mdAtt * 100) / 100,
+                        Math.floor(rb.rgYds / rb.rgAtt * 100) / 100,
+                        Math.floor(rb.rtYds / rb.rtAtt * 100) / 100,
+                        Math.floor(rb.reYds / rb.rtAtt * 100) / 100
+                    ]
                 },
-                series: [{
-                    type: 'column',
-                    name: 'C.J. Anderson',
-                    data: [8, 10.2, 8.8, 12.5, 13, 15.8, 11.3]
-                }, {
-                    type: 'column',
-                    name: 'PIT',
-                    data: [10.6, 9.8, 10.5, 16.4, 17, 12.3, 9.6]
-                },  {
+                    {
+                        type: 'column',
+                        name: rb.defense,
+                        data: [
+                            Math.floor(rb.defLeYds / rb.defLeAtt * 100) / 100,
+                            Math.floor(rb.defLtYds / rb.defLtAtt * 100) / 100,
+                            Math.floor(rb.defLgYds / rb.defLgAtt * 100) / 100,
+                            Math.floor(rb.defMdYds / rb.defMdAtt * 100) / 100,
+                            Math.floor(rb.defRgYds / rb.defRgAtt * 100) / 100,
+                            Math.floor(rb.defRtYds / rb.defRtAtt * 100) / 100,
+                            Math.floor(rb.defReYds / rb.defRtAtt * 100) / 100
+                        ]
+                    },
+                    {
                     type: 'spline',
                     name: 'League Average',
-                    data: [11.6, 11, 11.5, 15.9, 19, 13.6, 8.3],
+                    data: [
+                        $scope.leagueAvgLeYds,
+                        $scope.leagueAvgLtYds,
+                        $scope.leagueAvgLgYds,
+                        $scope.leagueAvgMdYds,
+                        $scope.leagueAvgRgYds,
+                        $scope.leagueAvgRtYds,
+                        $scope.leagueAvgReYds
+                    ],
                     marker: {
                         lineWidth: 2,
                         lineColor: Highcharts.getOptions().colors[3],
                         fillColor: 'white'
                     }
-                }, {
-                    type: 'pie',
-                    name: 'Total rushing yards',
-                    data: [{
-                        name: 'C.J. Anderson',
-                        y: 73,
-                        color: Highcharts.getOptions().colors[0] // Jane's color
-                    }, {
-                        name: 'PIT',
-                        y: 89,
-                        color: Highcharts.getOptions().colors[1] // John's color
-                    }, {
-                        name: 'League Average',
-                        y: 78,
-                        color: Highcharts.getOptions().colors[2] // Joe's color
-                    }],
-                    center: [25, 25],
-                    size: 33,
-                    showInLegend: false,
-                    dataLabels: {
-                        enabled: false
-                    }
-                }]
-            });
+                },
+                //    {
+                //    type: 'pie',
+                //    name: 'Total Rushing YPG',
+                //    data: [{
+                //        name: rb.display.split(' -')[0],
+                //        y: (rb.leYds + rb.ltYds + rb.lgYds + rb.mdYds + rb.rgYds + rb.rtYds + rb.reYds) / 16,
+                //        color: Highcharts.getOptions().colors[0]
+                //    }, {
+                //        name: rb.defense,
+                //        y: (rb.defLeYds + rb.defLtYds + rb.defLgYds + rb.defMdYds + rb.defRgYds + rb.defRtYds + rb.defReYds) / 16,
+                //        color: Highcharts.getOptions().colors[1]
+                //    },
+                //        {
+                //        name: 'League Average',
+                //        y: ($scope.leagueAvgLeYds + $scope.leagueAvgLtYds + $scope.leagueAvgLgYds + $scope.leagueAvgMdYds +
+                //            $scope.leagueAvgRgYds + $scope.leagueAvgRtYds + $scope.leagueAvgReYds),
+                //        color: Highcharts.getOptions().colors[2]
+                //    }
+                //    ],
+                //    center: [25, 25],
+                //    size: 33,
+                //    showInLegend: false,
+                //    dataLabels: {
+                //        enabled: false
+                //    }
+                //
+                //}
+                ]
+            })},0);
         })
     }
 }

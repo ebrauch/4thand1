@@ -133,15 +133,12 @@
                 <h1>Analyze</h1>
             </div>
         </div>
-        <div ng-repeat="player in playerArray">
+        <div ng-repeat="player in playerArray track by $index">
             <div class="container" ng-if="player.posd=='QB'">
                 {{player.display}} is a quarterback
             </div>
             <div class="container" ng-if="player.posd=='RB'">
-                {{player.display}} is a running back
-                <div id="rbContainer" style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)">
-                    <!--<div class="container"  ng-init="buildRbChart(player)"></div>-->
-                </div>
+                <div id={{player.player}}  style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)"></div>
             </div>
             <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
                 {{player.display}} is a receiver of some sort
