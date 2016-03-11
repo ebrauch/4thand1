@@ -133,10 +133,10 @@ function playerController($scope, $http) {
         $scope.leagueAvgRgYds = Math.floor(($scope.leagueAvgRgYds / $scope.leagueAvgRgAtt) * 100) / 100;
         $scope.leagueAvgRtYds = Math.floor(($scope.leagueAvgRtYds / $scope.leagueAvgRtAtt) * 100) / 100;
         $scope.leagueAvgReYds = Math.floor(($scope.leagueAvgReYds / $scope.leagueAvgReAtt) * 100) / 100;
-        console.log($scope.leagueAvgSlYds, $scope.leagueAvgSmYds, $scope.leagueAvgSrYds);
-        console.log($scope.leagueAvgDlYds, $scope.leagueAvgDmYds, $scope.leagueAvgDrYds);
-        console.log($scope.leagueAvgLeYds, $scope.leagueAvgLtYds, $scope.leagueAvgLgYds, $scope.leagueAvgMdYds,
-        $scope.leagueAvgRgYds, $scope.leagueAvgRtYds, $scope.leagueAvgReYds);
+        //console.log($scope.leagueAvgSlYds, $scope.leagueAvgSmYds, $scope.leagueAvgSrYds);
+        //console.log($scope.leagueAvgDlYds, $scope.leagueAvgDmYds, $scope.leagueAvgDrYds);
+        //console.log($scope.leagueAvgLeYds, $scope.leagueAvgLtYds, $scope.leagueAvgLgYds, $scope.leagueAvgMdYds,
+        //$scope.leagueAvgRgYds, $scope.leagueAvgRtYds, $scope.leagueAvgReYds);
     });
 
     $scope.addPlayer = function() {
@@ -412,7 +412,7 @@ function playerController($scope, $http) {
                 })
             }).then(function() {
                 $scope.playerArray.push(player);
-                console.log($scope.playerArray);
+                //console.log($scope.playerArray);
         });
     }
 }
