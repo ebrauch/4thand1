@@ -36,64 +36,95 @@ function chartController ($scope) {
         WAS: "#773141"
     }
     $scope.buildWrChart = function (wr) {
-        $(function () {
-            setTimeout(function () {
-                $('#' + wr.player).highcharts(
-                    {
-                        credits: {
-                            enabled: false
-                        },
-                        title: {
-                            text: 'Receiving Yards Per Target'
-                        },
-                        xAxis: {
-                            categories: ['Short Left', 'Short Middle', 'Short Right', 'Deep Left', 'Deep Middle', 'Deep Right']
-                        },
-                        series: [
-                            {
-                                type: 'column',
-                                name: wr.display.split(' -')[0],
-                                data: [
-                                    Math.floor(wr.slYds / wr.slTrg * 100) / 100,
-                                    Math.floor(wr.smYds / wr.smTrg * 100) / 100,
-                                    Math.floor(wr.srYds / wr.srTrg * 100) / 100,
-                                    Math.floor(wr.dlYds / wr.dlTrg * 100) / 100,
-                                    Math.floor(wr.dmYds / wr.dmTrg * 100) / 100,
-                                    Math.floor(wr.drYds / wr.drTrg * 100) / 100,
-                                ]
-                            },
-                            {
-                                type: 'column',
-                                name: wr.defense,
-                                data: [
-                                    Math.floor(wr.defSlYds / wr.defSlTrg * 100) / 100,
-                                    Math.floor(wr.defSmYds / wr.defSmTrg * 100) / 100,
-                                    Math.floor(wr.defSrYds / wr.defSrTrg * 100) / 100,
-                                    Math.floor(wr.defDlYds / wr.defDlTrg * 100) / 100,
-                                    Math.floor(wr.defDmYds / wr.defDmTrg * 100) / 100,
-                                    Math.floor(wr.defDrYds / wr.defDrTrg * 100) / 100
-                                ]
-                            },
-                            {
-                                type: 'spline',
-                                name: 'League Average',
-                                data: [
-                                    $scope.leagueAvgSlYds,
-                                    $scope.leagueAvgSmYds,
-                                    $scope.leagueAvgSrYds,
-                                    $scope.leagueAvgDlYds,
-                                    $scope.leagueAvgDmYds,
-                                    $scope.leagueAvgDrYds
-                                ],
-                                marker: {
-                                    lineWidth: 2,
-                                    lineColor: Highcharts.getOptions().colors[3],
-                                    fillColor: 'white'
-                                }
-                            },
-                        ]
-                    })
-            }, 0);
+        $(function() {
+            setTimeout(function(){
+                console.log(wr);
+                $('#' + wr.player).highcharts({
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        polar: true,
+                        type: 'line'
+                    },
+
+                    title: {
+                        text: 'Receiving Yards Per Target'
+                        //x: -80
+                    },
+
+                    pane: {
+                        size: '80%'
+                    },
+
+                    xAxis: {
+                        categories: ['Deep Middle',
+                            'Deep Right',
+                            'Short Right',
+                            'Short Middle',
+                            'Short Left',
+                            'Deep Left'],
+                        tickmarkPlacement: 'on',
+                        lineWidth: 0
+                    },
+
+                    yAxis: {
+                        gridLineInterpolation: 'polygon',
+                        lineWidth: 0,
+                        min: 0
+                    },
+
+                    tooltip: {
+                        shared: true,
+                        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.2f}</b><br/>'
+                    },
+
+                    legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        //y: 70,
+                        layout: 'horizontal'
+                    },
+
+                    series: [{
+                        name: wr.display.split(' -')[0],
+                        data: [
+                            Math.floor(wr.dmYds / wr.dmTrg * 100) / 100,
+                            Math.floor(wr.drYds / wr.drTrg * 100) / 100,
+                            Math.floor(wr.srYds / wr.srTrg * 100) / 100,
+                            Math.floor(wr.smYds / wr.smTrg * 100) / 100,
+                            Math.floor(wr.slYds / wr.slTrg * 100) / 100,
+                            Math.floor(wr.dlYds / wr.dlTrg * 100) / 100
+                        ],
+                        pointPlacement: 'on',
+                        color: $scope.teamColors[wr.cteam]
+                    }, {
+                        name: wr.defense,
+                        data: [
+                            Math.floor(wr.defDmYds / wr.defDmTrg * 100) / 100,
+                            Math.floor(wr.defDrYds / wr.defDrTrg * 100) / 100,
+                            Math.floor(wr.defSrYds / wr.defSrTrg * 100) / 100,
+                            Math.floor(wr.defSmYds / wr.defSmTrg * 100) / 100,
+                            Math.floor(wr.defSlYds / wr.defSlTrg * 100) / 100,
+                            Math.floor(wr.defDlYds / wr.defDlTrg * 100) / 100
+                        ],
+                        pointPlacement: 'on',
+                        color: $scope.teamColors[wr.defense]
+                    }, {
+                        name: 'League Average',
+                        data: [
+                            $scope.leagueAvgDmYds,
+                            $scope.leagueAvgDrYds,
+                            $scope.leagueAvgSrYds,
+                            $scope.leagueAvgSmYds,
+                            $scope.leagueAvgSlYds,
+                            $scope.leagueAvgDlYds
+                        ],
+                        pointPlacement: 'on',
+                        dashStyle: 'shortdash'
+                    }]
+                })
+            },0)
         })
     }
     $scope.buildRbChart = function (rb) {
