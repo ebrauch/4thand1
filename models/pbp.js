@@ -1,5 +1,30 @@
 var mongoose = require('mongoose');
 
+var averageSchema = mongoose.Schema({
+    _id: {},
+    _batch: {},
+    _useReadCommands: {},
+    _cursorid: {},
+    _batchSize: {},
+    _ns: {},
+    _db: {},
+    _collName: {},
+    _cursorHandle: {},
+    close: {},
+    _runGetMoreCommand: {},
+    _hasNextUsingCommands: {},
+    hasNext: {},
+    next: {},
+    objsLeftInBatch: {},
+    help: {},
+    toArray: {},
+    forEach: {},
+    map: {},
+    itcount: {},
+    shellPrint: {},
+    pretty: {}
+})
+
 var pbpSchema = mongoose.Schema({
     gid  : Number,
     pid  : Number,
@@ -37,6 +62,7 @@ var gameSchema = mongoose.Schema({
 
 //module.exports = mongoose.model('pbp', pbpSchema, 'pbp');
 module.exports = {
-    pbp  : mongoose.model('pbp', pbpSchema, 'pbp'),
-    game : mongoose.model('game', gameSchema, 'game')
+    pbp     : mongoose.model('pbp', pbpSchema, 'pbp'),
+    game    : mongoose.model('game', gameSchema, 'game'),
+    average : mongoose.model('average', averageSchema, 'average')
 }

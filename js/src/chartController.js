@@ -35,15 +35,6 @@ function chartController ($scope) {
         TEN: "#4B92DB",
         WAS: "#773141"
     };
-    //$scope.invertColor = function(color) {
-    //    color = color.substring(1); // remove #
-    //    color = parseInt(color, 16); // convert to integer
-    //    color = 0xFFFFFF ^ color; // invert three bytes
-    //    color = color.toString(16); // convert to hex
-    //    color = ("000000" + color).slice(-6); // pad with leading zeros
-    //    color = "#" + color; // prepend #
-    //    return color;
-    //}
     $scope.buildWrChart = function (wr) {
         $(function() {
             setTimeout(function(){
@@ -121,12 +112,18 @@ function chartController ($scope) {
                     }, {
                         name: 'League Average',
                         data: [
-                            $scope.leagueAvgDmYds,
-                            $scope.leagueAvgDrYds,
-                            $scope.leagueAvgSrYds,
-                            $scope.leagueAvgSmYds,
-                            $scope.leagueAvgSlYds,
-                            $scope.leagueAvgDlYds
+                            Math.floor($scope.leaguePaAvg[0][0].dmYds / $scope.leaguePaAvg[1][0].dmAtt * 100) / 100 || 0,
+                            Math.floor($scope.leaguePaAvg[2][0].DrYds / $scope.leaguePaAvg[3][0].DrAtt * 100) / 100 || 0,
+                            Math.floor($scope.leaguePaAvg[4][0].srYds / $scope.leaguePaAvg[5][0].srAtt * 100) / 100 || 0,
+                            Math.floor($scope.leaguePaAvg[6][0].smYds / $scope.leaguePaAvg[7][0].smAtt * 100) / 100 || 0,
+                            Math.floor($scope.leaguePaAvg[8][0].slYds / $scope.leaguePaAvg[9][0].slAtt * 100) / 100 || 0,
+                            Math.floor($scope.leaguePaAvg[10][0].dlYds / $scope.leaguePaAvg[11][0].dlAtt * 100) / 100 || 0
+                            //Math.floor($scope.leaguePaAvg[0].dmYds / $scope.leaguePaAvg[1].dmAtt * 100) / 100 || 0;
+                            //$scope.leagueAvgDrYds,
+                            //$scope.leagueAvgSrYds,
+                            //$scope.leagueAvgSmYds,
+                            //$scope.leagueAvgSlYds,
+                            //$scope.leagueAvgDlYds
                         ],
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
@@ -182,13 +179,13 @@ function chartController ($scope) {
                                 type: 'spline',
                                 name: 'League Average',
                                 data: [
-                                    $scope.leagueAvgLeYds,
-                                    $scope.leagueAvgLtYds,
-                                    $scope.leagueAvgLgYds,
-                                    $scope.leagueAvgMdYds,
-                                    $scope.leagueAvgRgYds,
-                                    $scope.leagueAvgRtYds,
-                                    $scope.leagueAvgReYds
+                                    Math.floor($scope.leagueRuAvg[0][0].leYds / $scope.leagueRuAvg[1][0].leAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[2][0].ltYds / $scope.leagueRuAvg[3][0].ltAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[4][0].lgYds / $scope.leagueRuAvg[5][0].lgAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[6][0].mdYds / $scope.leagueRuAvg[7][0].mdAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[8][0].rgYds / $scope.leagueRuAvg[9][0].rgAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[10][0].rtYds / $scope.leagueRuAvg[11][0].rtAtt * 100) / 100 || 0,
+                                    Math.floor($scope.leagueRuAvg[12][0].reYds / $scope.leagueRuAvg[13][0].reAtt * 100) / 100 || 0
                                 ],
                                 marker: {
                                     lineWidth: 2,
@@ -279,12 +276,12 @@ function chartController ($scope) {
                    }, {
                        name: 'League Average',
                        data: [
-                           $scope.leagueAvgDmYds,
-                           $scope.leagueAvgDrYds,
-                           $scope.leagueAvgSrYds,
-                           $scope.leagueAvgSmYds,
-                           $scope.leagueAvgSlYds,
-                           $scope.leagueAvgDlYds
+                           Math.floor($scope.leaguePaAvg[0][0].dmYds / $scope.leaguePaAvg[1][0].dmAtt * 100) / 100 || 0,
+                           Math.floor($scope.leaguePaAvg[2][0].DrYds / $scope.leaguePaAvg[3][0].DrAtt * 100) / 100 || 0,
+                           Math.floor($scope.leaguePaAvg[4][0].srYds / $scope.leaguePaAvg[5][0].srAtt * 100) / 100 || 0,
+                           Math.floor($scope.leaguePaAvg[6][0].smYds / $scope.leaguePaAvg[7][0].smAtt * 100) / 100 || 0,
+                           Math.floor($scope.leaguePaAvg[8][0].slYds / $scope.leaguePaAvg[9][0].slAtt * 100) / 100 || 0,
+                           Math.floor($scope.leaguePaAvg[10][0].dlYds / $scope.leaguePaAvg[11][0].dlAtt * 100) / 100 || 0
                        ],
                        pointPlacement: 'on',
                        dashStyle: 'shortdash'

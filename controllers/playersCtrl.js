@@ -1,12 +1,12 @@
 var pbp = require('../models/pbp.js').pbp;
 var game = require('../models/pbp.js').game;
+var average = require('../models/pbp.js').average;
 
-//function getPlayerData(req, res) {
-//    pbp.find({$or: [{bc: req.params.playerID}, {trg: req.params.playerID}, {psr: req.params.playerID}]}, function (err, playerData) {
-//        res.send(playerData);
-//    })
-//}
-
+function getLeagueAverage(req, res) {
+    average.find({}, function(err, data){
+        res.send(data);
+    })
+}
 function getRecData(req, res) {
     pbp.find({trg: req.params.playerID}, function(err, data){
         res.send(data);
@@ -32,7 +32,8 @@ function getDef(req, res) {
             {wk:17}
         ]}, function(err, data){
         res.send(data);
-    })
+    });
+
 }
 function getDefPassStats(req, res) {
     pbp.find({def: req.params.team}, function(err, data){
@@ -42,11 +43,6 @@ function getDefPassStats(req, res) {
 function getDefRushStats(req, res) {
     console.log(req.params.team);
     pbp.find({def: req.params.team}, function(err, data){
-        res.send(data);
-    })
-}
-function getLeagueAverage(req, res) {
-    pbp.find({}, function(err, data){
         res.send(data);
     })
 }

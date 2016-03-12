@@ -5,6 +5,8 @@ angular.module('PlayersApp').controller('playerController', ['$scope', '$http',
 function playerController($scope, $http) {
     $scope.newPlayer = {};
     $scope.playerArray = [];
+    $scope.leaguePaAvg = [];
+    $scope.leagueRuAvg = [];
 
     var options = {
         url: 'public/players.json',
@@ -29,119 +31,133 @@ function playerController($scope, $http) {
 
 
     $('#players').easyAutocomplete(options);
+    //
+    //$scope.leagueAvgSlTrg = 0;
+    //$scope.leagueAvgSlYds = 0;
+    //$scope.leagueAvgSmTrg = 0;
+    //$scope.leagueAvgSmYds = 0;
+    //$scope.leagueAvgSrTrg = 0;
+    //$scope.leagueAvgSrYds = 0;
+    //$scope.leagueAvgDlTrg = 0;
+    //$scope.leagueAvgDlYds = 0;
+    //$scope.leagueAvgDmTrg = 0;
+    //$scope.leagueAvgDmYds = 0;
+    //$scope.leagueAvgDrTrg = 0;
+    //$scope.leagueAvgDrYds = 0;
 
-    $scope.leagueAvgSlTrg = 0;
-    $scope.leagueAvgSlYds = 0;
-    $scope.leagueAvgSmTrg = 0;
-    $scope.leagueAvgSmYds = 0;
-    $scope.leagueAvgSrTrg = 0;
-    $scope.leagueAvgSrYds = 0;
-    $scope.leagueAvgDlTrg = 0;
-    $scope.leagueAvgDlYds = 0;
-    $scope.leagueAvgDmTrg = 0;
-    $scope.leagueAvgDmYds = 0;
-    $scope.leagueAvgDrTrg = 0;
-    $scope.leagueAvgDrYds = 0;
-
-    $scope.leagueAvgLeAtt = 0;
-    $scope.leagueAvgLeYds = 0;
-    $scope.leagueAvgLtAtt = 0;
-    $scope.leagueAvgLtYds = 0;
-    $scope.leagueAvgLgAtt = 0;
-    $scope.leagueAvgLgYds = 0;
-    $scope.leagueAvgMdAtt = 0;
-    $scope.leagueAvgMdYds = 0;
-    $scope.leagueAvgRgAtt = 0;
-    $scope.leagueAvgRgYds = 0;
-    $scope.leagueAvgRtAtt = 0;
-    $scope.leagueAvgRtYds = 0;
-    $scope.leagueAvgReAtt = 0;
-    $scope.leagueAvgReYds = 0;
+    //$scope.leagueAvgLeAtt = 0;
+    //$scope.leagueAvgLeYds = 0;
+    //$scope.leagueAvgLtAtt = 0;
+    //$scope.leagueAvgLtYds = 0;
+    //$scope.leagueAvgLgAtt = 0;
+    //$scope.leagueAvgLgYds = 0;
+    //$scope.leagueAvgMdAtt = 0;
+    //$scope.leagueAvgMdYds = 0;
+    //$scope.leagueAvgRgAtt = 0;
+    //$scope.leagueAvgRgYds = 0;
+    //$scope.leagueAvgRtAtt = 0;
+    //$scope.leagueAvgRtYds = 0;
+    //$scope.leagueAvgReAtt = 0;
+    //$scope.leagueAvgReYds = 0;
 
     $http.get('/api/leagueAvg/')
-        .then(function (serverResponse) {
-            serverResponse.data.forEach(function (data) {
-                if (data.type == 'PASS') {
-                    switch (data.loc) {
-                        case 'SL':
-                            $scope.leagueAvgSlTrg++;
-                            $scope.leagueAvgSlYds += data.yds;
-                            break;
-                        case 'SM':
-                            $scope.leagueAvgSmTrg++;
-                            $scope.leagueAvgSmYds += data.yds;
-                            break;
-                        case 'SR':
-                            $scope.leagueAvgSrTrg++;
-                            $scope.leagueAvgSrYds += data.yds;
-                            break;
-                        case 'DL':
-                            $scope.leagueAvgDlTrg++;
-                            $scope.leagueAvgDlYds += data.yds;
-                            break;
-                        case 'DM':
-                            $scope.leagueAvgDmTrg++;
-                            $scope.leagueAvgDmYds += data.yds;
-                            break;
-                        case 'DR':
-                            $scope.leagueAvgDrTrg++;
-                            $scope.leagueAvgDrYds += data.yds;
-                            break;
-                    }
+        .then(function(serverResponse){
+            var i = 0;
+            serverResponse.data.forEach(function(data){
+                if (i < 12) {
+                    $scope.leaguePaAvg.push(data._batch);
                 }
-                else if (data.type == 'RUSH') {
-                    switch (data.dir) {
-                        case 'LE':
-                            $scope.leagueAvgLeAtt++;
-                            $scope.leagueAvgLeYds += data.yds;
-                            break;
-                        case 'LT':
-                            $scope.leagueAvgLtAtt++;
-                            $scope.leagueAvgLtYds += data.yds;
-                            break;
-                        case 'LG':
-                            $scope.leagueAvgLgAtt++;
-                            $scope.leagueAvgLgYds += data.yds;
-                            break;
-                        case 'MD':
-                            $scope.leagueAvgMdAtt++;
-                            $scope.leagueAvgMdYds += data.yds;
-                            break;
-                        case 'RG':
-                            $scope.leagueAvgRgAtt++;
-                            $scope.leagueAvgRgYds += data.yds;
-                            break;
-                        case 'RT':
-                            $scope.leagueAvgRtAtt++;
-                            $scope.leagueAvgRtYds += data.yds;
-                            break;
-                        case 'RE':
-                            $scope.leagueAvgReAtt++;
-                            $scope.leagueAvgReYds += data.yds;
-                            break;
-                    }
+                else {
+                    $scope.leagueRuAvg.push(data._batch);
                 }
+                i++;
             })
-        }).then(function () {
-        $scope.leagueAvgSlYds = Math.floor(($scope.leagueAvgSlYds / $scope.leagueAvgSlTrg) * 100) / 100;
-        $scope.leagueAvgSmYds = Math.floor(($scope.leagueAvgSmYds / $scope.leagueAvgSmTrg) * 100) / 100;
-        $scope.leagueAvgSrYds = Math.floor(($scope.leagueAvgSrYds / $scope.leagueAvgSrTrg) * 100) / 100;
-        $scope.leagueAvgDlYds = Math.floor(($scope.leagueAvgDlYds / $scope.leagueAvgDlTrg) * 100) / 100;
-        $scope.leagueAvgDmYds = Math.floor(($scope.leagueAvgDmYds / $scope.leagueAvgDmTrg) * 100) / 100;
-        $scope.leagueAvgDrYds = Math.floor(($scope.leagueAvgDrYds / $scope.leagueAvgDrTrg) * 100) / 100;
-
-        $scope.leagueAvgLeYds = Math.floor(($scope.leagueAvgLeYds / $scope.leagueAvgLeAtt) * 100) / 100;
-        $scope.leagueAvgLtYds = Math.floor(($scope.leagueAvgLtYds / $scope.leagueAvgLtAtt) * 100) / 100;
-        $scope.leagueAvgLgYds = Math.floor(($scope.leagueAvgLgYds / $scope.leagueAvgLgAtt) * 100) / 100;
-        $scope.leagueAvgMdYds = Math.floor(($scope.leagueAvgMdYds / $scope.leagueAvgMdAtt) * 100) / 100;
-        $scope.leagueAvgRgYds = Math.floor(($scope.leagueAvgRgYds / $scope.leagueAvgRgAtt) * 100) / 100;
-        $scope.leagueAvgRtYds = Math.floor(($scope.leagueAvgRtYds / $scope.leagueAvgRtAtt) * 100) / 100;
-        $scope.leagueAvgReYds = Math.floor(($scope.leagueAvgReYds / $scope.leagueAvgReAtt) * 100) / 100;
-        //console.log($scope.leagueAvgSlYds, $scope.leagueAvgSmYds, $scope.leagueAvgSrYds);
-        //console.log($scope.leagueAvgDlYds, $scope.leagueAvgDmYds, $scope.leagueAvgDrYds);
-        //console.log($scope.leagueAvgLeYds, $scope.leagueAvgLtYds, $scope.leagueAvgLgYds, $scope.leagueAvgMdYds,
-        //$scope.leagueAvgRgYds, $scope.leagueAvgRtYds, $scope.leagueAvgReYds);
-    });
+            console.log($scope.leaguePaAvg);
+            console.log($scope.leagueRuAvg);
+        })
+    //    .then(function (serverResponse) {
+    //        serverResponse.data.forEach(function (data) {
+    //            if (data.type == 'PASS') {
+    //                switch (data.loc) {
+    //                    case 'SL':
+    //                        $scope.leagueAvgSlTrg++;
+    //                        $scope.leagueAvgSlYds += data.yds;
+    //                        break;
+    //                    case 'SM':
+    //                        $scope.leagueAvgSmTrg++;
+    //                        $scope.leagueAvgSmYds += data.yds;
+    //                        break;
+    //                    case 'SR':
+    //                        $scope.leagueAvgSrTrg++;
+    //                        $scope.leagueAvgSrYds += data.yds;
+    //                        break;
+    //                    case 'DL':
+    //                        $scope.leagueAvgDlTrg++;
+    //                        $scope.leagueAvgDlYds += data.yds;
+    //                        break;
+    //                    case 'DM':
+    //                        $scope.leagueAvgDmTrg++;
+    //                        $scope.leagueAvgDmYds += data.yds;
+    //                        break;
+    //                    case 'DR':
+    //                        $scope.leagueAvgDrTrg++;
+    //                        $scope.leagueAvgDrYds += data.yds;
+    //                        break;
+    //                }
+    //            }
+    //            else if (data.type == 'RUSH') {
+    //                switch (data.dir) {
+    //                    case 'LE':
+    //                        $scope.leagueAvgLeAtt++;
+    //                        $scope.leagueAvgLeYds += data.yds;
+    //                        break;
+    //                    case 'LT':
+    //                        $scope.leagueAvgLtAtt++;
+    //                        $scope.leagueAvgLtYds += data.yds;
+    //                        break;
+    //                    case 'LG':
+    //                        $scope.leagueAvgLgAtt++;
+    //                        $scope.leagueAvgLgYds += data.yds;
+    //                        break;
+    //                    case 'MD':
+    //                        $scope.leagueAvgMdAtt++;
+    //                        $scope.leagueAvgMdYds += data.yds;
+    //                        break;
+    //                    case 'RG':
+    //                        $scope.leagueAvgRgAtt++;
+    //                        $scope.leagueAvgRgYds += data.yds;
+    //                        break;
+    //                    case 'RT':
+    //                        $scope.leagueAvgRtAtt++;
+    //                        $scope.leagueAvgRtYds += data.yds;
+    //                        break;
+    //                    case 'RE':
+    //                        $scope.leagueAvgReAtt++;
+    //                        $scope.leagueAvgReYds += data.yds;
+    //                        break;
+    //                }
+    //            }
+    //        })
+    //    }).then(function () {
+    //    $scope.leagueAvgSlYds = Math.floor(($scope.leagueAvgSlYds / $scope.leagueAvgSlTrg) * 100) / 100;
+    //    $scope.leagueAvgSmYds = Math.floor(($scope.leagueAvgSmYds / $scope.leagueAvgSmTrg) * 100) / 100;
+    //    $scope.leagueAvgSrYds = Math.floor(($scope.leagueAvgSrYds / $scope.leagueAvgSrTrg) * 100) / 100;
+    //    $scope.leagueAvgDlYds = Math.floor(($scope.leagueAvgDlYds / $scope.leagueAvgDlTrg) * 100) / 100;
+    //    $scope.leagueAvgDmYds = Math.floor(($scope.leagueAvgDmYds / $scope.leagueAvgDmTrg) * 100) / 100;
+    //    $scope.leagueAvgDrYds = Math.floor(($scope.leagueAvgDrYds / $scope.leagueAvgDrTrg) * 100) / 100;
+    //
+    //    $scope.leagueAvgLeYds = Math.floor(($scope.leagueAvgLeYds / $scope.leagueAvgLeAtt) * 100) / 100;
+    //    $scope.leagueAvgLtYds = Math.floor(($scope.leagueAvgLtYds / $scope.leagueAvgLtAtt) * 100) / 100;
+    //    $scope.leagueAvgLgYds = Math.floor(($scope.leagueAvgLgYds / $scope.leagueAvgLgAtt) * 100) / 100;
+    //    $scope.leagueAvgMdYds = Math.floor(($scope.leagueAvgMdYds / $scope.leagueAvgMdAtt) * 100) / 100;
+    //    $scope.leagueAvgRgYds = Math.floor(($scope.leagueAvgRgYds / $scope.leagueAvgRgAtt) * 100) / 100;
+    //    $scope.leagueAvgRtYds = Math.floor(($scope.leagueAvgRtYds / $scope.leagueAvgRtAtt) * 100) / 100;
+    //    $scope.leagueAvgReYds = Math.floor(($scope.leagueAvgReYds / $scope.leagueAvgReAtt) * 100) / 100;
+    //    //console.log($scope.leagueAvgSlYds, $scope.leagueAvgSmYds, $scope.leagueAvgSrYds);
+    //    //console.log($scope.leagueAvgDlYds, $scope.leagueAvgDmYds, $scope.leagueAvgDrYds);
+    //    //console.log($scope.leagueAvgLeYds, $scope.leagueAvgLtYds, $scope.leagueAvgLgYds, $scope.leagueAvgMdYds,
+    //    //$scope.leagueAvgRgYds, $scope.leagueAvgRtYds, $scope.leagueAvgReYds);
+    //});
 
     $scope.addPlayer = function () {
         $scope.playerArray.forEach(function(existingPlayer){
