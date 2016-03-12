@@ -19,10 +19,11 @@ function playerController($scope, $http) {
         }
         //theme: 'square'
     };
-    $scope.resetSearch = function() {
+    $scope.resetSearch = function () {
         $('#players').val('');
         return false
     }
+
 
     $('#players').easyAutocomplete(options);
 
@@ -55,8 +56,8 @@ function playerController($scope, $http) {
     $scope.leagueAvgReYds = 0;
 
     $http.get('/api/leagueAvg/')
-        .then(function(serverResponse){
-            serverResponse.data.forEach(function(data){
+        .then(function (serverResponse) {
+            serverResponse.data.forEach(function (data) {
                 if (data.type == 'PASS') {
                     switch (data.loc) {
                         case 'SL':
@@ -118,7 +119,7 @@ function playerController($scope, $http) {
                     }
                 }
             })
-        }).then(function() {
+        }).then(function () {
         $scope.leagueAvgSlYds = Math.floor(($scope.leagueAvgSlYds / $scope.leagueAvgSlTrg) * 100) / 100;
         $scope.leagueAvgSmYds = Math.floor(($scope.leagueAvgSmYds / $scope.leagueAvgSmTrg) * 100) / 100;
         $scope.leagueAvgSrYds = Math.floor(($scope.leagueAvgSrYds / $scope.leagueAvgSrTrg) * 100) / 100;
@@ -139,9 +140,9 @@ function playerController($scope, $http) {
         //$scope.leagueAvgRgYds, $scope.leagueAvgRtYds, $scope.leagueAvgReYds);
     });
 
-    $scope.addPlayer = function() {
+    $scope.addPlayer = function () {
         $http.get('/api/def/' + $scope.newPlayer.cteam)
-            .then(function(serverResponse){
+            .then(function (serverResponse) {
                 if ($scope.newPlayer.cteam == serverResponse.data[0].h) {
                     $scope.newPlayer.defense = serverResponse.data[0].v;
                 }
@@ -155,12 +156,12 @@ function playerController($scope, $http) {
         if ($scope.newPlayer.posd == 'RB') {
             $scope.addRb($scope.newPlayer);
         }
-        if( $scope.newPlayer.posd == 'QB') {
+        if ($scope.newPlayer.posd == 'QB') {
             $scope.addQb($scope.newPlayer);
         }
     }
 
-    $scope.addRec = function(receiver) {
+    $scope.addRec = function (receiver) {
         receiver.slTrg = 0;
         receiver.slYds = 0;
         receiver.smTrg = 0;
@@ -204,12 +205,12 @@ function playerController($scope, $http) {
                                 break;
                         }
                     });
-                }).then(function() {
+                }).then(function () {
             $scope.getDefPassStats(receiver);
         });
     }
 
-    $scope.addRb = function(rb) {
+    $scope.addRb = function (rb) {
         rb.leAtt = 0;
         rb.leYds = 0;
         rb.ltAtt = 0;
@@ -258,12 +259,12 @@ function playerController($scope, $http) {
                             break;
                     }
                 });
-            }).then(function() {
+            }).then(function () {
             $scope.getDefRushStats(rb);
         });
     }
 
-    $scope.addQb = function(qb) {
+    $scope.addQb = function (qb) {
         qb.slAtt = 0;
         qb.slYds = 0;
         qb.smAtt = 0;
@@ -278,8 +279,8 @@ function playerController($scope, $http) {
         qb.drYds = 0;
         qb.qb = true;
         $http.get('/api/pass/' + qb.player)
-            .then(function(serverResponse) {
-                serverResponse.data.forEach(function(data){
+            .then(function (serverResponse) {
+                serverResponse.data.forEach(function (data) {
                     switch (data.loc) {
                         case 'SL':
                             qb.slAtt++;
@@ -307,12 +308,12 @@ function playerController($scope, $http) {
                             break;
                     }
                 })
-            }).then(function() {
+            }).then(function () {
             $scope.getDefPassStats(qb);
         })
     }
 
-    $scope.getDefPassStats = function(player) {
+    $scope.getDefPassStats = function (player) {
         player.defSlTrg = 0;
         player.defSlYds = 0;
         player.defSmTrg = 0;
@@ -327,8 +328,8 @@ function playerController($scope, $http) {
         player.defDrYds = 0;
 
         $http.get('/api/defPassStats/' + player.defense).then(
-            function(serverResponse) {
-                serverResponse.data.forEach(function(data){
+            function (serverResponse) {
+                serverResponse.data.forEach(function (data) {
                     switch (data.loc) {
                         case 'SL':
                             $scope.newPlayer.defSlTrg++;
@@ -356,11 +357,26 @@ function playerController($scope, $http) {
                             break;
                     }
                 })
-            }).then(function(){
+            }).then(function () {
+            if ($scope.playerArray.indexOf($scope.player) > -1) {
+                //setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+                    });
+                //}, 0)
+            }
+            else {
+
             $scope.playerArray.push(player);
-        });
+            setTimeout(function(){
+                $('html,body').animate({
+                    scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+                });
+            }, 0)
+            }
+        })
     }
-    $scope.getDefRushStats = function(player) {
+    $scope.getDefRushStats = function (player) {
         player.defLeAtt = 0;
         player.defLeYds = 0;
         player.defLtAtt = 0;
@@ -377,8 +393,8 @@ function playerController($scope, $http) {
         player.defReYds = 0;
 
         $http.get('/api/defRushStats/' + player.defense).then(
-            function(serverResponse) {
-                serverResponse.data.forEach(function(data){
+            function (serverResponse) {
+                serverResponse.data.forEach(function (data) {
                     switch (data.dir) {
                         case 'LE':
                             player.defLeAtt++;
@@ -410,9 +426,13 @@ function playerController($scope, $http) {
                             break;
                     }
                 })
-            }).then(function() {
-                $scope.playerArray.push(player);
-                //console.log($scope.playerArray);
+            }).then(function () {
+                    $scope.playerArray.push(player);
+            setTimeout(function(){
+                $('html,body').animate({
+                    scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+                });
+            }, 0)
         });
     }
 }

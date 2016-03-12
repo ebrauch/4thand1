@@ -34,9 +34,17 @@ function chartController ($scope) {
         TB : "#D50A0A",
         TEN: "#4B92DB",
         WAS: "#773141"
-    }
+    };
+    //$scope.invertColor = function(color) {
+    //    color = color.substring(1); // remove #
+    //    color = parseInt(color, 16); // convert to integer
+    //    color = 0xFFFFFF ^ color; // invert three bytes
+    //    color = color.toString(16); // convert to hex
+    //    color = ("000000" + color).slice(-6); // pad with leading zeros
+    //    color = "#" + color; // prepend #
+    //    return color;
+    //}
     $scope.buildWrChart = function (wr) {
-        console.log(wr);
         $(function() {
             setTimeout(function(){
                 $('#' + wr.player).highcharts({
