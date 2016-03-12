@@ -15,7 +15,10 @@ function playerController($scope, $http) {
             },
             onSelectItemEvent: function () {
                 $scope.newPlayer = $('#players').getSelectedItemData();
-            }
+            },
+            //onKeyEnterEvent: function() {
+            //    $scope.addPlayer();
+            //}
         }
         //theme: 'square'
     };
@@ -141,6 +144,15 @@ function playerController($scope, $http) {
     });
 
     $scope.addPlayer = function () {
+        $scope.playerArray.forEach(function(existingPlayer){
+            if (existingPlayer.player == $scope.newPlayer.player) {
+                $('html,body').animate({
+                    scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+                });
+                return;
+            }
+        })
+        setTimeout(function(){
         $http.get('/api/def/' + $scope.newPlayer.cteam)
             .then(function (serverResponse) {
                 if ($scope.newPlayer.cteam == serverResponse.data[0].h) {
@@ -149,7 +161,7 @@ function playerController($scope, $http) {
                 else {
                     $scope.newPlayer.defense = serverResponse.data[0].h;
                 }
-            })
+            });
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd == 'TE') {
             $scope.addRec($scope.newPlayer);
         }
@@ -159,7 +171,7 @@ function playerController($scope, $http) {
         if ($scope.newPlayer.posd == 'QB') {
             $scope.addQb($scope.newPlayer);
         }
-    }
+    },0);
 
     $scope.addRec = function (receiver) {
         receiver.slTrg = 0;
@@ -426,13 +438,34 @@ function playerController($scope, $http) {
                             break;
                     }
                 })
-            }).then(function () {
-                    $scope.playerArray.push(player);
-            setTimeout(function(){
+            }).then(function(){
+            console.log($scope.playerArray.indexOf(player) > -1);
+            console.log($scope.playerArray);
+            console.log(player);
+            if ($scope.playerArray.indexOf(player) > -1) {
+                //setTimeout(function(){
                 $('html,body').animate({
                     scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
                 });
-            }, 0)
-        });
+                //}, 0)
+            }
+            else {
+                $scope.playerArray.push(player);
+                setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+                    });
+                }, 0)
+            }
+        })
+        //    .then(function () {
+        //            $scope.playerArray.push(player);
+        //    setTimeout(function(){
+        //        $('html,body').animate({
+        //            scrollTop: $("#" + $scope.playerArray[$scope.playerArray.length - 1].player).offset().top - 100
+        //        });
+        //    }, 0)
+        //});
     }
+}
 }
