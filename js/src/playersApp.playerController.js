@@ -272,12 +272,7 @@ function playerController($scope, $http) {
                     }
                 })
             }).then(function () {
-            console.log($scope.playerArray.indexOf(player))
-            //$scope.playerArray.indexOf(player > -1) ? false : $scope.playerArray.push(player);
-            console.log(player.player)
             $scope.playerArray.forEach(function (existingplayer) {
-                console.log('ayy lmao')
-                console.log(existingplayer.player == player.player)
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
                         scrollTop: $("#" + player.player).offset().top - 100
@@ -348,19 +343,12 @@ function playerController($scope, $http) {
                     }
                 })
             }).then(function () {
-            console.log($scope.playerArray.indexOf(player))
-            //$scope.playerArray.indexOf(player > -1) ? false : $scope.playerArray.push(player);
-            console.log(player.player)
             $scope.playerArray.forEach(function (existingplayer) {
-                console.log('ayy lmao')
-                console.log(existingplayer.player == player.player)
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
                         scrollTop: $("#" + player.player).offset().top - 100
                     });
-                    //setTimeout(function(){
                     player = {};
-                    //}, 0)
                 }
             })
             if (player != {}) {
