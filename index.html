@@ -136,7 +136,7 @@
             </div>
         </div>
         <div ng-repeat="player in playerArray track by $index" ng-controller="chartController">
-            <div class="container" ng-if="player.posd=='QB'">
+            <div class="container" ng-if="player.posd=='QB'" ng-hide="playerArray.indexOf(player) > - 1 ? false : true">
                 <h3>{{player.display}}</h3>
                 <div id={{player.player}} style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildQbChart(player)"></div>
             </div>
