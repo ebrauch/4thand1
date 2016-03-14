@@ -76,202 +76,82 @@ function playerController($scope, $http) {
     }
 
     $scope.addRec = function (receiver) {
-        receiver.slTrg = 0;
-        receiver.slYds = 0;
-        receiver.smTrg = 0;
-        receiver.smYds = 0;
-        receiver.srTrg = 0;
-        receiver.srYds = 0;
-        receiver.dlTrg = 0;
-        receiver.dlYds = 0;
-        receiver.dmTrg = 0;
-        receiver.dmYds = 0;
-        receiver.drTrg = 0;
-        receiver.drYds = 0;
         $http.get('/api/rec/' + receiver.player)
-            .then(
-                function (serverResponse) {
-                    serverResponse.data.forEach(function (data) {
-                        switch (data.loc) {
-                            case 'SL':
-                                receiver.slTrg++;
-                                receiver.slYds += data.yds;
-                                break;
-                            case 'SM':
-                                receiver.smTrg++;
-                                receiver.smYds += data.yds;
-                                break;
-                            case 'SR':
-                                receiver.srTrg++;
-                                receiver.srYds += data.yds;
-                                break;
-                            case 'DL':
-                                receiver.dlTrg++;
-                                receiver.dlYds += data.yds;
-                                break;
-                            case 'DM':
-                                receiver.dmTrg++;
-                                receiver.dmYds += data.yds;
-                                break;
-                            case 'DR':
-                                receiver.drTrg++;
-                                receiver.drYds += data.yds;
-                                break;
-                        }
-                    });
-                }).then(function () {
-            $scope.getDefPassStats(receiver);
+            .then(function (serverResponse) {
+                receiver.dmTrg = serverResponse.data.dmTrg;
+                receiver.dmYds = serverResponse.data.dmYds;
+                receiver.drTrg = serverResponse.data.drTrg;
+                receiver.drYds = serverResponse.data.drYds;
+                receiver.srTrg = serverResponse.data.srTrg;
+                receiver.srYds = serverResponse.data.srYds;
+                receiver.smTrg = serverResponse.data.smTrg;
+                receiver.smYds = serverResponse.data.smYds;
+                receiver.slTrg = serverResponse.data.slTrg;
+                receiver.slYds = serverResponse.data.slYds;
+                receiver.dlTrg = serverResponse.data.dlTrg;
+                receiver.dlYds = serverResponse.data.dlYds;
+                $scope.getDefPassStats(receiver);
         });
     }
 
     $scope.addRb = function (rb) {
-        rb.leAtt = 0;
-        rb.leYds = 0;
-        rb.ltAtt = 0;
-        rb.ltYds = 0;
-        rb.lgAtt = 0;
-        rb.lgYds = 0;
-        rb.mdAtt = 0;
-        rb.mdYds = 0;
-        rb.rgAtt = 0;
-        rb.rgYds = 0;
-        rb.rtAtt = 0;
-        rb.rtYds = 0;
-        rb.reAtt = 0;
-        rb.reYds = 0;
-        $http.get('/api/rush/' + $scope.newPlayer.player).then(
-            function (serverResponse) {
-                serverResponse.data.forEach(function (data) {
-                    switch (data.dir) {
-                        case 'LE':
-                            $scope.newPlayer.leAtt++;
-                            $scope.newPlayer.leYds += data.yds;
-                            break;
-                        case 'LT':
-                            $scope.newPlayer.ltAtt++;
-                            $scope.newPlayer.ltYds += data.yds;
-                            break;
-                        case 'LG':
-                            $scope.newPlayer.lgAtt++;
-                            $scope.newPlayer.lgYds += data.yds;
-                            break;
-                        case 'MD':
-                            $scope.newPlayer.mdAtt++;
-                            $scope.newPlayer.mdYds += data.yds;
-                            break;
-                        case 'RG':
-                            $scope.newPlayer.rgAtt++;
-                            $scope.newPlayer.rgYds += data.yds;
-                            break;
-                        case 'RT':
-                            $scope.newPlayer.rtAtt++;
-                            $scope.newPlayer.rtYds += data.yds;
-                            break;
-                        case 'RE':
-                            $scope.newPlayer.reAtt++;
-                            $scope.newPlayer.reYds += data.yds;
-                            break;
-                    }
-                });
-            }).then(function () {
+        $http.get('/api/rush/' + rb.player)
+            .then(function (serverResponse) {
+                rb.leAtt =  serverResponse.data.leAtt;
+                rb.leYds =  serverResponse.data.leYds;
+                rb.ltAtt =  serverResponse.data.ltAtt;
+                rb.ltYds =  serverResponse.data.ltYds;
+                rb.lgAtt =  serverResponse.data.lgAtt;
+                rb.lgYds =  serverResponse.data.lgYds;
+                rb.mdAtt =  serverResponse.data.mdAtt;
+                rb.mdYds =  serverResponse.data.mdYds;
+                rb.rgAtt =  serverResponse.data.rgAtt;
+                rb.rgYds =  serverResponse.data.rgYds;
+                rb.rtAtt =  serverResponse.data.rtAtt;
+                rb.rtYds =  serverResponse.data.rtYds;
+                rb.reAtt =  serverResponse.data.reAtt;
+                rb.reYds =  serverResponse.data.reYds;
             $scope.getDefRushStats(rb);
         });
     }
 
     $scope.addQb = function (qb) {
-        qb.slAtt = 0;
-        qb.slYds = 0;
-        qb.smAtt = 0;
-        qb.smYds = 0;
-        qb.srAtt = 0;
-        qb.srYds = 0;
-        qb.dlAtt = 0;
-        qb.dlYds = 0;
-        qb.dmAtt = 0;
-        qb.dmYds = 0;
-        qb.drAtt = 0;
-        qb.drYds = 0;
-        qb.qb = true;
         $http.get('/api/pass/' + qb.player)
             .then(function (serverResponse) {
-                serverResponse.data.forEach(function (data) {
-                    switch (data.loc) {
-                        case 'SL':
-                            qb.slAtt++;
-                            qb.slYds += data.yds;
-                            break;
-                        case 'SM':
-                            qb.smAtt++;
-                            qb.smYds += data.yds;
-                            break;
-                        case 'SR':
-                            qb.srAtt++;
-                            qb.srYds += data.yds;
-                            break;
-                        case 'DL':
-                            qb.dlAtt++;
-                            qb.dlYds += data.yds;
-                            break;
-                        case 'DM':
-                            qb.dmAtt++;
-                            qb.dmYds += data.yds;
-                            break;
-                        case 'DR':
-                            qb.drAtt++;
-                            qb.drYds += data.yds;
-                            break;
-                    }
-                })
-            }).then(function () {
-            $scope.getDefPassStats(qb);
+                qb.dmAtt = serverResponse.data.dmAtt;
+                qb.dmYds = serverResponse.data.dmYds;
+                qb.drAtt = serverResponse.data.drAtt;
+                qb.drYds = serverResponse.data.drYds;
+                qb.srAtt = serverResponse.data.srAtt;
+                qb.srYds = serverResponse.data.srYds;
+                qb.smAtt = serverResponse.data.smAtt;
+                qb.smYds = serverResponse.data.smYds;
+                qb.slAtt = serverResponse.data.slAtt;
+                qb.slYds = serverResponse.data.slYds;
+                qb.dlAtt = serverResponse.data.dlAtt;
+                qb.dlYds = serverResponse.data.dlYds;
+                $scope.getDefPassStats(qb);
         })
     }
 
     $scope.getDefPassStats = function (player) {
-        player.defSlTrg = 0;
-        player.defSlYds = 0;
-        player.defSmTrg = 0;
-        player.defSmYds = 0;
-        player.defSrTrg = 0;
-        player.defSrYds = 0;
-        player.defDlTrg = 0;
-        player.defDlYds = 0;
-        player.defDmTrg = 0;
-        player.defDmYds = 0;
-        player.defDrTrg = 0;
-        player.defDrYds = 0;
-
-        $http.get('/api/defPassStats/' + player.defense).then(
+        $http.get('/api/defPassStats/' + player.defense)
+            .then(
             function (serverResponse) {
-                serverResponse.data.forEach(function (data) {
-                    switch (data.loc) {
-                        case 'SL':
-                            $scope.newPlayer.defSlTrg++;
-                            $scope.newPlayer.defSlYds += data.yds;
-                            break;
-                        case 'SM':
-                            $scope.newPlayer.defSmTrg++;
-                            $scope.newPlayer.defSmYds += data.yds;
-                            break;
-                        case 'SR':
-                            $scope.newPlayer.defSrTrg++;
-                            $scope.newPlayer.defSrYds += data.yds;
-                            break;
-                        case 'DL':
-                            $scope.newPlayer.defDlTrg++;
-                            $scope.newPlayer.defDlYds += data.yds;
-                            break;
-                        case 'DM':
-                            $scope.newPlayer.defDmTrg++;
-                            $scope.newPlayer.defDmYds += data.yds;
-                            break;
-                        case 'DR':
-                            $scope.newPlayer.defDrTrg++;
-                            $scope.newPlayer.defDrYds += data.yds;
-                            break;
-                    }
-                })
-            }).then(function () {
+                player.defDmAtt = serverResponse.data.defDmAtt;
+                player.defDmYds = serverResponse.data.defDmYds;
+                player.defDrAtt = serverResponse.data.defDrAtt;
+                player.defDrYds = serverResponse.data.defDrYds;
+                player.defSrAtt = serverResponse.data.defSrAtt;
+                player.defSrYds = serverResponse.data.defSrYds;
+                player.defSmAtt = serverResponse.data.defSmAtt;
+                player.defSmYds = serverResponse.data.defSmYds;
+                player.defSlAtt = serverResponse.data.defSlAtt;
+                player.defSlYds = serverResponse.data.defSlYds;
+                player.defDlAtt = serverResponse.data.defDlAtt;
+                player.defDlYds = serverResponse.data.defDlYds;
+            })
+            .then(function () {
             $scope.playerArray.forEach(function (existingplayer) {
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
@@ -293,56 +173,25 @@ function playerController($scope, $http) {
         })
     }
     $scope.getDefRushStats = function (player) {
-        player.defLeAtt = 0;
-        player.defLeYds = 0;
-        player.defLtAtt = 0;
-        player.defLtYds = 0;
-        player.defLgAtt = 0;
-        player.defLgYds = 0;
-        player.defMdAtt = 0;
-        player.defMdYds = 0;
-        player.defRgAtt = 0;
-        player.defRgYds = 0;
-        player.defRtAtt = 0;
-        player.defRtYds = 0;
-        player.defReAtt = 0;
-        player.defReYds = 0;
-
         $http.get('/api/defRushStats/' + player.defense).then(
             function (serverResponse) {
-                serverResponse.data.forEach(function (data) {
-                    switch (data.dir) {
-                        case 'LE':
-                            player.defLeAtt++;
-                            player.defLeYds += data.yds;
-                            break;
-                        case 'LT':
-                            player.defLtAtt++;
-                            player.defLtYds += data.yds;
-                            break;
-                        case 'LG':
-                            player.defLgAtt++;
-                            player.defLgYds += data.yds;
-                            break;
-                        case 'MD':
-                            player.defMdAtt++;
-                            player.defMdYds += data.yds;
-                            break;
-                        case 'RG':
-                            player.defRgAtt++;
-                            player.defRgYds += data.yds;
-                            break;
-                        case 'RT':
-                            player.defRtAtt++;
-                            player.defRtYds += data.yds;
-                            break;
-                        case 'RE':
-                            player.defReAtt++;
-                            player.defReYds += data.yds;
-                            break;
-                    }
-                })
-            }).then(function () {
+                console.log(serverResponse)
+                    player.defLeAtt = serverResponse.data.defLeAtt;
+                    player.defLeYds = serverResponse.data.defLeYds;
+                    player.defLtAtt = serverResponse.data.defLtAtt;
+                    player.defLtYds = serverResponse.data.defLtYds;
+                    player.defLgAtt = serverResponse.data.defLgAtt;
+                    player.defLgYds = serverResponse.data.defLgYds;
+                    player.defMdAtt = serverResponse.data.defMdAtt;
+                    player.defMdYds = serverResponse.data.defMdYds;
+                    player.defRgAtt = serverResponse.data.defRgAtt;
+                    player.defRgYds = serverResponse.data.defRgYds;
+                    player.defRtAtt = serverResponse.data.defRtAtt;
+                    player.defRtYds = serverResponse.data.defRtYds;
+                    player.defReAtt = serverResponse.data.defReAtt;
+                    player.defReYds = serverResponse.data.defReYds;
+            })
+            .then(function () {
             $scope.playerArray.forEach(function (existingplayer) {
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
