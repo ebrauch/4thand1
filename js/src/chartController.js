@@ -49,7 +49,6 @@ function chartController ($scope) {
 
                     title: {
                         text: 'Receiving Yards Per Target'
-                        //x: -80
                     },
 
                     pane: {
@@ -81,7 +80,6 @@ function chartController ($scope) {
                     legend: {
                         align: 'center',
                         verticalAlign: 'bottom',
-                        //y: 70,
                         layout: 'horizontal'
                     },
 
@@ -118,12 +116,6 @@ function chartController ($scope) {
                             Math.floor($scope.leaguePaAvg[6][0].smYds / $scope.leaguePaAvg[7][0].smAtt * 100) / 100 || 0,
                             Math.floor($scope.leaguePaAvg[8][0].slYds / $scope.leaguePaAvg[9][0].slAtt * 100) / 100 || 0,
                             Math.floor($scope.leaguePaAvg[10][0].dlYds / $scope.leaguePaAvg[11][0].dlAtt * 100) / 100 || 0
-                            //Math.floor($scope.leaguePaAvg[0].dmYds / $scope.leaguePaAvg[1].dmAtt * 100) / 100 || 0;
-                            //$scope.leagueAvgDrYds,
-                            //$scope.leagueAvgSrYds,
-                            //$scope.leagueAvgSmYds,
-                            //$scope.leagueAvgSlYds,
-                            //$scope.leagueAvgDlYds
                         ],
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
@@ -213,7 +205,6 @@ function chartController ($scope) {
 
                    title: {
                        text: 'Passing Yards Per Attempt'
-                       //x: -80
                    },
 
                    pane: {
@@ -245,7 +236,6 @@ function chartController ($scope) {
                    legend: {
                        align: 'center',
                        verticalAlign: 'bottom',
-                       //y: 70,
                        layout: 'horizontal'
                    },
 

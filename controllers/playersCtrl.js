@@ -1,6 +1,6 @@
-var pbp = require('../models/pbp.js').pbp;
-var game = require('../models/pbp.js').game;
-var average = require('../models/pbp.js').average;
+var pbp = require('../models/schemas.js').pbp;
+var game = require('../models/schemas.js').game;
+var average = require('../models/schemas.js').average;
 
 function getLeagueAverage(req, res) {
     average.find({}, function(err, data){

@@ -1,6 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -23,7 +21,6 @@ app.get('/api/def/:team', playersCtrl.getDef);
 app.get('/api/defPassStats/:team', playersCtrl.getDefPassStats);
 app.get('/api/defRushStats/:team', playersCtrl.getDefRushStats);
 app.get('/api/leagueAvg/', playersCtrl.getLeagueAverage);
-
 
 var port = 3000;
 

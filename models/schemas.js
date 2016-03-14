@@ -60,7 +60,6 @@ var gameSchema = mongoose.Schema({
     ptsh : Number
 })
 
-//module.exports = mongoose.model('pbp', pbpSchema, 'pbp');
 module.exports = {
     pbp     : mongoose.model('pbp', pbpSchema, 'pbp'),
     game    : mongoose.model('game', gameSchema, 'game'),
