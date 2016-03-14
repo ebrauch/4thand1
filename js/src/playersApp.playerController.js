@@ -55,7 +55,7 @@ function playerController($scope, $http) {
                     $scope.newPlayer.defense = serverResponse.data[0].h;
                 }
             });
-        if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/'[1] == 'TE') || $scope.newPlayer.posd.split('/'[1] == 'SWR')) {
+        if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/')[1] == 'TE' || $scope.newPlayer.posd == 'SWR') {
             $scope.addRec($scope.newPlayer);
         }
         if ($scope.newPlayer.posd == 'RB') {
