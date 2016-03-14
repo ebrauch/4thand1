@@ -6,6 +6,10 @@ body{
     margin:0px!important;
 }
 
+an-button {
+    position: :relative;
+}
+
 .page-top {
     background-image: url('../../img/x-and-o.jpg');
     background-size: 100% 60%;
