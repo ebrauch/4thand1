@@ -28,6 +28,7 @@
     <!-- CSS -->
     <link href="css/dist/mini.css" rel="stylesheet">
     <link href="css/src/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/style.css">
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -35,187 +36,236 @@
     <![endif]-->
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-app="PlayersApp">
+<body data-spy="scroll" data-target=".navbar-fixed-top" ng-app="PlayersApp">
 
-    <!-- Navigation -->
-    <nav id="custom" class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">4th and 1</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#analyze">Analyze</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">4th and 1</a>
         </div>
-        <!-- /.container -->
-    </nav>
 
-    <section id="intro" class="intro-section page-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>4th and 1</h1>
-                    <h2><i class="ion-ios-pie-outline"></i> <i class="ion-ios-americanfootball-outline"></i> <i class="ion-ios-flask-outline"></i></h2>
-                    <p>Welcome to 4th and 1. The purpose of this application is to provide the user with more than just player projections for their fantasy lineups. For more information and a more comprehensive explanation, stop by the about section.</p>
-                    <br>
-                    <a class="btn btn-default page-scroll" href="#analyze">Click Here to Analyze Players!</a>
-                </div>
-            </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a class="page-scroll" href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#analyze">Analyze</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
         </div>
-    </section>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>About</h1>
-                </div>
-                <h4 class="about-top">As fantasy football fanatics, we are constantly looking for tools to give us an edge on our competition. We always seem to find apps that are riddled with subjectivity and provide little or no actual player statistics.</h4>
-                <h3>Exhibit A:</h3>
-                <img src="img/comparison.jpg" class="green-red">
-                <p class="about-top">For those who don't want to expend much mental energy in determining their lineups, this is great. There's even a green box around the player with higher projections than the other. For those of us who enjoy the process of gathering statistics and information to make decisions, this is borderline completely useless.</p>
-                <p>This is where 4thand1 comes into play. Player statistics are broken down into location-specific categories, and displayed in a manner which makes it easy to interpret. Simply hover over an area of the field, and you will be presented with pertinent statistics to ensure you make the right roster decisions.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="analyze" class="analyze-section" ng-controller="playerController">
+<section id="intro" class="intro-section page-top">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Analyze</h1>
+                <h1>4th and 1</h1>
+                <h2><i class="ion-ios-pie-outline"></i> <i class="ion-ios-americanfootball-outline"></i> <i class="ion-ios-flask-outline"></i></h2>
+                <p>Welcome to 4th and 1. The purpose of this application is to provide the user with more than just player projections for their fantasy lineups. For more information and a more comprehensive explanation, stop by the about section.</p>
+                <br>
+                <a class="btn btn-default page-scroll" href="#analyze">Click Here to Analyze Players!</a>
             </div>
         </div>
-        <div ng-repeat="player in playerArray track by $index" ng-controller="chartController">
-            <div class="container" ng-if="player.posd=='QB'" ng-hide="playerArray.indexOf(player) > - 1 ? false : true">
-                <h3>{{player.display}}</h3>
-                <div id={{player.player}} style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildQbChart(player)"></div>
-            </div>
-            <div class="container" ng-if="player.posd=='RB'">
-                <h3>{{player.display}}</h3>
-                <div id={{player.player}}  style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)"></div>
-            </div>
-            <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR'  || player.posd.split('/')[0] == 'TE' || player.posd.split('/')[1] == 'TE' || player.posd == 'SWR'">
-                <h3>{{player.display}}</h3>
-                <div id={{player.player}}  style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
-            </div>
-        </div>
-        <div class="row search">
-            <input class="search" id="players" type="text" placeholder="Search for players">
-            <button class="btn btn-success search" type="submit" ng-click="addPlayer(); resetSearch()">Submit</button>
-            <br>
-            <br>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Contact</h1>
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>About</h1>
+            </div>
+            <h4 class="about-top">As fantasy football fanatics, we are constantly looking for tools to give us an edge on our competition. We always seem to find apps that are riddled with subjectivity and provide little or no actual player statistics.</h4>
+            <h3>Exhibit A:</h3>
+            <img src="img/comparison.jpg" class="green-red">
+            <p class="about-top">For those who don't want to expend much mental energy in determining their lineups, this is great. There's even a green box around the player with higher projections than the other. For those of us who enjoy the process of gathering statistics and information to make decisions, this is borderline completely useless.</p>
+            <p>This is where 4thand1 comes into play. Player statistics are broken down into location-specific categories, and displayed in a manner which makes it easy to interpret. Simply hover over an area of the field, and you will be presented with pertinent statistics to ensure you make the right roster decisions.</p>
+        </div>
+    </div>
+</section>
+
+<section id="analyze" class="analyze-section" ng-controller="playerController">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Analyze</h1>
+        </div>
+    </div>
+    <div ng-repeat="player in playerArray track by $index" ng-controller="chartController">
+        <div class="container" ng-if="player.posd=='QB'" ng-hide="playerArray.indexOf(player) > - 1 ? false : true">
+            <h3>{{player.display}}</h3>
+            <div id={{player.player}} style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildQbChart(player)"></div>
+        </div>
+        <div class="container" ng-if="player.posd=='RB' || player.posd=='FB'">
+            <h3>{{player.display}}</h3>
+            <div id={{player.player}}  style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)"></div>
+        </div>
+        <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR'  || player.posd.split('/')[0] == 'TE' || player.posd.split('/')[1] == 'TE' || player.posd == 'SWR'">
+            <h3>{{player.display}}</h3>
+            <div id={{player.player}}  style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
+        </div>
+    </div>
+    <div class="row search">
+        <input class="search" id="players" type="text" placeholder="Search for players">
+        <button class="btn btn-success search" type="submit" ng-click="addPlayer(); resetSearch()">Submit</button>
+        <br>
+        <br>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Contact</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <script type="text/javascript">var submitted = false;</script>
+
+        <div id="hidden_div" style="display:none;", onload="if(submitted){window.location='/#contact'}"></div>
+
+        <form target="hidden_div" onsubmit="submitted=true" class="well form-horizontal" id="gform" action="https://script.google.com/macros/s/AKfycbzj4SyULNZCfxoMWBcjqNZJRyQJhf0B5bHLDJ4pHD1m8jm7XEzU/exec" method="post" id="contact_form">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">First Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="first_name" placeholder="First Name" class="form-control" type="text">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
 
-            <form class="well form-horizontal" action=" " method="post" id="contact_form">
-                <fieldset>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">First Name</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="first_name" placeholder="First Name" class="form-control" type="text">
-                            </div>
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Last Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="last_name" placeholder="Last Name" class="form-control" type="text">
                         </div>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Last Name</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="last_name" placeholder="Last Name" class="form-control" type="text">
-                            </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
-                            </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Phone #</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Phone #</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
-                            </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Message</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            <textarea class="form-control" name="comment" placeholder="Message"></textarea>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Message</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <textarea class="form-control" name="comment" placeholder="Message"></textarea>
-                            </div>
-                        </div>
+                <!-- Success message -->
+                <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting me, I will get back to you shortly.</div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <div id="'email-invalid"></div>
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span></button>
                     </div>
+                </div>
+            </fieldset>
+        </form>
 
-                    <!-- Success message -->
-                    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting me, I will get back to you shortly.</div>
+        <!--</fieldset>-->
+        <!--<form class="pure-form pure-form-stacked" id="gform" method="post" action="https://script.google.com/macros/s/AKfycbzj4SyULNZCfxoMWBcjqNZJRyQJhf0B5bHLDJ4pHD1m8jm7XEzU/exec">-->
+        <!--<fieldset class="pure-group">-->
+        <!--<label for="name">Name: </label>-->
+        <!--<input id="name" name="name" placeholder="What your Mom calls you" />-->
+        <!--</fieldset>-->
 
-                    <!-- Button -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span></button>
-                        </div>
-                    </div>
+        <!--<fieldset class="pure-group">-->
+        <!--<label for="message">Message: </label>-->
+        <!--<textarea id="message" name="message" rows="10"-->
+        <!--placeholder="Tell us what's on your mind..."></textarea>-->
+        <!--</fieldset>-->
 
-                </fieldset>
-            </form>
-        </div>
-    </section>
+        <!--<fieldset class="pure-group">-->
+        <!--<label for="email"><em>Your</em> Email Address:</label>-->
+        <!--<input id="email" name="email" type="email" value=""-->
+        <!--required placeholder="your.name@email.com"/>-->
+        <!--<span id="email-invalid" style="visibility:hidden">-->
+        <!--Must be a valid email address</span>-->
+        <!--</fieldset>-->
 
-    <!-- Scrolling Nav JavaScript -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
-    <script src="js/src/scrolling-nav.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
-    <script src="js/src/contact.js"></script>
+        <!--<fieldset class="pure-group">-->
+        <!--<label for="color">Favourite Color: </label>-->
+        <!--<input id="color" name="color" placeholder="green" />-->
+        <!--</fieldset>-->
+
+        <!--<button class="button-success pure-button button-xlarge">-->
+        <!--<i class="fa fa-paper-plane"></i>&nbsp;Send</button>-->
+
+        <!--</form>-->
+
+        <!-- Customise the Thankyou Message People See when they submit the form: -->
+        <!--<div style="display:none;" id="thankyou_message">-->
+        <!--<h2><em>Thanks</em> for contacting us!-->
+        <!--We will get back to you soon!</h2>-->
+        <!--</div>-->
+
+        <!-- Submit the Form to Google Using "AJAX" -->
+        <!-- <script data-cfasync="false" type="text/javascript"
+        src="/form-submission-handler.js"></script> -->
+        <!-- END -->
+        <!--</form>-->
+    </div>
+</section>
+
+<!-- Scrolling Nav JavaScript -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script src="js/src/scrolling-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+<script src="js/src/contact.js"></script>
+<!--<script data-cfasync="false" type="text/javascript"-->
+<!--src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>-->
+
 
 </body>
 

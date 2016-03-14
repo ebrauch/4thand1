@@ -58,7 +58,7 @@ function playerController($scope, $http) {
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/')[1] == 'TE' || $scope.newPlayer.posd == 'SWR') {
             $scope.addRec($scope.newPlayer);
         }
-        if ($scope.newPlayer.posd == 'RB') {
+        if ($scope.newPlayer.posd == 'RB' || $scope.newPlayer.posd == 'FB') {
             $scope.addRb($scope.newPlayer);
         }
         if ($scope.newPlayer.posd == 'QB') {
