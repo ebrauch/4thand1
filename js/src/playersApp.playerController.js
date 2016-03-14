@@ -28,15 +28,6 @@ function playerController($scope, $http) {
         $('#players').val('');
         return false
     }
-    $scope.dupeCheck = function (player) {
-        console.log('here i am')
-        for (i = 0; i < $scope.playerArray.length - 2; i++) {
-            if (player.player == $scope.playerArray[i].player) {
-                return true
-            }
-        }
-        return false
-    }
 
     $('#players').easyAutocomplete(options);
 
@@ -64,7 +55,7 @@ function playerController($scope, $http) {
                     $scope.newPlayer.defense = serverResponse.data[0].h;
                 }
             });
-        if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd == 'TE') {
+        if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/'[1] == 'TE') || $scope.newPlayer.posd.split('/'[1] == 'SWR')) {
             $scope.addRec($scope.newPlayer);
         }
         if ($scope.newPlayer.posd == 'RB') {
@@ -157,9 +148,7 @@ function playerController($scope, $http) {
                     $('html,body').animate({
                         scrollTop: $("#" + player.player).offset().top - 100
                     });
-                    //setTimeout(function(){
                     player = {};
-                    //}, 0)
                 }
             })
             if (player != {}) {
@@ -175,7 +164,6 @@ function playerController($scope, $http) {
     $scope.getDefRushStats = function (player) {
         $http.get('/api/defRushStats/' + player.defense).then(
             function (serverResponse) {
-                console.log(serverResponse)
                     player.defLeAtt = serverResponse.data.defLeAtt;
                     player.defLeYds = serverResponse.data.defLeYds;
                     player.defLtAtt = serverResponse.data.defLtAtt;

@@ -144,7 +144,7 @@
                 <h3>{{player.display}}</h3>
                 <div id={{player.player}}  style="min-width: 310px; height: 400px; margin: 0 auto" ng-init="buildRbChart(player)"></div>
             </div>
-            <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR' || player.posd=='TE'">
+            <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR'  || player.posd.split('/')[0] == 'TE' || player.posd.split('/')[1] == 'TE' || player.posd == 'SWR'">
                 <h3>{{player.display}}</h3>
                 <div id={{player.player}}  style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
             </div>
