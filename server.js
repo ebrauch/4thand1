@@ -21,9 +21,6 @@ app.get('/api/def/:team', playersCtrl.getDef);
 app.get('/api/defPassStats/:team', playersCtrl.getDefPassStats);
 app.get('/api/defRushStats/:team', playersCtrl.getDefRushStats);
 app.get('/api/leagueAvg/', playersCtrl.getLeagueAverage);
-app.post('/contact', function(req, res){
-    res.send('thanks')
-})
 
 var port = 3000;
 
