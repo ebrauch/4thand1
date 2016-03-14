@@ -6,8 +6,8 @@ body{
     margin:0px!important;
 }
 
-an-button {
-    position: :relative;
+.an-button {
+    position:relative;
 }
 
 .page-top {
