@@ -60,8 +60,42 @@ var gameSchema = mongoose.Schema({
     ptsh : Number
 })
 
+var offenseSchema  = mongoose.Schema({
+    _id: {},
+    uid: Number,
+    gid: Number,
+    player: String,
+    pa: Number,
+    pc: Number,
+    py: Number,
+    ints: Number,
+    tdp: Number,
+    ra: Number,
+    sra: Number,
+    ry: Number,
+    tdr: Number,
+    trg: Number,
+    rec: Number,
+    recy: Number,
+    tdrec: Number,
+    ret: Number,
+    rety: Number,
+    tdret: Number,
+    fuml: Number,
+    peny: Number,
+    snp: Number,
+    game: Number,
+    seas: Number,
+    year: Number,
+    team: String,
+    posd: String,
+    jnum: Number,
+    dcp: Number
+})
+
 module.exports = {
     pbp     : mongoose.model('pbp', pbpSchema, 'pbp'),
     game    : mongoose.model('game', gameSchema, 'game'),
-    average : mongoose.model('average', averageSchema, 'average')
+    average : mongoose.model('average', averageSchema, 'average'),
+    offense : mongoose.model('offense', offenseSchema, 'offense')
 }

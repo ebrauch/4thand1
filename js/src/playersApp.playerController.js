@@ -46,6 +46,10 @@ function playerController($scope, $http) {
         })
 
     $scope.addPlayer = function () {
+        $http.get('/api/gamesPlayed/' + $scope.newPlayer.player)
+            .then(function(serverResponse){
+                $scope.newPlayer.gp = serverResponse.data.gp;
+            });
         $http.get('/api/def/' + $scope.newPlayer.cteam)
             .then(function (serverResponse) {
                 if ($scope.newPlayer.cteam == serverResponse.data[0].h) {
@@ -54,7 +58,13 @@ function playerController($scope, $http) {
                 else {
                     $scope.newPlayer.defense = serverResponse.data[0].h;
                 }
-            });
+            })
+        .then(function(){
+        $http.get('/api/defGamesPlayed/' + $scope.newPlayer.defense)
+            .then(function(serverResponse){
+                $scope.newPlayer.defGp = serverResponse.data.defGp - 1
+            })
+        });
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/')[1] == 'TE' || $scope.newPlayer.posd == 'SWR') {
             $scope.addRec($scope.newPlayer);
         }
@@ -190,6 +200,7 @@ function playerController($scope, $http) {
             })
             if (player != {}) {
                 $scope.playerArray.push(player);
+                console.log(player)
                 setTimeout(function () {
                     $('html,body').animate({
                         scrollTop: $("#" + player.player).offset().top - 100

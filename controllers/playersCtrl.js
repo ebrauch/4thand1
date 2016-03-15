@@ -1,6 +1,20 @@
 var pbp = require('../models/schemas.js').pbp;
 var game = require('../models/schemas.js').game;
 var average = require('../models/schemas.js').average;
+var offense = require('../models/schemas.js').offense;
+
+function getGamesPlayed(req, res) {
+    offense.find({player: req.params.playerID}, function(err, data){
+        res.send({gp : data.length})
+    })
+}
+
+function getDefGamesPlayed(req, res) {
+    game.find({$or: [{v: req.params.defense},{h: req.params.defense}]}, function(err, data){
+        console.log(data)
+        res.send({defGp: data.length})
+    })
+}
 
 function getLeagueAverage(req, res) {
     average.find({}, function(err, data){
@@ -259,11 +273,13 @@ function getDefRushStats(req, res) {
 }
 
 module.exports = {
-    getRecData      : getRecData,
-    getRushData     : getRushData,
-    getPassData     : getPassData,
-    getDef          : getDef,
-    getDefPassStats : getDefPassStats,
-    getDefRushStats : getDefRushStats,
-    getLeagueAverage: getLeagueAverage
+    getRecData       : getRecData,
+    getRushData      : getRushData,
+    getPassData      : getPassData,
+    getDef           : getDef,
+    getDefPassStats  : getDefPassStats,
+    getDefRushStats  : getDefRushStats,
+    getLeagueAverage : getLeagueAverage,
+    getGamesPlayed   : getGamesPlayed,
+    getDefGamesPlayed: getDefGamesPlayed
 };
