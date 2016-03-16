@@ -289,35 +289,67 @@ function getDefensePassStats(req, res) {
             defDlAtt: 0,
             defDlYds: 0,
         };
-    joinedPass.find({$and:[{def: req.params.defense}, {posd: req.params.posd}, {dcp: req.params.dcp}]}, function(err, data){
-        data.forEach(function(playData){
-            if (playData.loc == 'DM') {
-                serverResponse.defDmAtt++;
-                serverResponse.defDmYds += playData.yds;
-            }
-            if (playData.loc == 'DR') {
-                serverResponse.defDrAtt++;
-                serverResponse.defDrYds += playData.yds;
-            }
-            if (playData.loc == 'SR') {
-                serverResponse.defSrAtt++;
-                serverResponse.defSrYds += playData.yds;
-            }
-            if (playData.loc == 'SM') {
-                serverResponse.defSmAtt++;
-                serverResponse.defSmYds += playData.yds;
-            }
-            if (playData.loc == 'SL') {
-                serverResponse.defSlAtt++;
-                serverResponse.defSlYds += playData.yds;
-            }
-            if (playData.loc == 'DL') {
-                serverResponse.defDlAtt++;
-                serverResponse.defDlYds += playData.yds;
-            }
-        });
-        res.send(serverResponse);
-    })
+    if (req.params.posd != 'QB') {
+        joinedPass.find({$and: [{def: req.params.defense}, {posd: req.params.posd}, {dcp: req.params.dcp}]}, function (err, data) {
+            data.forEach(function (playData) {
+                if (playData.loc == 'DM') {
+                    serverResponse.defDmAtt++;
+                    serverResponse.defDmYds += playData.yds;
+                }
+                if (playData.loc == 'DR') {
+                    serverResponse.defDrAtt++;
+                    serverResponse.defDrYds += playData.yds;
+                }
+                if (playData.loc == 'SR') {
+                    serverResponse.defSrAtt++;
+                    serverResponse.defSrYds += playData.yds;
+                }
+                if (playData.loc == 'SM') {
+                    serverResponse.defSmAtt++;
+                    serverResponse.defSmYds += playData.yds;
+                }
+                if (playData.loc == 'SL') {
+                    serverResponse.defSlAtt++;
+                    serverResponse.defSlYds += playData.yds;
+                }
+                if (playData.loc == 'DL') {
+                    serverResponse.defDlAtt++;
+                    serverResponse.defDlYds += playData.yds;
+                }
+            });
+            res.send(serverResponse);
+        })
+    } else {
+        joinedPass.find({def: req.params.defense}, function(err, data){
+            data.forEach(function (playData) {
+                if (playData.loc == 'DM') {
+                    serverResponse.defDmAtt++;
+                    serverResponse.defDmYds += playData.yds;
+                }
+                if (playData.loc == 'DR') {
+                    serverResponse.defDrAtt++;
+                    serverResponse.defDrYds += playData.yds;
+                }
+                if (playData.loc == 'SR') {
+                    serverResponse.defSrAtt++;
+                    serverResponse.defSrYds += playData.yds;
+                }
+                if (playData.loc == 'SM') {
+                    serverResponse.defSmAtt++;
+                    serverResponse.defSmYds += playData.yds;
+                }
+                if (playData.loc == 'SL') {
+                    serverResponse.defSlAtt++;
+                    serverResponse.defSlYds += playData.yds;
+                }
+                if (playData.loc == 'DL') {
+                    serverResponse.defDlAtt++;
+                    serverResponse.defDlYds += playData.yds;
+                }
+            });
+            res.send(serverResponse);
+        })
+    }
 }
 
 function getPlayerData(req, res) {
