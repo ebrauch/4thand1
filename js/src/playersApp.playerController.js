@@ -31,19 +31,7 @@ function playerController($scope, $http) {
 
     $('#players').easyAutocomplete(options);
 
-    $http.get('/api/leagueAvg/')
-        .then(function (serverResponse) {
-            var i = 0;
-            serverResponse.data.forEach(function (data) {
-                if (i < 12) {
-                    $scope.leaguePaAvg.push(data._batch);
-                }
-                else {
-                    $scope.leagueRuAvg.push(data._batch);
-                }
-                i++;
-            })
-        })
+
 
     $scope.addPlayer = function () {
         $http.get('/api/gamesPlayed/' + $scope.newPlayer.player)
@@ -64,7 +52,36 @@ function playerController($scope, $http) {
             .then(function(serverResponse){
                 $scope.newPlayer.defGp = serverResponse.data.defGp - 1
             })
-        });
+        })
+            .then(function(){
+                $http.get('/api/newPlayer/' + $scope.newPlayer.player)
+                    .then(function(serverResponse){
+                        $scope.newPlayer.dcp = serverResponse.data[0].dcp;
+                        $scope.newPlayer.pos1 = serverResponse.data[0].pos1;
+                    })
+                    .then(function(){
+                        $http.get('/api/leagueAvg')
+                            .then(function(serverResponse){
+                                console.log(serverResponse);
+                                $scope.newPlayer.leagueAvg = serverResponse.data[0][$scope.newPlayer.posd + '' + $scope.newPlayer.dcp]
+                                console.log($scope.newPlayer.leagueAvg)
+                            })
+                    })
+                    //.then(function() {
+                    //    setTimeout(function() {
+                    //        $http.get('/api/leagueAvg/' + $scope.newPlayer.posd + '/' + $scope.newPlayer.dcp)
+                    //            .then(function (serverResponse) {
+                    //                $scope.newPlayer.leagueDefData = serverResponse.data[0];
+                    //                console.log(serverResponse.data)
+                    //            });
+                    //        console.log($scope.newPlayer.leagueDefData)
+                    //    }, 5000)
+                    //})
+            })
+        if ($scope.newPlayer.posd.indexOf('TE/') > -1) {
+            $scope.newPlayer.posd = 'TE';
+            $scope.newPlayer.dcp = 3;
+        }
         if ($scope.newPlayer.posd == 'LWR' || $scope.newPlayer.posd == 'RWR' || $scope.newPlayer.posd.split('/')[0] == 'TE' || $scope.newPlayer.posd.split('/')[1] == 'TE' || $scope.newPlayer.posd == 'SWR') {
             $scope.addRec($scope.newPlayer);
         }
@@ -136,9 +153,9 @@ function playerController($scope, $http) {
     }
 
     $scope.getDefPassStats = function (player) {
-        $http.get('/api/defPassStats/' + player.defense)
+        $http.get('/api/defPassStats/' + $scope.newPlayer.defense + '/' + $scope.newPlayer.posd + '/' + $scope.newPlayer.dcp)
             .then(
-            function (serverResponse) {
+            function(serverResponse) {
                 player.defDmAtt = serverResponse.data.defDmAtt;
                 player.defDmYds = serverResponse.data.defDmYds;
                 player.defDrAtt = serverResponse.data.defDrAtt;
@@ -153,6 +170,7 @@ function playerController($scope, $http) {
                 player.defDlYds = serverResponse.data.defDlYds;
             })
             .then(function () {
+                console.log(player);
             $scope.playerArray.forEach(function (existingplayer) {
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
@@ -171,6 +189,7 @@ function playerController($scope, $http) {
             }
         })
     }
+
     $scope.getDefRushStats = function (player) {
         $http.get('/api/defRushStats/' + player.defense).then(
             function (serverResponse) {

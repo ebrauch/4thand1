@@ -2,6 +2,9 @@ var pbp = require('../models/schemas.js').pbp;
 var game = require('../models/schemas.js').game;
 var average = require('../models/schemas.js').average;
 var offense = require('../models/schemas.js').offense;
+var joinedPass = require('../models/schemas.js').joinedPass;
+var player = require('../models/schemas.js').player;
+var posAverages = require('../models/schemas.js').posAverages;
 
 function getGamesPlayed(req, res) {
     offense.find({player: req.params.playerID}, function(err, data){
@@ -11,13 +14,12 @@ function getGamesPlayed(req, res) {
 
 function getDefGamesPlayed(req, res) {
     game.find({$or: [{v: req.params.defense},{h: req.params.defense}]}, function(err, data){
-        console.log(data)
         res.send({defGp: data.length})
     })
 }
 
 function getLeagueAverage(req, res) {
-    average.find({}, function(err, data){
+    posAverages.find({}, function(err, data){
         res.send(data);
     })
 }
@@ -272,14 +274,68 @@ function getDefRushStats(req, res) {
     })
 }
 
+function getDefensePassStats(req, res) {
+            var serverResponse = {
+            defDmAtt: 0,
+            defDmYds: 0,
+            defDrAtt: 0,
+            defDrYds: 0,
+            defSrAtt: 0,
+            defSrYds: 0,
+            defSmAtt: 0,
+            defSmYds: 0,
+            defSlAtt: 0,
+            defSlYds: 0,
+            defDlAtt: 0,
+            defDlYds: 0,
+        };
+    joinedPass.find({def: req.params.defense}, function(err, data){
+        data.forEach(function(playData){
+            if (playData.loc == 'DM') {
+                serverResponse.defDmAtt++;
+                serverResponse.defDmYds += playData.yds;
+            }
+            if (playData.loc == 'DR') {
+                serverResponse.defDrAtt++;
+                serverResponse.defDrYds += playData.yds;
+            }
+            if (playData.loc == 'SR') {
+                serverResponse.defSrAtt++;
+                serverResponse.defSrYds += playData.yds;
+            }
+            if (playData.loc == 'SM') {
+                serverResponse.defSmAtt++;
+                serverResponse.defSmYds += playData.yds;
+            }
+            if (playData.loc == 'SL') {
+                serverResponse.defSlAtt++;
+                serverResponse.defSlYds += playData.yds;
+            }
+            if (playData.loc == 'DL') {
+                serverResponse.defDlAtt++;
+                serverResponse.defDlYds += playData.yds;
+            }
+        });
+        res.send(serverResponse);
+    })
+}
+
+function getPlayerData(req, res) {
+    player.find({player: req.params.playerID}, function(err, data){
+        res.send(data);
+    })
+}
+
 module.exports = {
-    getRecData       : getRecData,
-    getRushData      : getRushData,
-    getPassData      : getPassData,
-    getDef           : getDef,
-    getDefPassStats  : getDefPassStats,
-    getDefRushStats  : getDefRushStats,
-    getLeagueAverage : getLeagueAverage,
-    getGamesPlayed   : getGamesPlayed,
-    getDefGamesPlayed: getDefGamesPlayed
+    getRecData         : getRecData,
+    getRushData        : getRushData,
+    getPassData        : getPassData,
+    getDef             : getDef,
+    //getDefPassStats    : getDefPassStats,
+    getDefRushStats    : getDefRushStats,
+    getLeagueAverage   : getLeagueAverage,
+    getGamesPlayed     : getGamesPlayed,
+    getDefGamesPlayed  : getDefGamesPlayed,
+    getDefensePassStats: getDefensePassStats,
+    getPlayerData      : getPlayerData
 };
