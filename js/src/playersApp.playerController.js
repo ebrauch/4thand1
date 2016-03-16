@@ -75,7 +75,7 @@ function playerController($scope, $http) {
                     //        console.log($scope.newPlayer.leagueDefData)
                     //    }, 5000)
                     //})
-            })
+            }).then(function(){
         if ($scope.newPlayer.posd.indexOf('TE/') > -1) {
             $scope.newPlayer.posd = 'TE';
             $scope.newPlayer.dcp = 3;
@@ -89,6 +89,7 @@ function playerController($scope, $http) {
         if ($scope.newPlayer.posd == 'QB') {
             $scope.addQb($scope.newPlayer);
         }
+    })
     }
 
     $scope.addRec = function (receiver) {
