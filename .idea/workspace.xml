@@ -124,7 +124,7 @@
             <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.51417005">
-                  <caret line="188" column="11" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
+                  <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -727,7 +727,7 @@
     <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51417005">
-          <caret line="188" column="11" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
+          <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
           <folding />
         </state>
       </provider>

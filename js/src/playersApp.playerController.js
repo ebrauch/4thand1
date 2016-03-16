@@ -186,7 +186,7 @@ function playerController($scope, $http) {
                 }, 0)
             }
         })
-        },0)
+        },100)
     }
 
     $scope.getDefRushStats = function (player) {
