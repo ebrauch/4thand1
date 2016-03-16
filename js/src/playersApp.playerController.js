@@ -151,6 +151,7 @@ function playerController($scope, $http) {
     }
 
     $scope.getDefPassStats = function (player) {
+        setTimeout(function(){
         $http.get('/api/defPassStats/' + player.defense + '/' + player.posd + '/' + player.dcp)
             .then(
             function(serverResponse) {
@@ -185,6 +186,7 @@ function playerController($scope, $http) {
                 }, 0)
             }
         })
+        },0)
     }
 
     $scope.getDefRushStats = function (player) {
