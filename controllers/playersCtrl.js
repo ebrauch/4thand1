@@ -289,7 +289,7 @@ function getDefensePassStats(req, res) {
             defDlAtt: 0,
             defDlYds: 0,
         };
-    joinedPass.find({def: req.params.defense}, function(err, data){
+    joinedPass.find({$and:[{def: req.params.defense}, {posd: req.params.posd}, {dcp: req.params.dcp}]}, function(err, data){
         data.forEach(function(playData){
             if (playData.loc == 'DM') {
                 serverResponse.defDmAtt++;
