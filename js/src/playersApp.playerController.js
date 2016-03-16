@@ -151,7 +151,7 @@ function playerController($scope, $http) {
     }
 
     $scope.getDefPassStats = function (player) {
-        $http.get('/api/defPassStats/' + $scope.newPlayer.defense + '/' + $scope.newPlayer.posd + '/' + $scope.newPlayer.dcp)
+        $http.get('/api/defPassStats/' + player.defense + '/' + player.posd + '/' + player.dcp)
             .then(
             function(serverResponse) {
                 player.defDmAtt = serverResponse.data.defDmAtt;
