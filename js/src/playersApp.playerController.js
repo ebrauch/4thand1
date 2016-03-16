@@ -62,9 +62,7 @@ function playerController($scope, $http) {
                     .then(function(){
                         $http.get('/api/leagueAvg')
                             .then(function(serverResponse){
-                                console.log(serverResponse);
                                 $scope.newPlayer.leagueAvg = serverResponse.data[0][$scope.newPlayer.posd + '' + $scope.newPlayer.dcp]
-                                console.log($scope.newPlayer.leagueAvg)
                             })
                     })
                     //.then(function() {
@@ -170,7 +168,6 @@ function playerController($scope, $http) {
                 player.defDlYds = serverResponse.data.defDlYds;
             })
             .then(function () {
-                console.log(player);
             $scope.playerArray.forEach(function (existingplayer) {
                 if (existingplayer.player == player.player) {
                     $('html,body').animate({
@@ -219,7 +216,6 @@ function playerController($scope, $http) {
             })
             if (player != {}) {
                 $scope.playerArray.push(player);
-                console.log(player)
                 setTimeout(function () {
                     $('html,body').animate({
                         scrollTop: $("#" + player.player).offset().top - 100
