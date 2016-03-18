@@ -123,7 +123,7 @@ function chartController ($scope) {
                 })
             },0)
         })
-    }
+    };
     $scope.buildRbChart = function (rb) {
         $(function () {
             setTimeout(function () {
@@ -189,7 +189,7 @@ function chartController ($scope) {
                     })
             }, 0);
         })
-    }
+    };
 
     $scope.buildQbChart = function(qb) {
         $(function() {

@@ -1,6 +1,5 @@
 var pbp = require('../models/schemas.js').pbp;
 var game = require('../models/schemas.js').game;
-var average = require('../models/schemas.js').average;
 var offense = require('../models/schemas.js').offense;
 var joinedPass = require('../models/schemas.js').joinedPass;
 var player = require('../models/schemas.js').player;
@@ -38,7 +37,7 @@ function getRecData(req, res) {
                 slYds: 0,
                 dlTrg: 0,
                 dlYds: 0,
-            }
+            };
         data.forEach(function(playData){
             if (playData.loc == 'DM') {
                 serverResponse.dmTrg++;
@@ -85,7 +84,7 @@ function getRushData(req, res) {
             rtYds: 0,
             reAtt: 0,
             reYds: 0
-        }
+        };
         data.forEach(function(playData){
             if (playData.dir == 'LE') {
                 serverResponse.leAtt++;
@@ -134,7 +133,7 @@ function getPassData(req, res) {
             slYds: 0,
             dlAtt: 0,
             dlYds: 0,
-        }
+        };
         data.forEach(function(playData){
             if (playData.loc == 'DM') {
                 serverResponse.dmAtt++;
@@ -192,7 +191,7 @@ function getDefPassStats(req, res) {
             defSlYds: 0,
             defDlAtt: 0,
             defDlYds: 0,
-        }
+        };
         data.forEach(function(playData){
             if (playData.loc == 'DM') {
                 serverResponse.defDmAtt++;
@@ -239,7 +238,7 @@ function getDefRushStats(req, res) {
             defRtYds : 0,
             defReAtt : 0,
             defReYds : 0
-        }
+        };
         data.forEach(function(playData){
             if (playData.dir == 'LE') {
                 serverResponse.defLeAtt++;

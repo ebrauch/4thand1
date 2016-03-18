@@ -18,7 +18,6 @@ app.get('/api/rec/:playerID', playersCtrl.getRecData);
 app.get('/api/rush/:playerID', playersCtrl.getRushData);
 app.get('/api/pass/:playerID', playersCtrl.getPassData);
 app.get('/api/def/:team', playersCtrl.getDef);
-//app.get('/api/defPassStats/:team', playersCtrl.getDefPassStats);
 app.get('/api/defRushStats/:team', playersCtrl.getDefRushStats);
 app.get('/api/leagueAvg', playersCtrl.getLeagueAverage);
 app.get('/api/gamesPlayed/:playerID', playersCtrl.getGamesPlayed);

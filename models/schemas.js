@@ -1,30 +1,5 @@
 var mongoose = require('mongoose');
 
-var averageSchema = mongoose.Schema({
-    _id: {},
-    _batch: {},
-    _useReadCommands: {},
-    _cursorid: {},
-    _batchSize: {},
-    _ns: {},
-    _db: {},
-    _collName: {},
-    _cursorHandle: {},
-    close: {},
-    _runGetMoreCommand: {},
-    _hasNextUsingCommands: {},
-    hasNext: {},
-    next: {},
-    objsLeftInBatch: {},
-    help: {},
-    toArray: {},
-    forEach: {},
-    map: {},
-    itcount: {},
-    shellPrint: {},
-    pretty: {}
-})
-
 var pbpSchema = mongoose.Schema({
     gid  : Number,
     pid  : Number,
@@ -58,7 +33,7 @@ var gameSchema = mongoose.Schema({
     surf : String,
     ptsv : Number,
     ptsh : Number
-})
+});
 
 var offenseSchema  = mongoose.Schema({
     _id: {},
@@ -91,7 +66,7 @@ var offenseSchema  = mongoose.Schema({
     posd: String,
     jnum: Number,
     dcp: Number
-})
+});
 
 var joinedPassSchema = mongoose.Schema({
     _id: {},
@@ -106,7 +81,7 @@ var joinedPassSchema = mongoose.Schema({
     pos1: String,
     posd: String,
     dcp: Number
-})
+});
 
 var playerSchema = mongoose.Schema({
     _id: {},
@@ -129,7 +104,7 @@ var playerSchema = mongoose.Schema({
     posd: String,
     jnum: Number,
     dcp: Number
-})
+});
 
 var posAveragesSchema = mongoose.Schema({
     _id: {},
@@ -144,14 +119,13 @@ var posAveragesSchema = mongoose.Schema({
     LWR2: {},
     LWR3: {},
 
-})
+});
 
 module.exports = {
     pbp        : mongoose.model('pbp', pbpSchema, 'pbp'),
     game       : mongoose.model('game', gameSchema, 'game'),
-    average    : mongoose.model('average', averageSchema, 'average'),
     offense    : mongoose.model('offense', offenseSchema, 'offense'),
     joinedPass : mongoose.model('joinedPass', joinedPassSchema, 'joinedPass'),
     player     : mongoose.model('player', playerSchema, 'player'),
     posAverages: mongoose.model('posAverages', posAveragesSchema, 'posAverages')
-}
+};
