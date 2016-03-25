@@ -5,6 +5,8 @@ var player = require('../models/schemas.js').player;
 var joinedPass = require('../models/schemas.js').joinedPass;
 
 var newPlayer = {};
+var playerDataLoaded = false;
+var defDataLoaded = false;
 
 function addPlayer(req, res) {
     newPlayer.player = req.params.player;
@@ -13,6 +15,9 @@ function addPlayer(req, res) {
         getDef(newPlayer.cteam);
         getPos(newPlayer);
     })
+    setTimeout(function(){
+        res.send(newPlayer);
+    },5000)
 }
 
 function getPos(newPlayer) {
@@ -25,22 +30,35 @@ function getPos(newPlayer) {
             newPlayer.dcp = data[0].dcp;
             newPlayer.posd = data[0].posd;
         }
+        if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
+            console.log('hi')
+            getRecStats();
+            getDefRecStats();
+        }
+        else if (newPlayer.posd == 'QB') {
+            getPassStats(newPlayer);
+            getDefPassStats(newPlayer.defense);
+        }
+        else if (newPlayer.posd == 'RB') {
+            getRushStats(newPlayer);
+            getDefRushStats(newPlayer.defense);
+        }
     });
-}
-
-function getPlayerStats(newPlayer) {
-    if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
-        getRecStats(newPlayer);
-        getDefRecStats(newPlayer.defense, newPlayer.posd, newPlayer.dcp);
-    }
-    else if (newPlayer.posd == 'QB') {
-        getPassStats(newPlayer);
-        getDefPassStats(newPlayer.defense);
-    }
-    else if (newPlayer.posd == 'RB') {
-        getRushStats(newPlayer);
-        getDefRushStats(newPlayer.defense);
-    }
+    //process.nextTick(function(){
+    //    if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
+    //
+    //        getRecStats();
+    //        getDefRecStats();
+    //    }
+    //    else if (newPlayer.posd == 'QB') {
+    //        getPassStats(newPlayer);
+    //        getDefPassStats(newPlayer.defense);
+    //    }
+    //    else if (newPlayer.posd == 'RB') {
+    //        getRushStats(newPlayer);
+    //        getDefRushStats(newPlayer.defense);
+    //    }
+    //})
 }
 
 function getDef(team) {
@@ -53,25 +71,24 @@ function getDef(team) {
             {wk:17}
         ]}, function(err, data){
         newPlayer.cteam == data[0].h ? newPlayer.defense = data[0].v : newPlayer.defense = data[0].h;
-        console.log(newPlayer.defense)
     });
 }
 
-function getRecStats(player) {
-    console.log('getRec hit')
-    joinedPass.find({trg: player.player}, function(err, data){
-            newPlayer.dmTrg = 0,
-            newPlayer.dmYds = 0,
-            newPlayer.drTrg = 0,
-            newPlayer.drYds = 0,
-            newPlayer.srTrg = 0,
-            newPlayer.srYds = 0,
-            newPlayer.smTrg = 0,
-            newPlayer.smYds = 0,
-            newPlayer.slTrg = 0,
-            newPlayer.slYds = 0,
-            newPlayer.dlTrg = 0,
-            newPlayer.dlYds = 0
+function getRecStats() {
+    joinedPass.find({trg: newPlayer.player}, function(err, data){
+            newPlayer.dmTrg = 0;
+            newPlayer.dmYds = 0;
+            newPlayer.drTrg = 0;
+            newPlayer.drYds = 0;
+            newPlayer.srTrg = 0;
+            newPlayer.srYds = 0;
+            newPlayer.smTrg = 0;
+            newPlayer.smYds = 0;
+            newPlayer.slTrg = 0;
+            newPlayer.slYds = 0;
+            newPlayer.dlTrg = 0;
+            newPlayer.dlYds = 0;
+
         data.forEach(function(playData){
             if (playData.loc == 'DM') {
                 newPlayer.dmTrg++;
@@ -99,6 +116,7 @@ function getRecStats(player) {
             }
         });
     })
+    playerDataLoaded = true;
 }
 
 function getPassStats(player) {
@@ -109,8 +127,47 @@ function getRushStats(player) {
 
 }
 
-function getDefRecStats(player) {
-
+function getDefRecStats() {
+        joinedPass.find({$and: [{def: newPlayer.defense}, {posd: newPlayer.posd}, {dcp: newPlayer.dcp}]}, function (err, data) {
+            newPlayer.defDmAtt = 0;
+            newPlayer.defDmYds = 0;
+            newPlayer.defDrAtt = 0;
+            newPlayer.defDrYds = 0;
+            newPlayer.defSrAtt = 0;
+            newPlayer.defSrYds = 0;
+            newPlayer.defSmAtt = 0;
+            newPlayer.defSmYds = 0;
+            newPlayer.defSlAtt = 0;
+            newPlayer.defSlYds = 0;
+            newPlayer.defDlAtt = 0;
+            newPlayer.defDlYds = 0;
+            data.forEach(function (playData) {
+                if (playData.loc == 'DM') {
+                    newPlayer.defDmAtt++;
+                    newPlayer.defDmYds += playData.yds;
+                }
+                if (playData.loc == 'DR') {
+                    newPlayer.defDrAtt++;
+                    newPlayer.defDrYds += playData.yds;
+                }
+                if (playData.loc == 'SR') {
+                    newPlayer.defSrAtt++;
+                    newPlayer.defSrYds += playData.yds;
+                }
+                if (playData.loc == 'SM') {
+                    newPlayer.defSmAtt++;
+                    newPlayer.defSmYds += playData.yds;
+                }
+                if (playData.loc == 'SL') {
+                    newPlayer.defSlAtt++;
+                    newPlayer.defSlYds += playData.yds;
+                }
+                if (playData.loc == 'DL') {
+                    newPlayer.defDlAtt++;
+                    newPlayer.defDlYds += playData.yds;
+                }
+            });
+        })
 }
 
 function getDefPassStats(player) {

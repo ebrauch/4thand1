@@ -35,7 +35,7 @@ function playerController($scope, $http) {
     $scope.addPlayer = function (newPlayer) {
         $http.get('/api/' + $scope.newPlayer.player + '/' + $scope.newPlayer.cteam)
             .then(function (serverResponse) {
-                console.log(serverResponse)
+                console.log(serverResponse.data.posd);
             })
     }
     //$scope.addPlayer = function (newPlayer) {
