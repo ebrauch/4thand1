@@ -31,7 +31,6 @@ function playerController($scope, $http) {
     $http.get('/api/averages')
         .then(function(serverResponse){
             $scope.averages = serverResponse.data[0];
-            console.log($scope.averages);
         })
 
     $scope.addPlayer = function (newPlayer) {
