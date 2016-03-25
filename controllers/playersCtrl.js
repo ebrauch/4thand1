@@ -1,10 +1,15 @@
-var async = require('async');
-
 var game = require('../models/schemas.js').game;
 var player = require('../models/schemas.js').player;
 var joinedPass = require('../models/schemas.js').joinedPass;
+var posAverages = require('../models/schemas.js').posAverages;
 
 var newPlayer = {};
+
+function getAverages(req, res) {
+    posAverages.find({}, function(err, data){
+        res.send(data);
+    })
+}
 
 function addPlayer(req, res) {
     newPlayer.player = req.params.player;
@@ -132,7 +137,8 @@ function getDefRushStats(player) {
 }
 
 module.exports = {
-    addPlayer : addPlayer
+    addPlayer : addPlayer,
+    getAverages : getAverages
 }
 
 //var pbp = require('../models/schemas.js').pbp;

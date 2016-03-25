@@ -5,6 +5,7 @@ angular.module('PlayersApp').controller('playerController', ['$scope', '$http',
 function playerController($scope, $http) {
     $scope.newPlayer = {};
     $scope.playerArray = [];
+    $scope.averages = {};
     $scope.leaguePaAvg = [];
     $scope.leagueRuAvg = [];
 
@@ -31,10 +32,16 @@ function playerController($scope, $http) {
 
     $('#players').easyAutocomplete(options);
 
+    $http.get('/api/averages')
+        .then(function(serverResponse){
+            $scope.averages = serverResponse.data[0];
+            console.log($scope.averages);
+        })
 
     $scope.addPlayer = function (newPlayer) {
         $http.get('/api/' + $scope.newPlayer.player + '/' + $scope.newPlayer.cteam)
             .then(function (playerData) {
+                playerData.data.leagueAvg = $scope.averages[playerData.data.posd + '' + playerData.data.dcp]
                 playerData.data.display = $scope.newPlayer.display;
                 $scope.playerArray.forEach(function (existingplayer) {
                     if (existingplayer.player == playerData.data.player) {

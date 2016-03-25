@@ -110,13 +110,12 @@ function chartController ($scope) {
                     }, {
                         name: 'League Average v. ' + wr.posd + '-' + wr.dcp + 's',
                         data: [
-                            //wr.leagueAvg[0] || 0,
-                            //wr.leagueAvg[1] || 0,
-                            //wr.leagueAvg[2] || 0,
-                            //wr.leagueAvg[3] || 0,
-                            //wr.leagueAvg[4] || 0,
-                            //wr.leagueAvg[5] || 0
-                            0,0,0,0,0,0
+                            wr.leagueAvg[0] || 0,
+                            wr.leagueAvg[1] || 0,
+                            wr.leagueAvg[2] || 0,
+                            wr.leagueAvg[3] || 0,
+                            wr.leagueAvg[4] || 0,
+                            wr.leagueAvg[5] || 0
                         ],
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
