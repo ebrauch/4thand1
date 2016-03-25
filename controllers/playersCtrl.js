@@ -6,6 +6,7 @@ var pbp = require('../models/schemas.js').pbp;
 
 var newPlayer = {};
 var statsPopulated = false;
+var defStatsPopulated = false;
 
 function getAverages(req, res) {
     posAverages.find({}, function(err, data){
@@ -156,9 +157,12 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    defStatsPopulated = true;
+                }
             });
             for (;;) {
-                if (statsPopulated) {
+                if (statsPopulated && defStatsPopulated) {
                     res.send(newPlayer);
                     break;
                 }
@@ -184,9 +188,12 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    defStatsPopulated = true;
+                }
             });
             for (;;) {
-                if (statsPopulated) {
+                if (statsPopulated && defStatsPopulated) {
                     res.send(newPlayer);
                     break;
                 }
@@ -213,9 +220,12 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer['def' + playData.dir + 'Att']++;
                 newPlayer['def' + playData.dir + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    defStatsPopulated = true;
+                }
             });
             for (;;) {
-                if (statsPopulated) {
+                if (statsPopulated && defStatsPopulated) {
                     res.send(newPlayer);
                     break;
                 }
