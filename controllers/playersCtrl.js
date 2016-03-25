@@ -1,11 +1,46 @@
-var game = require('../models/schemas.js').game;
+var async = require('async');
 
-var newPlayer = {}
+var game = require('../models/schemas.js').game;
+var player = require('../models/schemas.js').player;
+var joinedPass = require('../models/schemas.js').joinedPass;
+
+var newPlayer = {};
 
 function addPlayer(req, res) {
     newPlayer.player = req.params.player;
     newPlayer.cteam = req.params.team;
-    getDef(newPlayer.cteam)
+    process.nextTick(function(){
+        getDef(newPlayer.cteam);
+        getPos(newPlayer);
+    })
+}
+
+function getPos(newPlayer) {
+    player.find({player: newPlayer.player}, function(err, data){
+        if (data[0].posd == 'TE/H-' || data[0].posd == 'FB/TE') {
+            newPlayer.dcp = 3;
+            newPlayer.posd = 'TE';
+        }
+        else {
+            newPlayer.dcp = data[0].dcp;
+            newPlayer.posd = data[0].posd;
+        }
+    });
+}
+
+function getPlayerStats(newPlayer) {
+    if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
+        getRecStats(newPlayer);
+        getDefRecStats(newPlayer.defense, newPlayer.posd, newPlayer.dcp);
+    }
+    else if (newPlayer.posd == 'QB') {
+        getPassStats(newPlayer);
+        getDefPassStats(newPlayer.defense);
+    }
+    else if (newPlayer.posd == 'RB') {
+        getRushStats(newPlayer);
+        getDefRushStats(newPlayer.defense);
+    }
 }
 
 function getDef(team) {
@@ -17,25 +52,84 @@ function getDef(team) {
             ]},
             {wk:17}
         ]}, function(err, data){
-        if (newPlayer.cteam == data[0].h) {
-            newPlayer.defense = data[0].v;
-        }
-        else {
-            newPlayer.defense = data[0].h;
-        }
+        newPlayer.cteam == data[0].h ? newPlayer.defense = data[0].v : newPlayer.defense = data[0].h;
+        console.log(newPlayer.defense)
     });
+}
+
+function getRecStats(player) {
+    console.log('getRec hit')
+    joinedPass.find({trg: player.player}, function(err, data){
+            newPlayer.dmTrg = 0,
+            newPlayer.dmYds = 0,
+            newPlayer.drTrg = 0,
+            newPlayer.drYds = 0,
+            newPlayer.srTrg = 0,
+            newPlayer.srYds = 0,
+            newPlayer.smTrg = 0,
+            newPlayer.smYds = 0,
+            newPlayer.slTrg = 0,
+            newPlayer.slYds = 0,
+            newPlayer.dlTrg = 0,
+            newPlayer.dlYds = 0
+        data.forEach(function(playData){
+            if (playData.loc == 'DM') {
+                newPlayer.dmTrg++;
+                newPlayer.dmYds += playData.yds;
+            }
+            if (playData.loc == 'DR') {
+                newPlayer.drTrg++;
+                newPlayer.drYds += playData.yds;
+            }
+            if (playData.loc == 'SR') {
+                newPlayer.srTrg++;
+                newPlayer.srYds += playData.yds;
+            }
+            if (playData.loc == 'SM') {
+                newPlayer.smTrg++;
+                newPlayer.smYds += playData.yds;
+            }
+            if (playData.loc == 'SL') {
+                newPlayer.slTrg++;
+                newPlayer.slYds += playData.yds;
+            }
+            if (playData.loc == 'DL') {
+                newPlayer.dlTrg++;
+                newPlayer.dlYds += playData.yds;
+            }
+        });
+    })
+}
+
+function getPassStats(player) {
+
+}
+
+function getRushStats(player) {
+
+}
+
+function getDefRecStats(player) {
+
+}
+
+function getDefPassStats(player) {
+
+}
+
+function getDefRushStats(player) {
 
 }
 
 module.exports = {
-    newPlayer : newPlayer
+    addPlayer : addPlayer
 }
 
 //var pbp = require('../models/schemas.js').pbp;
 
 //var offense = require('../models/schemas.js').offense;
-//var joinedPass = require('../models/schemas.js').joinedPass;
-//var player = require('../models/schemas.js').player;
+
+
 //var posAverages = require('../models/schemas.js').posAverages;
 //
 //function getGamesPlayed(req, res) {
