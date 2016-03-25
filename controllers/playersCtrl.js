@@ -2,6 +2,7 @@ var game = require('../models/schemas.js').game;
 var player = require('../models/schemas.js').player;
 var joinedPass = require('../models/schemas.js').joinedPass;
 var posAverages = require('../models/schemas.js').posAverages;
+var pbp = require('../models/schemas.js').pbp;
 
 var newPlayer = {};
 
@@ -20,7 +21,7 @@ function addPlayer(req, res) {
     })
     setTimeout(function(){
         res.send(newPlayer);
-    },1000)
+    },100)
 }
 
 function getPos(newPlayer) {
@@ -105,8 +106,27 @@ function getPassStats() {
     })
 }
 
-function getRushStats(player) {
-
+function getRushStats() {
+    pbp.find({bc: newPlayer.player}, function(err, data){
+            newPlayer.LEAtt = 0;
+            newPlayer.LEYds = 0;
+            newPlayer.LTAtt = 0;
+            newPlayer.LTYds = 0;
+            newPlayer.LGAtt = 0;
+            newPlayer.LGYds = 0;
+            newPlayer.MDAtt = 0;
+            newPlayer.MDYds = 0;
+            newPlayer.RGAtt = 0;
+            newPlayer.RGYds = 0;
+            newPlayer.RTAtt = 0;
+            newPlayer.RTYds = 0;
+            newPlayer.REAtt = 0;
+            newPlayer.REYds = 0;
+        data.forEach(function(playData){
+            newPlayer[playData.dir + 'Att']++;
+            newPlayer[playData.dir + 'Yds'] += playData.yds;
+        });
+    })
 }
 
 function getDefRecStats() {
@@ -153,8 +173,27 @@ function getDefPassStats() {
     })
 }
 
-function getDefRushStats(player) {
-
+function getDefRushStats() {
+    pbp.find({def: newPlayer.defense}, function(err, data){
+        newPlayer.defLEAtt = 0;
+        newPlayer.defLEYds = 0;
+        newPlayer.defLTAtt = 0;
+        newPlayer.defLTYds = 0;
+        newPlayer.defLGAtt = 0;
+        newPlayer.defLGYds = 0;
+        newPlayer.defMDAtt = 0;
+        newPlayer.defMDYds = 0;
+        newPlayer.defRGAtt = 0;
+        newPlayer.defRGYds = 0;
+        newPlayer.defRTAtt = 0;
+        newPlayer.defRTYds = 0;
+        newPlayer.defREAtt = 0;
+        newPlayer.defREYds = 0;
+        data.forEach(function(playData){
+            newPlayer['def' + playData.dir + 'Att']++;
+            newPlayer['def' + playData.dir + 'Yds'] += playData.yds;
+        });
+    })
 }
 
 module.exports = {

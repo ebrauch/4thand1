@@ -143,13 +143,13 @@ function chartController ($scope) {
                                 type: 'column',
                                 name: rb.display.split(' -')[0],
                                 data: [
-                                    Math.floor(rb.leYds / rb.leAtt * 100) / 100 || 0,
-                                    Math.floor(rb.ltYds / rb.ltAtt * 100) / 100 || 0,
-                                    Math.floor(rb.lgYds / rb.lgAtt * 100) / 100 || 0,
-                                    Math.floor(rb.mdYds / rb.mdAtt * 100) / 100 || 0,
-                                    Math.floor(rb.rgYds / rb.rgAtt * 100) / 100 || 0,
-                                    Math.floor(rb.rtYds / rb.rtAtt * 100) / 100 || 0,
-                                    Math.floor(rb.reYds / rb.rtAtt * 100) / 100 || 0
+                                    Math.floor(rb.LEYds / rb.LEAtt * 100) / 100 || 0,
+                                    Math.floor(rb.LTYds / rb.LTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.LGYds / rb.LGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.MDYds / rb.MDAtt * 100) / 100 || 0,
+                                    Math.floor(rb.RGYds / rb.RGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.RTYds / rb.RTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.REYds / rb.REAtt * 100) / 100 || 0
                                 ],
                                 color: $scope.teamColors[rb.cteam]
                             },
@@ -157,13 +157,13 @@ function chartController ($scope) {
                                 type: 'column',
                                 name: rb.defense,
                                 data: [
-                                    Math.floor(rb.defLeYds / rb.defLeAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defLtYds / rb.defLtAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defLgYds / rb.defLgAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defMdYds / rb.defMdAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defRgYds / rb.defRgAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defRtYds / rb.defRtAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defReYds / rb.defRtAtt * 100) / 100 || 0
+                                    Math.floor(rb.defLEYds / rb.defLEAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defLTYds / rb.defLTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defLGYds / rb.defLGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defMDYds / rb.defMDAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defRGYds / rb.defRGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defRTYds / rb.defRTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defREYds / rb.defREAtt * 100) / 100 || 0
                                 ],
                                 color: $scope.teamColors[rb.defense]
                             },

@@ -39,6 +39,9 @@ function playerController($scope, $http) {
         })
 
     $scope.addPlayer = function (newPlayer) {
+        if (!newPlayer.display) {
+            return
+        }
         $http.get('/api/' + $scope.newPlayer.player + '/' + $scope.newPlayer.cteam)
             .then(function (playerData) {
                 playerData.data.leagueAvg = $scope.averages[playerData.data.posd + '' + playerData.data.dcp]
