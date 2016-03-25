@@ -19,10 +19,6 @@ function addPlayer(req, res) {
         getDef(newPlayer.cteam);
         getPos(newPlayer);
     })
-    //setTimeout(function () {
-    //    res.send(newPlayer);
-    //}, 0)
-//}
 
     function getPos(newPlayer) {
         player.find({player: newPlayer.player}, function (err, data) {
@@ -151,9 +147,9 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
             });
-            setTimeout(function(){
+            process.nextTick(function(){
                 res.send(newPlayer);
-            },0)
+            })
         })
     }
 
@@ -176,9 +172,9 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
             });
-            setTimeout(function(){
+            process.nextTick(function(){
                 res.send(newPlayer);
-            },0)
+            })
         })
     }
 
@@ -202,9 +198,9 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.dir + 'Att']++;
                 newPlayer['def' + playData.dir + 'Yds'] += playData.yds;
             });
-            setTimeout(function(){
+            process.nextTick(function(){
                 res.send(newPlayer);
-            },0)
+            })
         })
     }
 }
