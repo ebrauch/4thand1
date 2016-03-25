@@ -1,13 +1,9 @@
-angular.module('PlayersApp').controller('playerController', ['$scope', '$http',
-    playerController
-]);
+angular.module('PlayersApp').controller('playerController', ['$scope', '$http', playerController]);
 
 function playerController($scope, $http) {
     $scope.newPlayer = {};
     $scope.playerArray = [];
     $scope.averages = {};
-    $scope.leaguePaAvg = [];
-    $scope.leagueRuAvg = [];
 
     var options = {
         url: 'public/players.json',
