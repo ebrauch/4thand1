@@ -20,7 +20,7 @@ function addPlayer(req, res) {
     })
     setTimeout(function(){
         res.send(newPlayer);
-    },75)
+    },1000)
 }
 
 function getPos(newPlayer) {
@@ -38,29 +38,14 @@ function getPos(newPlayer) {
             getDefRecStats();
         }
         else if (newPlayer.posd == 'QB') {
-            getPassStats(newPlayer);
-            getDefPassStats(newPlayer.defense);
+            getPassStats();
+            getDefPassStats();
         }
         else if (newPlayer.posd == 'RB') {
-            getRushStats(newPlayer);
-            getDefRushStats(newPlayer.defense);
+            getRushStats();
+            getDefRushStats();
         }
     });
-    //process.nextTick(function(){
-    //    if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
-    //
-    //        getRecStats();
-    //        getDefRecStats();
-    //    }
-    //    else if (newPlayer.posd == 'QB') {
-    //        getPassStats(newPlayer);
-    //        getDefPassStats(newPlayer.defense);
-    //    }
-    //    else if (newPlayer.posd == 'RB') {
-    //        getRushStats(newPlayer);
-    //        getDefRushStats(newPlayer.defense);
-    //    }
-    //})
 }
 
 function getDef(team) {
@@ -98,8 +83,26 @@ function getRecStats() {
     })
 }
 
-function getPassStats(player) {
+function getPassStats() {
+    joinedPass.find({psr: newPlayer.player}, function(err, data){
+        newPlayer.DMAtt = 0;
+        newPlayer.DMYds = 0;
+        newPlayer.DRAtt = 0;
+        newPlayer.DRYds = 0;
+        newPlayer.SRAtt = 0;
+        newPlayer.SRYds = 0;
+        newPlayer.SMAtt = 0;
+        newPlayer.SMYds = 0;
+        newPlayer.SLAtt = 0;
+        newPlayer.SLYds = 0;
+        newPlayer.DLAtt = 0;
+        newPlayer.DLYds = 0;
 
+        data.forEach(function (playData) {
+            newPlayer[playData.loc + 'Att']++;
+            newPlayer[playData.loc + 'Yds'] += playData.yds;
+        });
+    })
 }
 
 function getRushStats(player) {
@@ -128,8 +131,26 @@ function getDefRecStats() {
         })
 }
 
-function getDefPassStats(player) {
+function getDefPassStats() {
+    joinedPass.find({def: newPlayer.defense}, function (err, data) {
+        newPlayer.defDMAtt = 0;
+        newPlayer.defDMYds = 0;
+        newPlayer.defDRAtt = 0;
+        newPlayer.defDRYds = 0;
+        newPlayer.defSRAtt = 0;
+        newPlayer.defSRYds = 0;
+        newPlayer.defSMAtt = 0;
+        newPlayer.defSMYds = 0;
+        newPlayer.defSLAtt = 0;
+        newPlayer.defSLYds = 0;
+        newPlayer.defDLAtt = 0;
+        newPlayer.defDLYds = 0;
 
+        data.forEach(function (playData) {
+            newPlayer['def' + playData.loc + 'Att']++;
+            newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
+        });
+    })
 }
 
 function getDefRushStats(player) {

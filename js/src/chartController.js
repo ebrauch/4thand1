@@ -242,24 +242,24 @@ function chartController ($scope) {
                    series: [{
                        name: qb.display.split(' -')[0],
                        data: [
-                           Math.floor(qb.dmYds / qb.dmAtt * 100) / 100 || 0,
-                           Math.floor(qb.drYds / qb.drAtt * 100) / 100 || 0,
-                           Math.floor(qb.srYds / qb.srAtt * 100) / 100 || 0,
-                           Math.floor(qb.smYds / qb.smAtt * 100) / 100 || 0,
-                           Math.floor(qb.slYds / qb.slAtt * 100) / 100 || 0,
-                           Math.floor(qb.dlYds / qb.dlAtt * 100) / 100 || 0
+                           Math.floor(qb.DMYds / qb.DMAtt * 100) / 100 || 0,
+                           Math.floor(qb.DRYds / qb.DRAtt * 100) / 100 || 0,
+                           Math.floor(qb.SRYds / qb.SRAtt * 100) / 100 || 0,
+                           Math.floor(qb.SMYds / qb.SMAtt * 100) / 100 || 0,
+                           Math.floor(qb.SLYds / qb.SLAtt * 100) / 100 || 0,
+                           Math.floor(qb.DLYds / qb.DLAtt * 100) / 100 || 0
                        ],
                        pointPlacement: 'on',
                        color: $scope.teamColors[qb.cteam]
                    }, {
                        name: qb.defense,
                        data: [
-                           Math.floor(qb.defDmYds / qb.defDmAtt * 100) / 100 || 0,
-                           Math.floor(qb.defDrYds / qb.defDrAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSrYds / qb.defSrAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSmYds / qb.defSmAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSlYds / qb.defSlAtt * 100) / 100 || 0,
-                           Math.floor(qb.defDlYds / qb.defDlAtt * 100) / 100 || 0
+                           Math.floor(qb.defDMYds / qb.defDMAtt * 100) / 100 || 0,
+                           Math.floor(qb.defDRYds / qb.defDRAtt * 100) / 100 || 0,
+                           Math.floor(qb.defSRYds / qb.defSRAtt * 100) / 100 || 0,
+                           Math.floor(qb.defSMYds / qb.defSMAtt * 100) / 100 || 0,
+                           Math.floor(qb.defSLYds / qb.defSLAtt * 100) / 100 || 0,
+                           Math.floor(qb.defDLYds / qb.defDLAtt * 100) / 100 || 0
                        ],
                        pointPlacement: 'on',
                        color: $scope.teamColors[qb.defense]
