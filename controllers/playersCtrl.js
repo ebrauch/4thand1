@@ -141,6 +141,7 @@ function getDefRecStats() {
             newPlayer.defSlYds = 0;
             newPlayer.defDlAtt = 0;
             newPlayer.defDlYds = 0;
+            
             data.forEach(function (playData) {
                 if (playData.loc == 'DM') {
                     newPlayer.defDmAtt++;
