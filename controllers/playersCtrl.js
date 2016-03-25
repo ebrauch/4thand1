@@ -5,6 +5,7 @@ var posAverages = require('../models/schemas.js').posAverages;
 var pbp = require('../models/schemas.js').pbp;
 
 var newPlayer = {};
+var statsPopulated = false;
 
 function getAverages(req, res) {
     posAverages.find({}, function(err, data){
@@ -80,6 +81,9 @@ function addPlayer(req, res) {
                 newPlayer[playData.loc + 'Trg']++;
                 newPlayer[playData.loc + 'Yds'] += playData.yds;
             });
+            process.nextTick(function(){
+                statsPopulated = true;
+            })
         })
     }
 
@@ -102,6 +106,9 @@ function addPlayer(req, res) {
                 newPlayer[playData.loc + 'Att']++;
                 newPlayer[playData.loc + 'Yds'] += playData.yds;
             });
+            process.nextTick(function(){
+                statsPopulated = true;
+            })
         })
     }
 
@@ -125,6 +132,9 @@ function addPlayer(req, res) {
                 newPlayer[playData.dir + 'Att']++;
                 newPlayer[playData.dir + 'Yds'] += playData.yds;
             });
+            process.nextTick(function(){
+                statsPopulated = true;
+            })
         })
     }
 
@@ -147,9 +157,12 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
             });
-            process.nextTick(function(){
-                res.send(newPlayer);
-            })
+            for (;;) {
+                if (statsPopulated) {
+                    res.send(newPlayer);
+                    break;
+                }
+            }
         })
     }
 
@@ -172,9 +185,12 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.loc + 'Att']++;
                 newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
             });
-            process.nextTick(function(){
-                res.send(newPlayer);
-            })
+            for (;;) {
+                if (statsPopulated) {
+                    res.send(newPlayer);
+                    break;
+                }
+            }
         })
     }
 
@@ -198,9 +214,12 @@ function addPlayer(req, res) {
                 newPlayer['def' + playData.dir + 'Att']++;
                 newPlayer['def' + playData.dir + 'Yds'] += playData.yds;
             });
-            process.nextTick(function(){
-                res.send(newPlayer);
-            })
+            for (;;) {
+                if (statsPopulated) {
+                    res.send(newPlayer);
+                    break;
+                }
+            }
         })
     }
 }
