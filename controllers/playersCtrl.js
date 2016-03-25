@@ -5,8 +5,6 @@ var player = require('../models/schemas.js').player;
 var joinedPass = require('../models/schemas.js').joinedPass;
 
 var newPlayer = {};
-var playerDataLoaded = false;
-var defDataLoaded = false;
 
 function addPlayer(req, res) {
     newPlayer.player = req.params.player;
@@ -17,7 +15,7 @@ function addPlayer(req, res) {
     })
     setTimeout(function(){
         res.send(newPlayer);
-    },5000)
+    },75)
 }
 
 function getPos(newPlayer) {
@@ -31,7 +29,6 @@ function getPos(newPlayer) {
             newPlayer.posd = data[0].posd;
         }
         if (newPlayer.posd == 'LWR' || newPlayer.posd == 'RWR' || newPlayer.posd == 'TE') {
-            console.log('hi')
             getRecStats();
             getDefRecStats();
         }
@@ -76,47 +73,24 @@ function getDef(team) {
 
 function getRecStats() {
     joinedPass.find({trg: newPlayer.player}, function(err, data){
-            newPlayer.dmTrg = 0;
-            newPlayer.dmYds = 0;
-            newPlayer.drTrg = 0;
-            newPlayer.drYds = 0;
-            newPlayer.srTrg = 0;
-            newPlayer.srYds = 0;
-            newPlayer.smTrg = 0;
-            newPlayer.smYds = 0;
-            newPlayer.slTrg = 0;
-            newPlayer.slYds = 0;
-            newPlayer.dlTrg = 0;
-            newPlayer.dlYds = 0;
+            newPlayer.DMTrg = 0;
+            newPlayer.DMYds = 0;
+            newPlayer.DRTrg = 0;
+            newPlayer.DRYds = 0;
+            newPlayer.SRTrg = 0;
+            newPlayer.SRYds = 0;
+            newPlayer.SMTrg = 0;
+            newPlayer.SMYds = 0;
+            newPlayer.SLTrg = 0;
+            newPlayer.SLYds = 0;
+            newPlayer.DLTrg = 0;
+            newPlayer.DLYds = 0;
 
-        data.forEach(function(playData){
-            if (playData.loc == 'DM') {
-                newPlayer.dmTrg++;
-                newPlayer.dmYds += playData.yds;
-            }
-            if (playData.loc == 'DR') {
-                newPlayer.drTrg++;
-                newPlayer.drYds += playData.yds;
-            }
-            if (playData.loc == 'SR') {
-                newPlayer.srTrg++;
-                newPlayer.srYds += playData.yds;
-            }
-            if (playData.loc == 'SM') {
-                newPlayer.smTrg++;
-                newPlayer.smYds += playData.yds;
-            }
-            if (playData.loc == 'SL') {
-                newPlayer.slTrg++;
-                newPlayer.slYds += playData.yds;
-            }
-            if (playData.loc == 'DL') {
-                newPlayer.dlTrg++;
-                newPlayer.dlYds += playData.yds;
-            }
-        });
+            data.forEach(function (playData) {
+                newPlayer[playData.loc + 'Trg']++;
+                newPlayer[playData.loc + 'Yds'] += playData.yds;
+            });
     })
-    playerDataLoaded = true;
 }
 
 function getPassStats(player) {
@@ -129,44 +103,22 @@ function getRushStats(player) {
 
 function getDefRecStats() {
         joinedPass.find({$and: [{def: newPlayer.defense}, {posd: newPlayer.posd}, {dcp: newPlayer.dcp}]}, function (err, data) {
-            newPlayer.defDmAtt = 0;
-            newPlayer.defDmYds = 0;
-            newPlayer.defDrAtt = 0;
-            newPlayer.defDrYds = 0;
-            newPlayer.defSrAtt = 0;
-            newPlayer.defSrYds = 0;
-            newPlayer.defSmAtt = 0;
-            newPlayer.defSmYds = 0;
-            newPlayer.defSlAtt = 0;
-            newPlayer.defSlYds = 0;
-            newPlayer.defDlAtt = 0;
-            newPlayer.defDlYds = 0;
-            
+            newPlayer.defDMAtt = 0;
+            newPlayer.defDMYds = 0;
+            newPlayer.defDRAtt = 0;
+            newPlayer.defDRYds = 0;
+            newPlayer.defSRAtt = 0;
+            newPlayer.defSRYds = 0;
+            newPlayer.defSMAtt = 0;
+            newPlayer.defSMYds = 0;
+            newPlayer.defSLAtt = 0;
+            newPlayer.defSLYds = 0;
+            newPlayer.defDLAtt = 0;
+            newPlayer.defDLYds = 0;
+
             data.forEach(function (playData) {
-                if (playData.loc == 'DM') {
-                    newPlayer.defDmAtt++;
-                    newPlayer.defDmYds += playData.yds;
-                }
-                if (playData.loc == 'DR') {
-                    newPlayer.defDrAtt++;
-                    newPlayer.defDrYds += playData.yds;
-                }
-                if (playData.loc == 'SR') {
-                    newPlayer.defSrAtt++;
-                    newPlayer.defSrYds += playData.yds;
-                }
-                if (playData.loc == 'SM') {
-                    newPlayer.defSmAtt++;
-                    newPlayer.defSmYds += playData.yds;
-                }
-                if (playData.loc == 'SL') {
-                    newPlayer.defSlAtt++;
-                    newPlayer.defSlYds += playData.yds;
-                }
-                if (playData.loc == 'DL') {
-                    newPlayer.defDlAtt++;
-                    newPlayer.defDlYds += playData.yds;
-                }
+                newPlayer['def' + playData.loc + 'Att']++;
+                newPlayer['def' + playData.loc + 'Yds'] += playData.yds;
             });
         })
 }

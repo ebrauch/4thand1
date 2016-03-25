@@ -34,8 +34,24 @@ function playerController($scope, $http) {
 
     $scope.addPlayer = function (newPlayer) {
         $http.get('/api/' + $scope.newPlayer.player + '/' + $scope.newPlayer.cteam)
-            .then(function (serverResponse) {
-                console.log(serverResponse.data.posd);
+            .then(function (playerData) {
+                playerData.data.display = $scope.newPlayer.display;
+                $scope.playerArray.forEach(function (existingplayer) {
+                    if (existingplayer.player == playerData.data.player) {
+                        $('html,body').animate({
+                            scrollTop: $("#" + playerData.data.player).offset().top - 100
+                        });
+                        playerData = {};
+                    }
+                });
+                if (playerData != {}) {
+                    $scope.playerArray.push(playerData.data);
+                    setTimeout(function () {
+                        $('html,body').animate({
+                            scrollTop: $("#" + playerData.data.player).offset().top - 100
+                        });
+                    }, 0)
+                }
             })
     }
     //$scope.addPlayer = function (newPlayer) {
