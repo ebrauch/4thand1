@@ -80,10 +80,10 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer[playData.loc + 'Trg']++;
                 newPlayer[playData.loc + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    statsPopulated = true;
+                }
             });
-            process.nextTick(function(){
-                statsPopulated = true;
-            })
         })
     }
 
@@ -105,10 +105,10 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer[playData.loc + 'Att']++;
                 newPlayer[playData.loc + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    statsPopulated = true;
+                }
             });
-            process.nextTick(function(){
-                statsPopulated = true;
-            })
         })
     }
 
@@ -131,10 +131,10 @@ function addPlayer(req, res) {
             data.forEach(function (playData) {
                 newPlayer[playData.dir + 'Att']++;
                 newPlayer[playData.dir + 'Yds'] += playData.yds;
+                if (data.indexOf(playData) == data.length - 1) {
+                    statsPopulated = true;
+                }
             });
-            process.nextTick(function(){
-                statsPopulated = true;
-            })
         })
     }
 
