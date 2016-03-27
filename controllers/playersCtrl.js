@@ -57,17 +57,11 @@ function addPlayer(req, res) {
 
     function getDef(team) {
         game.find({
-            //$and: [
-                //{
                     $or: [
                         {v: team},
                         {h: team}
                     ]
-                //},
-                //{wk: 17}
-            //]
         }, function (err, data) {
-            //newPlayer.cteam == data[0].h ? newPlayer.defense = data[0].v : newPlayer.defense = data[0].h;
             newPlayer.cteam == data[data.length - 1].h ? newPlayer.defense = data[data.length - 1].v : newPlayer.defense = data[data.length - 1].h
             getDefGp();
         });
