@@ -49,7 +49,6 @@ function playerController($scope, $http) {
                     if (!playerData.data.player) {
                         return
                     }
-                    console.log(playerData.data);
                     $scope.playerArray.push(playerData.data);
                     setTimeout(function () {
                         $('html,body').animate({
