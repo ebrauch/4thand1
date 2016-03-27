@@ -3,6 +3,7 @@ var player = require('../models/schemas.js').player;
 var joinedPass = require('../models/schemas.js').joinedPass;
 var posAverages = require('../models/schemas.js').posAverages;
 var pbp = require('../models/schemas.js').pbp;
+var offense = require('../models/schemas.js').offense;
 
 var newPlayer = {};
 var statsPopulated = false;
@@ -20,7 +21,14 @@ function addPlayer(req, res) {
     process.nextTick(function () {
         getDef(newPlayer.cteam);
         getPos(newPlayer);
+        getGamesPlayed(newPlayer)
     })
+
+    function getGamesPlayed(newPlayer) {
+        offense.find({player: newPlayer.player}, function(err, data){
+            newPlayer.gp = data.length;
+        })
+    }
 
     function getPos(newPlayer) {
         player.find({player: newPlayer.player}, function (err, data) {
