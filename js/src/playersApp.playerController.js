@@ -4,6 +4,7 @@ function playerController($scope, $http) {
     $scope.newPlayer = {};
     $scope.playerArray = [];
     $scope.averages = {};
+    $scope.leagueTotals = {};
 
     var options = {
         url: 'public/players.json',
@@ -24,35 +25,44 @@ function playerController($scope, $http) {
 
     $('#players').easyAutocomplete(options);
 
-    $http.get('/api/averages')
+    $http.get('/api/totals')
         .then(function(serverResponse){
-            $scope.averages = serverResponse.data[0];
+            $scope.leagueTotals = serverResponse.data;
         })
 
     $scope.addPlayer = function (newPlayer) {
         if (!newPlayer.display) {
             return
         }
-        $http.get('/api/' + $scope.newPlayer.player + '/' + $scope.newPlayer.cteam)
+        $http.get('/api/' + $scope.newPlayer.player)
             .then(function (playerData) {
-                playerData.data.leagueAvg = $scope.averages[playerData.data.posd + '' + playerData.data.dcp]
+                //playerData.data.leagueAvg = $scope.averages[playerData.data.posd + '' + playerData.data.dcp]
+                var display = $scope.newPlayer.display;
+                $scope.newPlayer = playerData.data[0];
+                $scope.newPlayer.display = display;
+                $scope.leagueTotals.forEach(function(team){
+                    if (team.team == $scope.newPlayer.def) {
+                        $scope.newPlayer.defStats = team;
+                    }
+                })
+                console.log($scope.newPlayer)
                 playerData.data.display = $scope.newPlayer.display;
                 $scope.playerArray.forEach(function (existingplayer) {
-                    if (existingplayer.player == playerData.data.player) {
+                    if (existingplayer.player == $scope.newPlayer.player) {
                         $('html,body').animate({
-                            scrollTop: $("#" + playerData.data.player).offset().top - 100
+                            scrollTop: $("#" + $scope.newPlayer.player).offset().top - 100
                         });
-                        playerData = {};
+                        $scope.newPlayer = {};
                     }
                 });
-                if (playerData != {}) {
-                    if (!playerData.data.player) {
+                if ($scope.newPlayer != {}) {
+                    if (!$scope.newPlayer.player) {
                         return
                     }
-                    $scope.playerArray.push(playerData.data);
+                    $scope.playerArray.push($scope.newPlayer);
                     setTimeout(function () {
                         $('html,body').animate({
-                            scrollTop: $("#" + playerData.data.player).offset().top - 100
+                            scrollTop: $("#" + $scope.newPlayer.player).offset().top - 100
                         });
                     }, 0)
                 }

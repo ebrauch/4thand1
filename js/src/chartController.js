@@ -1,6 +1,7 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
+    var leagueTot = $scope.leagueTotals[0];
     $scope.teamColors = {
         ARI: "#97233F",
         ATL: "#A71930",
@@ -86,40 +87,42 @@ function chartController ($scope) {
                     series: [{
                         name: wr.display.split(' -')[0],
                         data: [
-                            Math.floor(wr.DMYds / wr.DMTrg * 100) / 100 || 0,
-                            Math.floor(wr.DRYds / wr.DRTrg * 100) / 100 || 0,
-                            Math.floor(wr.SRYds / wr.SRTrg * 100) / 100 || 0,
-                            Math.floor(wr.SMYds / wr.SMTrg * 100) / 100 || 0,
-                            Math.floor(wr.SLYds / wr.SLTrg * 100) / 100 || 0,
-                            Math.floor(wr.DLYds / wr.DLTrg * 100) / 100 || 0
+                            Math.floor(wr.DMYds / wr.DMAtt * 100) / 100 || 0,
+                            Math.floor(wr.DRYds / wr.DRAtt * 100) / 100 || 0,
+                            Math.floor(wr.SRYds / wr.SRAtt * 100) / 100 || 0,
+                            Math.floor(wr.SMYds / wr.SMAtt * 100) / 100 || 0,
+                            Math.floor(wr.SLYds / wr.SLAtt * 100) / 100 || 0,
+                            Math.floor(wr.DLYds / wr.DLAtt * 100) / 100 || 0
                         ],
                         pointPlacement: 'on',
                         color: $scope.teamColors[wr.cteam]
                     }, {
-                        name: wr.defense + ' v. ' + wr.posd + '-' + wr.dcp + 's',
+                        name: wr.def + ' v. ' + wr.posd + '-' + wr.dcp + 's',
                         data: [
-                            Math.floor(wr.defDMYds / wr.defDMAtt * 100) / 100 || 0,
-                            Math.floor(wr.defDRYds / wr.defDRAtt * 100) / 100 || 0,
-                            Math.floor(wr.defSRYds / wr.defSRAtt * 100) / 100 || 0,
-                            Math.floor(wr.defSMYds / wr.defSMAtt * 100) / 100 || 0,
-                            Math.floor(wr.defSLYds / wr.defSLAtt * 100) / 100 || 0,
-                            Math.floor(wr.defDLYds / wr.defDLAtt * 100) / 100 || 0
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
                         ],
                         pointPlacement: 'on',
-                        color: $scope.teamColors[wr.defense]
-                    }, {
+                        color: $scope.teamColors[wr.def]
+                    },
+                        {
                         name: 'League Average v. ' + wr.posd + '-' + wr.dcp + 's',
                         data: [
-                            wr.leagueAvg[0] || 0,
-                            wr.leagueAvg[1] || 0,
-                            wr.leagueAvg[2] || 0,
-                            wr.leagueAvg[3] || 0,
-                            wr.leagueAvg[4] || 0,
-                            wr.leagueAvg[5] || 0
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
                         ],
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
-                    }]
+                    }
+                    ]
                 })
             },0)
         })
@@ -155,29 +158,29 @@ function chartController ($scope) {
                             },
                             {
                                 type: 'column',
-                                name: rb.defense,
+                                name: rb.def,
                                 data: [
-                                    Math.floor(rb.defLEYds / rb.defLEAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defLTYds / rb.defLTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defLGYds / rb.defLGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defMDYds / rb.defMDAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defRGYds / rb.defRGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defRTYds / rb.defRTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defREYds / rb.defREAtt * 100) / 100 || 0
+                                    Math.floor(rb.defStats.LEYds / rb.defStats.LEAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.LTYds / rb.defStats.LTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.LGYds / rb.defStats.LGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.MDYds / rb.defStats.MDAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.RGYds / rb.defStats.RGAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.RTYds / rb.defStats.RTAtt * 100) / 100 || 0,
+                                    Math.floor(rb.defStats.REYds / rb.defStats.REAtt * 100) / 100 || 0
                                 ],
-                                color: $scope.teamColors[rb.defense]
+                                color: $scope.teamColors[rb.def]
                             },
                             {
                                 type: 'spline',
                                 name: 'League Average',
                                 data: [
-                                    5.13,
-                                    4.15,
-                                    4.14,
-                                    3.90,
-                                    3.93,
-                                    4.34,
-                                    4.90
+                                    Math.floor(leagueTot.LEYds / leagueTot.LEAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.LTYds / leagueTot.LTAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.LGYds / leagueTot.LGAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.MDYds / leagueTot.MDAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.RGYds / leagueTot.RGAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.RTYds / leagueTot.RTAtt * 100) / 100 || 0,
+                                    Math.floor(leagueTot.REYds / leagueTot.REAtt * 100) / 100 || 0
                                 ],
                                 marker: {
                                     lineWidth: 2,
@@ -252,26 +255,26 @@ function chartController ($scope) {
                        pointPlacement: 'on',
                        color: $scope.teamColors[qb.cteam]
                    }, {
-                       name: qb.defense,
+                       name: qb.def,
                        data: [
-                           Math.floor(qb.defDMYds / qb.defDMAtt * 100) / 100 || 0,
-                           Math.floor(qb.defDRYds / qb.defDRAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSRYds / qb.defSRAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSMYds / qb.defSMAtt * 100) / 100 || 0,
-                           Math.floor(qb.defSLYds / qb.defSLAtt * 100) / 100 || 0,
-                           Math.floor(qb.defDLYds / qb.defDLAtt * 100) / 100 || 0
+                           Math.floor(qb.defStats.DMYds / qb.defStats.DMAtt * 100) / 100 || 0,
+                           Math.floor(qb.defStats.DRYds / qb.defStats.DRAtt * 100) / 100 || 0,
+                           Math.floor(qb.defStats.SRYds / qb.defStats.SRAtt * 100) / 100 || 0,
+                           Math.floor(qb.defStats.SMYds / qb.defStats.SMAtt * 100) / 100 || 0,
+                           Math.floor(qb.defStats.SLYds / qb.defStats.SLAtt * 100) / 100 || 0,
+                           Math.floor(qb.defStats.DLYds / qb.defStats.DLAtt * 100) / 100 || 0
                        ],
                        pointPlacement: 'on',
-                       color: $scope.teamColors[qb.defense]
+                       color: $scope.teamColors[qb.def]
                    }, {
                        name: 'League Average',
                        data: [
-                           13.45,
-                           10.95,
-                           5.84,
-                           7.61,
-                           6.07,
-                           11.24
+                           Math.floor(leagueTot.DMYds / leagueTot.DMAtt * 100) / 100 || 0,
+                           Math.floor(leagueTot.DRYds / leagueTot.DRAtt * 100) / 100 || 0,
+                           Math.floor(leagueTot.SRYds / leagueTot.SRAtt * 100) / 100 || 0,
+                           Math.floor(leagueTot.SMYds / leagueTot.SMAtt * 100) / 100 || 0,
+                           Math.floor(leagueTot.SLYds / leagueTot.SLAtt * 100) / 100 || 0,
+                           Math.floor(leagueTot.DLYds / leagueTot.DLAtt * 100) / 100 || 0
                        ],
                        pointPlacement: 'on',
                        dashStyle: 'shortdash'

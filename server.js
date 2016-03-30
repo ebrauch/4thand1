@@ -14,8 +14,8 @@ app.get('/', function(req, res){
 
 var playersCtrl = require('./controllers/playersCtrl.js');
 
-app.get('/api/:player/:team', playersCtrl.addPlayer);
-app.get('/api/averages', playersCtrl.getAverages);
+app.get('/api/totals', playersCtrl.getTotals);
+app.get('/api/:player', playersCtrl.addPlayer);
 
 var port = 3000;
 
