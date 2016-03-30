@@ -306,7 +306,7 @@ var totalSchema = mongoose.Schema({
     SLAtt    : Number,
     SLYds    : Number,
     DLAtt    : Number,
-    DLYds    : Number,
+    DLYds    : Number
 })
 
 module.exports = {

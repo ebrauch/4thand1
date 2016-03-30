@@ -36,7 +36,6 @@ function playerController($scope, $http) {
         }
         $http.get('/api/' + $scope.newPlayer.player)
             .then(function (playerData) {
-                //playerData.data.leagueAvg = $scope.averages[playerData.data.posd + '' + playerData.data.dcp]
                 var display = $scope.newPlayer.display;
                 $scope.newPlayer = playerData.data[0];
                 $scope.newPlayer.display = display;
@@ -45,7 +44,6 @@ function playerController($scope, $http) {
                         $scope.newPlayer.defStats = team;
                     }
                 })
-                console.log($scope.newPlayer)
                 playerData.data.display = $scope.newPlayer.display;
                 $scope.playerArray.forEach(function (existingplayer) {
                     if (existingplayer.player == $scope.newPlayer.player) {

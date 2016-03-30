@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/nfl');
 
 updateLeagueStats();
 updateTeamStats();
-//updatePlayerStats();
+updatePlayerStats();
 
 
 function updateLeagueStats(){
@@ -168,7 +168,6 @@ function updatePlayerStats(){
                 updateRushStats(playerP);
                 updateGP(playerP);
                 updateDef(playerP);
-                //var obj = {};
                 setTimeout(function () {
                     player.update({player: playerP.player}, playerP).exec();
                     console.log('done');
