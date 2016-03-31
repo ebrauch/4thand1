@@ -6,7 +6,7 @@ function chartController ($scope) {
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
         $scope.playerArray.forEach(function(player){
-            if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR') {
+            if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR' || player.posd == 'SWR') {
                 $scope.buildWrChart(player);
             }
             else if (player.posd == 'RB' || player.posd == 'FB') {

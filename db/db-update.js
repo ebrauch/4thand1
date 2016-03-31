@@ -16,10 +16,10 @@ updatePlayerStats();
 function updateLeagueStats(){
     var response = {};
     response.gp = 0;
-    var positions = [, 'TE', 'LWR', 'RWR'];
+    var positions = [, 'TE', 'LWR', 'RWR', 'SWR'];
     var depth = [, 1, 2, 3, 4];
     var locs = [, 'DM', 'DR', 'SR', 'SM', 'SL', 'DL'];
-    for (i = 1; i < 4; i++) {
+    for (i = 1; i < 5; i++) {
         for (j = 1; j < 5; j++) {
             for (k = 1; k < 7; k++) {
                 response[positions[i] + depth[j] + locs[k] + 'Att'] = 0;
@@ -75,10 +75,10 @@ function updateTeamStats(){
             if (team.team.length < 4) {
                 var response = {};
                 response.gp = 0;
-                var positions = [, 'TE', 'LWR', 'RWR'];
+                var positions = [, 'TE', 'LWR', 'RWR', 'SWR'];
                 var depth = [, 1, 2, 3, 4];
                 var locs = [, 'DM', 'DR', 'SR', 'SM', 'SL', 'DL'];
-                for (i = 1; i < 4; i++) {
+                for (i = 1; i < 5; i++) {
                     for (j = 1; j < 5; j++) {
                         for (k = 1; k < 7; k++) {
                             response[positions[i] + depth[j] + locs[k] + 'Att'] = 0;
@@ -135,7 +135,6 @@ function updateTeamStats(){
 function updatePlayerStats(){
     player.find({}, function(err, data){
         data.forEach(function(playerP){
-            //if(playerP.player == 'AA-0025') {
                 playerP.LEAtt = 0;
                 playerP.LEYds = 0;
                 playerP.LTAtt = 0;
@@ -170,7 +169,7 @@ function updatePlayerStats(){
                 updateDef(playerP);
                 setTimeout(function () {
                     player.update({player: playerP.player}, playerP).exec();
-                    console.log('done');
+                    console.log(playerP.player + ' updated');
                 }, 120000)
             //}
         })
