@@ -13,13 +13,11 @@ function chartController ($scope) {
                 $scope.buildQbChart(player);
             }
             else if (player.posd == 'RB') {
-                console.log(player);
                 $scope.buildRbChart(player);
             }
         })
     }
     var leagueTot = $scope.leagueTotals[0];
-    console.log(leagueTot)
     $scope.teamColors = {
         ARI: "#97233F",
         ATL: "#A71930",
@@ -183,7 +181,6 @@ function chartController ($scope) {
         })
     };
     $scope.buildRbChart = function (rb) {
-        console.log(rb)
         var displayData = [];
         if ($scope.buttonDisplay[0]) {
             displayData = [
