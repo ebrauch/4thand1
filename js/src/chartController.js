@@ -289,6 +289,65 @@ function chartController ($scope) {
     };
 
     $scope.buildQbChart = function(qb) {
+        var displayData = [];
+        if ($scope.buttonDisplay[0]) {
+            displayData = [
+                [
+                    Math.floor(qb.DMYds / qb.DMAtt * 100) / 100 || 0,
+                    Math.floor(qb.DRYds / qb.DRAtt * 100) / 100 || 0,
+                    Math.floor(qb.SRYds / qb.SRAtt * 100) / 100 || 0,
+                    Math.floor(qb.SMYds / qb.SMAtt * 100) / 100 || 0,
+                    Math.floor(qb.SLYds / qb.SLAtt * 100) / 100 || 0,
+                    Math.floor(qb.DLYds / qb.DLAtt * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(qb.defStats.DMYds / qb.defStats.DMAtt * 100) / 100 || 0,
+                    Math.floor(qb.defStats.DRYds / qb.defStats.DRAtt * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SRYds / qb.defStats.SRAtt * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SMYds / qb.defStats.SMAtt * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SLYds / qb.defStats.SLAtt * 100) / 100 || 0,
+                    Math.floor(qb.defStats.DLYds / qb.defStats.DLAtt * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(leagueTot.DMYds / leagueTot.DMAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.DRYds / leagueTot.DRAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.SRYds / leagueTot.SRAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.SMYds / leagueTot.SMAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.SLYds / leagueTot.SLAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.DLYds / leagueTot.DLAtt * 100) / 100 || 0
+                ],
+                'Passing Yards Per Attempt'
+            ]
+        }
+        else {
+            displayData = [
+                [
+                    Math.floor(qb.DMYds / qb.gp * 100) / 100 || 0,
+                    Math.floor(qb.DRYds / qb.gp * 100) / 100 || 0,
+                    Math.floor(qb.SRYds / qb.gp * 100) / 100 || 0,
+                    Math.floor(qb.SMYds / qb.gp * 100) / 100 || 0,
+                    Math.floor(qb.SLYds / qb.gp * 100) / 100 || 0,
+                    Math.floor(qb.DLYds / qb.gp * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(qb.defStats.DMYds / qb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(qb.defStats.DRYds / qb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SRYds / qb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SMYds / qb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(qb.defStats.SLYds / qb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(qb.defStats.DLYds / qb.defStats.gp * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(leagueTot.DMYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.DRYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.SRYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.SMYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.SLYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.DLYds / leagueTot.gp * 100) / 100 || 0
+                ],
+                'Passing Yards Per Game'
+            ]
+        }
         $(function() {
             setTimeout(function(){
                $('#' + qb.player).highcharts({
@@ -301,7 +360,7 @@ function chartController ($scope) {
                    },
 
                    title: {
-                       text: 'Passing Yards Per Attempt'
+                       text: displayData[3]
                    },
 
                    pane: {
@@ -338,38 +397,17 @@ function chartController ($scope) {
 
                    series: [{
                        name: qb.display.split(' -')[0],
-                       data: [
-                           Math.floor(qb.DMYds / qb.DMAtt * 100) / 100 || 0,
-                           Math.floor(qb.DRYds / qb.DRAtt * 100) / 100 || 0,
-                           Math.floor(qb.SRYds / qb.SRAtt * 100) / 100 || 0,
-                           Math.floor(qb.SMYds / qb.SMAtt * 100) / 100 || 0,
-                           Math.floor(qb.SLYds / qb.SLAtt * 100) / 100 || 0,
-                           Math.floor(qb.DLYds / qb.DLAtt * 100) / 100 || 0
-                       ],
+                       data: displayData[0],
                        pointPlacement: 'on',
                        color: $scope.teamColors[qb.cteam]
                    }, {
                        name: qb.def,
-                       data: [
-                           Math.floor(qb.defStats.DMYds / qb.defStats.DMAtt * 100) / 100 || 0,
-                           Math.floor(qb.defStats.DRYds / qb.defStats.DRAtt * 100) / 100 || 0,
-                           Math.floor(qb.defStats.SRYds / qb.defStats.SRAtt * 100) / 100 || 0,
-                           Math.floor(qb.defStats.SMYds / qb.defStats.SMAtt * 100) / 100 || 0,
-                           Math.floor(qb.defStats.SLYds / qb.defStats.SLAtt * 100) / 100 || 0,
-                           Math.floor(qb.defStats.DLYds / qb.defStats.DLAtt * 100) / 100 || 0
-                       ],
+                       data: displayData[1],
                        pointPlacement: 'on',
                        color: $scope.teamColors[qb.def]
                    }, {
                        name: 'League Average',
-                       data: [
-                           Math.floor(leagueTot.DMYds / leagueTot.DMAtt * 100) / 100 || 0,
-                           Math.floor(leagueTot.DRYds / leagueTot.DRAtt * 100) / 100 || 0,
-                           Math.floor(leagueTot.SRYds / leagueTot.SRAtt * 100) / 100 || 0,
-                           Math.floor(leagueTot.SMYds / leagueTot.SMAtt * 100) / 100 || 0,
-                           Math.floor(leagueTot.SLYds / leagueTot.SLAtt * 100) / 100 || 0,
-                           Math.floor(leagueTot.DLYds / leagueTot.DLAtt * 100) / 100 || 0
-                       ],
+                       data: displayData[2],
                        pointPlacement: 'on',
                        dashStyle: 'shortdash'
                    }]
