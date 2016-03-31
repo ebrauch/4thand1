@@ -73,7 +73,8 @@ function chartController ($scope) {
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
-                ]
+                ],
+                'Receiving Yards Per Target'
             ]
         }
         else {
@@ -101,7 +102,8 @@ function chartController ($scope) {
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0
-                ]
+                ],
+                'Receiving Yards Per Game'
             ]
         }
         $(function() {
@@ -116,7 +118,7 @@ function chartController ($scope) {
                     },
 
                     title: {
-                        text: 'Receiving Yards Per Target'
+                        text: displayData[3]
                     },
 
                     pane: {

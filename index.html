@@ -123,8 +123,9 @@
             <div id={{player.player}}  style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
         </div>
     <button id="showYPG" class="btn btn-default" ng-show="buttonDisplay[0]" ng-click="changeView()">View Yards Per Game</button>
-    <button id="showYPA" class="btn btn-default" ng-show="buttonDisplay[1]" ng-click="changeView()">View Yards Per Attempt</button>
+    <button id="showYPA" class="btn btn-default" ng-show="buttonDisplay[1]" ng-click="changeView()">View Yards Per Target</button>
     </div>
+    <br>
     <div class="row search">
         <input class="search" id="players" type="text" placeholder="Search for players">
         <button class="btn btn-success search" type="submit" ng-click="addPlayer(newPlayer); resetSearch()">Submit</button>
