@@ -1,7 +1,7 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
-    $scope.buttonDisplay = [true, false, false];
+    $scope.buttonDisplay = [true, false];
     $scope.changeView = function() {
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
@@ -9,11 +9,11 @@ function chartController ($scope) {
             if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR') {
                 $scope.buildWrChart(player);
             }
+            else if (player.posd == 'RB' || player.posd == 'FB') {
+                $scope.buildRbChart(player);
+            }
             else if (player.posd == 'QB') {
                 $scope.buildQbChart(player);
-            }
-            else if (player.posd == 'RB') {
-                $scope.buildRbChart(player);
             }
         })
     }

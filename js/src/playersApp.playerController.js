@@ -5,6 +5,7 @@ function playerController($scope, $http) {
     $scope.playerArray = [];
     $scope.averages = {};
     $scope.leagueTotals = {};
+    $scope.firstPlayer = false;
 
     var options = {
         url: 'public/players.json',
@@ -31,6 +32,7 @@ function playerController($scope, $http) {
         })
 
     $scope.addPlayer = function (newPlayer) {
+        $scope.firstPlayer = true;
         if (!newPlayer.display) {
             return
         }
