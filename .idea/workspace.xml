@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8cd6084-ba62-474f-94ad-a2b300edbaad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/src/chartController.js" afterPath="$PROJECT_DIR$/js/src/chartController.js" />
     </list>
     <ignored path="4thand1.iws" />
@@ -64,12 +63,12 @@
       <file leaf-file-name="chartController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7966321">
-              <caret line="280" column="39" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.5051814">
+              <caret line="283" column="46" selection-start-line="283" selection-start-column="46" selection-end-line="283" selection-end-column="46" />
               <folding>
                 <element signature="e#886#1660#0" expanded="false" />
-                <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
-                <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
+                <marker date="1459405825000" expanded="true" signature="7234:7254" placeholder="..." />
+                <marker date="1459405825000" expanded="true" signature="15226:15246" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -496,8 +495,8 @@
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
             <element signature="e#886#1660#0" expanded="false" />
-            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
-            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="15226:15246" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -575,8 +574,8 @@
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
             <element signature="e#886#1660#0" expanded="false" />
-            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
-            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="15226:15246" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -866,12 +865,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7966321">
-          <caret line="280" column="39" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.5051814">
+          <caret line="283" column="46" selection-start-line="283" selection-start-column="46" selection-end-line="283" selection-end-column="46" />
           <folding>
             <element signature="e#886#1660#0" expanded="false" />
-            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
-            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459405825000" expanded="true" signature="15226:15246" placeholder="..." />
           </folding>
         </state>
       </provider>

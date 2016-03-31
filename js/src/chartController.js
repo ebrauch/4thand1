@@ -214,8 +214,7 @@ function chartController ($scope) {
                     Math.floor(leagueTot.RTYds / leagueTot.RTAtt * 100) / 100 || 0,
                     Math.floor(leagueTot.REYds / leagueTot.REAtt * 100) / 100 || 0
                 ],
-                'Rushing Yards Per Attempt',
-                'League Average'
+                'Rushing Yards Per Attempt'
             ]
         }
         else {
@@ -239,16 +238,15 @@ function chartController ($scope) {
                     Math.floor(rb.defStats.REYds / rb.defStats.gp * 100) / 100 || 0
                 ],
                 [
-                    //Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
+                    Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
                 ],
-                'Rushing Yards Per Game',
-                null,
+                'Rushing Yards Per Game'
             ]
         }
         $(function () {
@@ -278,8 +276,8 @@ function chartController ($scope) {
                                 color: $scope.teamColors[rb.def]
                             },
                             {
-                                type: '',
-                                name: displayData[4],
+                                type: 'spline',
+                                name: 'League Average',
                                 data: displayData[2],
                                 marker: {
                                     lineWidth: 2,
