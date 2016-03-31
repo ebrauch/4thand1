@@ -37,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70187163">
-              <caret line="127" column="8" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+            <state vertical-scroll-proportion="-20.625">
+              <caret line="125" column="10" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,15 +61,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chartController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chartController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.7966321">
+              <caret line="280" column="39" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
               <folding>
-                <element signature="e#609#1383#0" expanded="false" />
-                <marker date="1459400459000" expanded="true" signature="6957:6977" placeholder="..." />
-                <marker date="1459400459000" expanded="true" signature="15750:15770" placeholder="..." />
+                <element signature="e#886#1660#0" expanded="false" />
+                <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
+                <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -122,8 +122,8 @@
         <option value="$PROJECT_DIR$/models/schemas.js" />
         <option value="$PROJECT_DIR$/controllers/playersCtrl.js" />
         <option value="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
-        <option value="$PROJECT_DIR$/js/src/chartController.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/src/chartController.js" />
       </list>
     </option>
   </component>
@@ -495,9 +495,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
-            <element signature="e#609#1383#0" expanded="false" />
-            <marker date="1459400459000" expanded="true" signature="6957:6977" placeholder="..." />
-            <marker date="1459400459000" expanded="true" signature="15750:15770" placeholder="..." />
+            <element signature="e#886#1660#0" expanded="false" />
+            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -574,9 +574,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
-            <element signature="e#609#1383#0" expanded="false" />
-            <marker date="1459400459000" expanded="true" signature="6957:6977" placeholder="..." />
-            <marker date="1459400459000" expanded="true" signature="15750:15770" placeholder="..." />
+            <element signature="e#886#1660#0" expanded="false" />
+            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -852,26 +852,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
-          <folding>
-            <element signature="e#609#1383#0" expanded="false" />
-            <marker date="1459400459000" expanded="true" signature="6957:6977" placeholder="..." />
-            <marker date="1459400459000" expanded="true" signature="15750:15770" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70187163">
-          <caret line="127" column="8" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+        <state vertical-scroll-proportion="-20.625">
+          <caret line="125" column="10" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7966321">
+          <caret line="280" column="39" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
+          <folding>
+            <element signature="e#886#1660#0" expanded="false" />
+            <marker date="1459404433000" expanded="true" signature="7234:7254" placeholder="..." />
+            <marker date="1459404433000" expanded="true" signature="15289:15309" placeholder="..." />
           </folding>
         </state>
       </provider>

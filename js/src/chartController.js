@@ -1,7 +1,7 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
-    $scope.buttonDisplay = [true, false];
+    $scope.buttonDisplay = [true, false, false];
     $scope.changeView = function() {
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
@@ -9,9 +9,17 @@ function chartController ($scope) {
             if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR') {
                 $scope.buildWrChart(player);
             }
+            else if (player.posd == 'QB') {
+                $scope.buildQbChart(player);
+            }
+            else if (player.posd == 'RB') {
+                console.log(player);
+                $scope.buildRbChart(player);
+            }
         })
     }
     var leagueTot = $scope.leagueTotals[0];
+    console.log(leagueTot)
     $scope.teamColors = {
         ARI: "#97233F",
         ATL: "#A71930",
@@ -97,11 +105,11 @@ function chartController ($scope) {
                 ],
                 [
                     Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot.gp * 100) / 100 || 0
                 ],
                 'Receiving Yards Per Game'
             ]
@@ -155,45 +163,18 @@ function chartController ($scope) {
 
                     series: [{
                         name: wr.display.split(' -')[0],
-                        data: displayData[0]
-                        //    [
-                        //    Math.floor(wr.DMYds / wr.DMAtt * 100) / 100 || 0,
-                        //    Math.floor(wr.DRYds / wr.DRAtt * 100) / 100 || 0,
-                        //    Math.floor(wr.SRYds / wr.SRAtt * 100) / 100 || 0,
-                        //    Math.floor(wr.SMYds / wr.SMAtt * 100) / 100 || 0,
-                        //    Math.floor(wr.SLYds / wr.SLAtt * 100) / 100 || 0,
-                        //    Math.floor(wr.DLYds / wr.DLAtt * 100) / 100 || 0
-                        //]
-                        ,
+                        data: displayData[0],
                         pointPlacement: 'on',
                         color: $scope.teamColors[wr.cteam]
                     }, {
                         name: wr.def + ' v. ' + wr.posd + '-' + wr.dcp + 's',
-                        data: displayData[1]
-                        //    [
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
-                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
-                        //]
-                        ,
+                        data: displayData[1],
                         pointPlacement: 'on',
                         color: $scope.teamColors[wr.def]
                     },
                         {
                         name: 'League Average v. ' + wr.posd + '-' + wr.dcp + 's',
-                        data: displayData[2]
-                        //    [
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
-                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
-                        //]
-                            ,
+                        data: displayData[2],
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
                     }]
@@ -202,6 +183,74 @@ function chartController ($scope) {
         })
     };
     $scope.buildRbChart = function (rb) {
+        console.log(rb)
+        var displayData = [];
+        if ($scope.buttonDisplay[0]) {
+            displayData = [
+                [
+                    Math.floor(rb.LEYds / rb.LEAtt * 100) / 100 || 0,
+                    Math.floor(rb.LTYds / rb.LTAtt * 100) / 100 || 0,
+                    Math.floor(rb.LGYds / rb.LGAtt * 100) / 100 || 0,
+                    Math.floor(rb.MDYds / rb.MDAtt * 100) / 100 || 0,
+                    Math.floor(rb.RGYds / rb.RGAtt * 100) / 100 || 0,
+                    Math.floor(rb.RTYds / rb.RTAtt * 100) / 100 || 0,
+                    Math.floor(rb.REYds / rb.REAtt * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(rb.defStats.LEYds / rb.defStats.LEAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.LTYds / rb.defStats.LTAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.LGYds / rb.defStats.LGAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.MDYds / rb.defStats.MDAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.RGYds / rb.defStats.RGAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.RTYds / rb.defStats.RTAtt * 100) / 100 || 0,
+                    Math.floor(rb.defStats.REYds / rb.defStats.REAtt * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(leagueTot.LEYds / leagueTot.LEAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.LTYds / leagueTot.LTAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.LGYds / leagueTot.LGAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.MDYds / leagueTot.MDAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.RGYds / leagueTot.RGAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.RTYds / leagueTot.RTAtt * 100) / 100 || 0,
+                    Math.floor(leagueTot.REYds / leagueTot.REAtt * 100) / 100 || 0
+                ],
+                'Rushing Yards Per Attempt',
+                'League Average'
+            ]
+        }
+        else {
+            displayData = [
+                [
+                    Math.floor(rb.LEYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.LTYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.LGYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.MDYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.RGYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.RTYds / rb.gp * 100) / 100 || 0,
+                    Math.floor(rb.REYds / rb.gp * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(rb.defStats.LEYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.LTYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.LGYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.MDYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.RGYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.RTYds / rb.defStats.gp * 100) / 100 || 0,
+                    Math.floor(rb.defStats.REYds / rb.defStats.gp * 100) / 100 || 0
+                ],
+                [
+                    //Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
+                ],
+                'Rushing Yards Per Game',
+                null,
+            ]
+        }
         $(function () {
             setTimeout(function () {
                 $('#' + rb.player).highcharts(
@@ -210,7 +259,7 @@ function chartController ($scope) {
                             enabled: false
                         },
                         title: {
-                            text: 'Rushing Yards Per Attempt'
+                            text: displayData[3]
                         },
                         xAxis: {
                             categories: ['Left End', 'Left Tackle', 'Left Guard', 'Middle', 'Right Guard', 'Right Tackle', 'Right End']
@@ -219,43 +268,19 @@ function chartController ($scope) {
                             {
                                 type: 'column',
                                 name: rb.display.split(' -')[0],
-                                data: [
-                                    Math.floor(rb.LEYds / rb.LEAtt * 100) / 100 || 0,
-                                    Math.floor(rb.LTYds / rb.LTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.LGYds / rb.LGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.MDYds / rb.MDAtt * 100) / 100 || 0,
-                                    Math.floor(rb.RGYds / rb.RGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.RTYds / rb.RTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.REYds / rb.REAtt * 100) / 100 || 0
-                                ],
+                                data: displayData[0],
                                 color: $scope.teamColors[rb.cteam]
                             },
                             {
                                 type: 'column',
                                 name: rb.def,
-                                data: [
-                                    Math.floor(rb.defStats.LEYds / rb.defStats.LEAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.LTYds / rb.defStats.LTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.LGYds / rb.defStats.LGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.MDYds / rb.defStats.MDAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.RGYds / rb.defStats.RGAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.RTYds / rb.defStats.RTAtt * 100) / 100 || 0,
-                                    Math.floor(rb.defStats.REYds / rb.defStats.REAtt * 100) / 100 || 0
-                                ],
+                                data: displayData[1],
                                 color: $scope.teamColors[rb.def]
                             },
                             {
-                                type: 'spline',
-                                name: 'League Average',
-                                data: [
-                                    Math.floor(leagueTot.LEYds / leagueTot.LEAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.LTYds / leagueTot.LTAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.LGYds / leagueTot.LGAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.MDYds / leagueTot.MDAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.RGYds / leagueTot.RGAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.RTYds / leagueTot.RTAtt * 100) / 100 || 0,
-                                    Math.floor(leagueTot.REYds / leagueTot.REAtt * 100) / 100 || 0
-                                ],
+                                type: '',
+                                name: displayData[4],
+                                data: displayData[2],
                                 marker: {
                                     lineWidth: 2,
                                     lineColor: Highcharts.getOptions().colors[3],
