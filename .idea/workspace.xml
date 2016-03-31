@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8cd6084-ba62-474f-94ad-a2b300edbaad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db-update.js" afterPath="$PROJECT_DIR$/db/db-update.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/src/chartController.js" afterPath="$PROJECT_DIR$/js/src/chartController.js" />
     </list>
     <ignored path="4thand1.iws" />
@@ -56,8 +56,8 @@
           <file leaf-file-name="playersApp.playerController.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="2.54717">
-                  <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.1212938">
+                  <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -70,12 +70,12 @@
           <file leaf-file-name="chartController.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.63709676">
-                  <caret line="327" column="44" selection-start-line="327" selection-start-column="44" selection-end-line="327" selection-end-column="44" />
+                <state vertical-scroll-proportion="0.5967742">
+                  <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
                   <folding>
                     <element signature="e#838#1612#0" expanded="false" />
-                    <marker date="1459460418000" expanded="true" signature="7281:7301" placeholder="..." />
-                    <marker date="1459460418000" expanded="true" signature="18921:18941" placeholder="..." />
+                    <marker date="1459460746000" expanded="true" signature="7281:7301" placeholder="..." />
+                    <marker date="1459460746000" expanded="true" signature="18851:18871" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -85,7 +85,7 @@
             <entry file="file://$PROJECT_DIR$/db/db-update.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
+                  <caret line="204" column="6" selection-start-line="204" selection-start-column="6" selection-end-line="204" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -126,11 +126,11 @@
         <option value="$PROJECT_DIR$/js/src/playersApp.js" />
         <option value="$PROJECT_DIR$/js/src/contact.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/db/db-update.js" />
         <option value="$PROJECT_DIR$/models/schemas.js" />
         <option value="$PROJECT_DIR$/controllers/playersCtrl.js" />
         <option value="$PROJECT_DIR$/js/src/playersApp.playerController.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/db/db-update.js" />
         <option value="$PROJECT_DIR$/js/src/chartController.js" />
       </list>
     </option>
@@ -410,7 +410,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0990991" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0990991" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14166667" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -502,8 +502,8 @@
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
             <element signature="e#838#1612#0" expanded="false" />
-            <marker date="1459460418000" expanded="true" signature="7281:7301" placeholder="..." />
-            <marker date="1459460418000" expanded="true" signature="18921:18941" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="7281:7301" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="18851:18871" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -577,8 +577,8 @@
           <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
           <folding>
             <element signature="e#838#1612#0" expanded="false" />
-            <marker date="1459460418000" expanded="true" signature="7281:7301" placeholder="..." />
-            <marker date="1459460418000" expanded="true" signature="18921:18941" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="7281:7301" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="18851:18871" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -836,30 +836,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
+    <entry file="file://$PROJECT_DIR$/db/db-update.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.54717">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="204" column="6" selection-start-line="204" selection-start-column="6" selection-end-line="204" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/db-update.js">
+    <entry file="file://$PROJECT_DIR$/js/src/playersApp.playerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.1212938">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/src/chartController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63709676">
-          <caret line="327" column="44" selection-start-line="327" selection-start-column="44" selection-end-line="327" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.5967742">
+          <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
           <folding>
             <element signature="e#838#1612#0" expanded="false" />
-            <marker date="1459460418000" expanded="true" signature="7281:7301" placeholder="..." />
-            <marker date="1459460418000" expanded="true" signature="18921:18941" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="7281:7301" placeholder="..." />
+            <marker date="1459460746000" expanded="true" signature="18851:18871" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -239,16 +239,15 @@ function chartController ($scope) {
                     Math.floor(rb.defStats.REYds / rb.defStats.gp * 100) / 100 || 0
                 ],
                 [
-                    //Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
-                    //Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
+                    Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 / 2 || 0,
+                    Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 / 2 || 0
                 ],
                 'Rushing Yards Per Game',
-                false
             ]
         }
         $(function () {
@@ -283,7 +282,6 @@ function chartController ($scope) {
                             {
                                 type: 'spline',
                                 name: 'League Average',
-                                showInLegend: displayData[4],
                                 data: displayData[2],
                                 marker: {
                                     lineWidth: 2,

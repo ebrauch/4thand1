@@ -203,8 +203,6 @@ function updateRushStats(playerP) {
             playerP[play.dir + 'Yds'] += play.yds;
         })
     })
-    //setTimeout(function () {
-    //}, 6000)
 }
 function updateGP(playerP){
     offense.find({player: playerP.player}, function(err, data){
