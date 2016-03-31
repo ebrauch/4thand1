@@ -1,6 +1,16 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
+    $scope.buttonDisplay = [true, false];
+    $scope.changeView = function() {
+        $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
+        $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
+        $scope.playerArray.forEach(function(player){
+            if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR') {
+                $scope.buildWrChart(player);
+            }
+        })
+    }
     var leagueTot = $scope.leagueTotals[0];
     $scope.teamColors = {
         ARI: "#97233F",
@@ -37,6 +47,63 @@ function chartController ($scope) {
         WAS: "#773141"
     };
     $scope.buildWrChart = function (wr) {
+        var displayData = [];
+        if ($scope.buttonDisplay[0]) {
+            displayData = [
+                [
+                    Math.floor(wr.DMYds / wr.DMAtt * 100) / 100 || 0,
+                    Math.floor(wr.DRYds / wr.DRAtt * 100) / 100 || 0,
+                    Math.floor(wr.SRYds / wr.SRAtt * 100) / 100 || 0,
+                    Math.floor(wr.SMYds / wr.SMAtt * 100) / 100 || 0,
+                    Math.floor(wr.SLYds / wr.SLAtt * 100) / 100 || 0,
+                    Math.floor(wr.DLYds / wr.DLAtt * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
+                ]
+            ]
+        }
+        else {
+            displayData = [
+                [
+                    Math.floor(wr.DMYds / wr.gp * 100) / 100 || 0,
+                    Math.floor(wr.DRYds / wr.gp * 100) / 100 || 0,
+                    Math.floor(wr.SRYds / wr.gp * 100) / 100 || 0,
+                    Math.floor(wr.SMYds / wr.gp * 100) / 100 || 0,
+                    Math.floor(wr.SLYds / wr.gp * 100) / 100 || 0,
+                    Math.floor(wr.DLYds / wr.gp * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats.gp * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats.gp * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats.gp * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats.gp * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats.gp * 100) / 100 || 0,
+                    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats.gp * 100) / 100 || 0
+                ],
+                [
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0,
+                    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot.gp * 100) / 100 || 0
+                ]
+            ]
+        }
         $(function() {
             setTimeout(function(){
                 $('#' + wr.player).highcharts({
@@ -86,43 +153,48 @@ function chartController ($scope) {
 
                     series: [{
                         name: wr.display.split(' -')[0],
-                        data: [
-                            Math.floor(wr.DMYds / wr.DMAtt * 100) / 100 || 0,
-                            Math.floor(wr.DRYds / wr.DRAtt * 100) / 100 || 0,
-                            Math.floor(wr.SRYds / wr.SRAtt * 100) / 100 || 0,
-                            Math.floor(wr.SMYds / wr.SMAtt * 100) / 100 || 0,
-                            Math.floor(wr.SLYds / wr.SLAtt * 100) / 100 || 0,
-                            Math.floor(wr.DLYds / wr.DLAtt * 100) / 100 || 0
-                        ],
+                        data: displayData[0]
+                        //    [
+                        //    Math.floor(wr.DMYds / wr.DMAtt * 100) / 100 || 0,
+                        //    Math.floor(wr.DRYds / wr.DRAtt * 100) / 100 || 0,
+                        //    Math.floor(wr.SRYds / wr.SRAtt * 100) / 100 || 0,
+                        //    Math.floor(wr.SMYds / wr.SMAtt * 100) / 100 || 0,
+                        //    Math.floor(wr.SLYds / wr.SLAtt * 100) / 100 || 0,
+                        //    Math.floor(wr.DLYds / wr.DLAtt * 100) / 100 || 0
+                        //]
+                        ,
                         pointPlacement: 'on',
                         color: $scope.teamColors[wr.cteam]
                     }, {
                         name: wr.def + ' v. ' + wr.posd + '-' + wr.dcp + 's',
-                        data: [
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
-                            Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
-                        ],
+                        data: displayData[1]
+                        //    [
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SRYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SMYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'SLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                        //    Math.floor(wr.defStats[wr.posd + '' + wr.dcp + 'DLYds'] / wr.defStats[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
+                        //]
+                        ,
                         pointPlacement: 'on',
                         color: $scope.teamColors[wr.def]
                     },
                         {
                         name: 'League Average v. ' + wr.posd + '-' + wr.dcp + 's',
-                        data: [
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
-                            Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
-                        ],
+                        data: displayData[2]
+                        //    [
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DMAtt'] * 100) / 100 || 0,
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DRAtt'] * 100) / 100 || 0,
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SRYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SRAtt'] * 100) / 100 || 0,
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SMYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SMAtt'] * 100) / 100 || 0,
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'SLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'SLAtt'] * 100) / 100 || 0,
+                        //    Math.floor(leagueTot[wr.posd + '' + wr.dcp + 'DLYds'] / leagueTot[wr.posd + '' + wr.dcp + 'DLAtt'] * 100) / 100 || 0
+                        //]
+                            ,
                         pointPlacement: 'on',
                         dashStyle: 'shortdash'
-                    }
-                    ]
+                    }]
                 })
             },0)
         })
