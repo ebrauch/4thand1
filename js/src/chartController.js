@@ -118,6 +118,9 @@ function chartController ($scope) {
                     credits: {
                         enabled: false
                     },
+                    exporting: {
+                        enabled: false
+                    },
                     chart: {
                         polar: true,
                         type: 'line'
@@ -211,7 +214,8 @@ function chartController ($scope) {
                     Math.floor(leagueTot.RTYds / leagueTot.RTAtt * 100) / 100 || 0,
                     Math.floor(leagueTot.REYds / leagueTot.REAtt * 100) / 100 || 0
                 ],
-                'Rushing Yards Per Attempt'
+                'Rushing Yards Per Attempt',
+                true
             ]
         }
         else {
@@ -235,15 +239,16 @@ function chartController ($scope) {
                     Math.floor(rb.defStats.REYds / rb.defStats.gp * 100) / 100 || 0
                 ],
                 [
-                    Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
+                    //Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 || 0
                 ],
-                'Rushing Yards Per Game'
+                'Rushing Yards Per Game',
+                false
             ]
         }
         $(function () {
@@ -251,6 +256,9 @@ function chartController ($scope) {
                 $('#' + rb.player).highcharts(
                     {
                         credits: {
+                            enabled: false
+                        },
+                        exporting: {
                             enabled: false
                         },
                         title: {
@@ -275,6 +283,7 @@ function chartController ($scope) {
                             {
                                 type: 'spline',
                                 name: 'League Average',
+                                showInLegend: displayData[4],
                                 data: displayData[2],
                                 marker: {
                                     lineWidth: 2,
@@ -316,7 +325,8 @@ function chartController ($scope) {
                     Math.floor(leagueTot.SLYds / leagueTot.SLAtt * 100) / 100 || 0,
                     Math.floor(leagueTot.DLYds / leagueTot.DLAtt * 100) / 100 || 0
                 ],
-                'Passing Yards Per Attempt'
+                'Passing Yards Per Attempt',
+                true
             ]
         }
         else {
@@ -338,20 +348,24 @@ function chartController ($scope) {
                     Math.floor(qb.defStats.DLYds / qb.defStats.gp * 100) / 100 || 0
                 ],
                 [
-                    Math.floor(leagueTot.DMYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.DRYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.SRYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.SMYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.SLYds / leagueTot.gp * 100) / 100 || 0,
-                    Math.floor(leagueTot.DLYds / leagueTot.gp * 100) / 100 || 0
+                    //Math.floor(leagueTot.DMYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.DRYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.SRYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.SMYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.SLYds / leagueTot.gp * 100) / 100 || 0,
+                    //Math.floor(leagueTot.DLYds / leagueTot.gp * 100) / 100 || 0
                 ],
-                'Passing Yards Per Game'
+                'Passing Yards Per Game',
+                false
             ]
         }
         $(function() {
             setTimeout(function(){
                $('#' + qb.player).highcharts({
                    credits: {
+                       enabled: false
+                   },
+                   exporting: {
                        enabled: false
                    },
                    chart: {
@@ -408,6 +422,7 @@ function chartController ($scope) {
                    }, {
                        name: 'League Average',
                        data: displayData[2],
+                       showInLegend: displayData[4],
                        pointPlacement: 'on',
                        dashStyle: 'shortdash'
                    }]
