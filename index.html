@@ -112,7 +112,7 @@
     <div ng-repeat="player in playerArray track by $index" ng-controller="chartController">
         <div class="container" ng-if="player.posd=='QB'">
             <h3>{{player.display}}</h3>
-            <div id={{player.player}} style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildQbChart(player)"></div>
+            <div id={{player.player}} style="min-width: 310px; height: 540px; margin: 0 auto" ng-init="buildQbChart(player)"></div>
         </div>
         <div class="container" ng-if="player.posd=='RB' || player.posd=='FB'">
             <h3>{{player.display}}</h3>
@@ -120,7 +120,7 @@
         </div>
         <div class="container" ng-if="player.posd=='LWR' || player.posd=='RWR'  || player.posd == 'TE' || player.posd == 'SWR'">
             <h3>{{player.display}}</h3>
-            <div id={{player.player}}  style="min-width: 310px; height: 600px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
+            <div id={{player.player}}  style="min-width: 310px; height: 540px; margin: 0 auto" ng-init="buildWrChart(player)"></div>
         </div>
         <button class="btn btn-default showYPG" ng-show="firstPlayer" ng-click="changeView()">Change Display (YPA/YPG)</button>
     </div>

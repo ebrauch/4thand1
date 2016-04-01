@@ -239,13 +239,14 @@ function chartController ($scope) {
                     Math.floor(rb.defStats.REYds / rb.defStats.gp * 100) / 100 || 0
                 ],
                 [
-                    Math.floor(leagueTot.LEYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.LTYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.LGYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.MDYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.RGYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.RTYds / leagueTot.gp * 100) / 100 / 2 || 0,
-                    Math.floor(leagueTot.REYds / leagueTot.gp * 100) / 100 / 2 || 0
+                    //Divide by 50 because stats are counted by both defense and player
+                    Math.floor(leagueTot.LEYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.LTYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.LGYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.MDYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.RGYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.RTYds / leagueTot.gp * 50) / 100 || 0,
+                    Math.floor(leagueTot.REYds / leagueTot.gp * 50) / 100 || 0
                 ],
                 'Rushing Yards Per Game',
             ]
