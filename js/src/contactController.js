@@ -53,10 +53,6 @@ function contactController($http, $scope) {
                 var $form = $(e.target);
                 // Get the BootstrapValidator instance
                 var bv = $form.data('bootstrapValidator');
-                // Use Ajax to submit form data
-                //$.post($form.attr('action'), $form.serialize(), function(result) {
-                //    console.log(result);
-                //}, 'json');
                 $http.get('/contact/' + $scope.name + '/' + $scope.email +'/' + $scope.message)
             });
     });

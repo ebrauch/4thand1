@@ -35,3 +35,8 @@ body{
 #success_message {
     display: none;
 }
+
+#contact_form {
+    background-color: #eee;
+    /*border: none;*/
+}
