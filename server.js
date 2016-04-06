@@ -6,7 +6,7 @@ var email = require('./email.js');
 var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
-    auth: { user: email.address, pass: email.password }
+    auth: {user: email.address, pass: email.password}
 });
 
 var app = express();
