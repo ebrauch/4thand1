@@ -4,10 +4,9 @@ var nodemailer = require('nodemailer');
 var email = require('./email.js');
 
 var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp.sendgrid.net',
     port: 465,
-    auth: { user: email.address, pass: email.password },
-    secure: true
+    auth: { user: email.address, pass: email.password }
 });
 
 var app = express();
