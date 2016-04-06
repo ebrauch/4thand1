@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 var email = require('./email.js');
 
 var transporter = nodemailer.createTransport({
-    host: 'smtp.sendgrid.net',
+    host: 'smtp.gmail.com',
     port: 465,
     auth: { user: email.address, pass: email.password }
 });
@@ -25,10 +25,9 @@ app.get('/api/totals', playersCtrl.getTotals);
 app.get('/api/:player', playersCtrl.addPlayer);
 app.get('/contact/:name/:email/:message', function(req, res) {
     var mailOptions = {
-        from: req.params.name,
         to: email.to,
-        subject: 'Contact form submission',
-        html: req.params.message + '<br> reply to: ' + req.params.email
+        subject: 'Contact form submission, reply to: ' + req.params.email,
+        html: '<b>' + req.params.name + '</b>' +  ' wrote: <br>' + req.params.message
     };
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
