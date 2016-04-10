@@ -358,10 +358,10 @@ var totalSchema = mongoose.Schema({
 })
 
 module.exports = {
-    pbp        : mongoose.model('pbp', pbpSchema, 'pbp'),
-    game       : mongoose.model('game', gameSchema, 'game'),
-    offense    : mongoose.model('offense', offenseSchema, 'offense'),
-    joinedPass : mongoose.model('joinedPass', joinedPassSchema, 'joinedPass'),
-    player     : mongoose.model('player', playerSchema, 'player'),
-    total      : mongoose.model('total', totalSchema, 'total')
+    pbp       : mongoose.model('pbp', pbpSchema, 'pbp'),
+    game      : mongoose.model('game', gameSchema, 'game'),
+    offense   : mongoose.model('offense', offenseSchema, 'offense'),
+    joinedPass: mongoose.model('joinedPass', joinedPassSchema, 'joinedPass'),
+    player    : mongoose.model('player', playerSchema, 'player'),
+    total     : mongoose.model('total', totalSchema, 'total')
 };
