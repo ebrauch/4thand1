@@ -1,88 +1,5 @@
 var mongoose = require('mongoose');
 
-var pbpSchema = mongoose.Schema({
-    gid  : Number,
-    pid  : Number,
-    off  : String,
-    def  : String,
-    type : String,
-    yds  : Number,
-    bc   : String,
-    dir  : String,
-    psr  : String,
-    comp : String,
-    spk  : String,
-    loc  : String,
-    trg  : String,
-    ints : String
-});
-
-var gameSchema = mongoose.Schema({
-    gid  : Number,
-    seas : Number,
-    wk   : Number,
-    day  : String,
-    v    : String,
-    h    : String,
-    stad : String,
-    temp : Number,
-    humd : Number,
-    wspd : Number,
-    wdir : String,
-    cond : String,
-    surf : String,
-    ptsv : Number,
-    ptsh : Number
-});
-
-var offenseSchema  = mongoose.Schema({
-    _id: {},
-    uid: Number,
-    gid: Number,
-    player: String,
-    pa: Number,
-    pc: Number,
-    py: Number,
-    ints: Number,
-    tdp: Number,
-    ra: Number,
-    sra: Number,
-    ry: Number,
-    tdr: Number,
-    trg: Number,
-    rec: Number,
-    recy: Number,
-    tdrec: Number,
-    ret: Number,
-    rety: Number,
-    tdret: Number,
-    fuml: Number,
-    peny: Number,
-    snp: Number,
-    game: Number,
-    seas: Number,
-    year: Number,
-    team: String,
-    posd: String,
-    jnum: Number,
-    dcp: Number
-});
-
-var joinedPassSchema = mongoose.Schema({
-    _id: {},
-    gid: Number,
-    psr: String,
-    trg: String,
-    loc: String,
-    yds: Number,
-    comp: Number,
-    succ: Number,
-    def: String,
-    pos1: String,
-    posd: String,
-    dcp: Number
-});
-
 var playerSchema = mongoose.Schema({
     _id: {},
     player: String,
@@ -358,10 +275,6 @@ var totalSchema = mongoose.Schema({
 })
 
 module.exports = {
-    pbp       : mongoose.model('pbp', pbpSchema, 'pbp'),
-    game      : mongoose.model('game', gameSchema, 'game'),
-    offense   : mongoose.model('offense', offenseSchema, 'offense'),
-    joinedPass: mongoose.model('joinedPass', joinedPassSchema, 'joinedPass'),
-    player    : mongoose.model('player', playerSchema, 'player'),
-    total     : mongoose.model('total', totalSchema, 'total')
+    player: mongoose.model('player', playerSchema, 'player'),
+    total : mongoose.model('total', totalSchema, 'total')
 };
