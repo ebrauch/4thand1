@@ -39,3 +39,15 @@ body{
 #contact_form {
     background-color: #eee;
 }
+
+.pass {
+    min-width: 310px;
+    height: 540px;
+    margin: 0 auto
+}
+
+.rush {
+    min-width: 310px;
+    height: 400px;
+    margin: 0 auto
+}
