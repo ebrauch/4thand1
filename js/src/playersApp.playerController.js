@@ -6,6 +6,7 @@ function playerController($scope, $http) {
     $scope.averages = {};
     $scope.leagueTotals = {};
     $scope.firstPlayer = false;
+    $scope.buttonDisplay = [true, false];
 
     var options = {
         url: 'public/players.json',

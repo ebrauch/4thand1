@@ -1,7 +1,7 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
-    $scope.buttonDisplay = [true, false];
+    //$scope.buttonDisplay = [true, false];
     $scope.changeView = function() {
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
