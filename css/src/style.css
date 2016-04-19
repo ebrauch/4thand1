@@ -51,3 +51,7 @@ body{
     height: 400px;
     margin: 0 auto
 }
+
+.btn:focus {
+    outline: none;
+}
