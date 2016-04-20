@@ -118,7 +118,7 @@
             <h3>{{player.display}}</h3>
             <div class="pass" id={{player.player}} ng-init="buildWrChart(player)"></div>
         </div>
-    <button class="btn btn-default showYPG" ng-show="firstPlayer; $last" ng-click="changeView()">Change Display (YPA/YPG)</button>
+    <button class="btn btn-default showYPG" ng-show="$last" ng-click="changeView()" ng-init="buildAButton()"></button>
     </div>
     <br>
     <div class="row search">

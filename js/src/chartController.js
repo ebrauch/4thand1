@@ -1,10 +1,13 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
-    //$scope.buttonDisplay = [true, false];
+    $scope.buildAButton = function() {
+        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per Attempt");
+    }
     $scope.changeView = function() {
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
+        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per Attempt");
         $scope.playerArray.forEach(function(player){
             if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR' || player.posd == 'SWR') {
                 $scope.buildWrChart(player);

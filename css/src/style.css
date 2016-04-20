@@ -55,3 +55,7 @@ body{
 .btn:focus {
     outline: none;
 }
+
+.showYPG {
+    width: 190px;
+}
