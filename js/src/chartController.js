@@ -1,13 +1,26 @@
 angular.module('PlayersApp').controller('chartController', ['$scope', chartController]);
 
 function chartController ($scope) {
+    $scope.play = '';
     $scope.buildAButton = function() {
-        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per Attempt");
+        if ($scope.playerArray[$scope.playerArray.length - 1].posd == 'LWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'RWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'SWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'TE') {
+            $scope.play = 'Target';
+        }
+        else {
+            $scope.play = 'Attempt';
+        }
+        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per " + $scope.play);
     }
     $scope.changeView = function() {
+        if ($scope.playerArray[$scope.playerArray.length - 1].posd == 'LWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'RWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'SWR' || $scope.playerArray[$scope.playerArray.length - 1].posd == 'TE') {
+            $scope.play = 'Target';
+        }
+        else {
+            $scope.play = 'Attempt';
+        }
         $scope.buttonDisplay[0] = !$scope.buttonDisplay[0];
         $scope.buttonDisplay[1] = !$scope.buttonDisplay[1];
-        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per Attempt");
+        $scope.buttonDisplay[0] ? $(".showYPG").text("Display Yards Per Game") : $(".showYPG").text("Display Yards Per " + $scope.play);
         $scope.playerArray.forEach(function(player){
             if (player.posd == 'TE' || player.posd == 'LWR' || player.posd == 'RWR' || player.posd == 'SWR') {
                 $scope.buildWrChart(player);
