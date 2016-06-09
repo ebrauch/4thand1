@@ -13,6 +13,8 @@
     <title>4th and 1</title>
 
     <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="css/dist/mini.css" rel="stylesheet">
     <!--[if lt IE 9]>
         <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
@@ -110,8 +112,7 @@
     </div>
     <br>
     <div class="row search">
-        <input class="search" id="players" type="text" placeholder="Search for players">
-        <button class="btn btn-success search" type="submit" ng-click="addPlayer(newPlayer); resetSearch()">Submit</button>
+        <input class="search" id="players" type="text" placeholder="Search for players" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search for players'">
         <br>
         <br>
     </div>
@@ -126,7 +127,7 @@
 <script src="js/src/playersApp.playerController.js"></script>
 <script src="js/src/chartController.js"></script>
 
-<!-- jQuery -->
+<!-- more jQuery -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <script src="js/src/jquery.easy-autocomplete.js"></script>
 <script src="js/src/scrolling-nav.js"></script>

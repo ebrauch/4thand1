@@ -15,8 +15,13 @@ function playerController($scope, $http) {
             match: {
                 enabled: true
             },
-            onSelectItemEvent: function () {
+            //onSelectItemEvent: function () {
+            //    $scope.newPlayer = $('#players').getSelectedItemData();
+            //},
+            onChooseEvent: function() {
                 $scope.newPlayer = $('#players').getSelectedItemData();
+                $scope.addPlayer($scope.newPlayer);
+                $scope.resetSearch();
             }
         }
     };
