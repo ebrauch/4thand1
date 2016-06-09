@@ -17,7 +17,7 @@ function playerController($scope, $http) {
             },
             onSelectItemEvent: function () {
                 $scope.newPlayer = $('#players').getSelectedItemData();
-            },
+            }
         }
     };
     $scope.resetSearch = function () {
