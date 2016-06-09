@@ -271,6 +271,9 @@ function chartController ($scope) {
             setTimeout(function () {
                 $('#' + rb.player).highcharts(
                     {
+                        yAxis: {
+                            title: ''
+                        },
                         credits: {
                             enabled: false
                         },
