@@ -15,9 +15,6 @@ function playerController($scope, $http) {
             match: {
                 enabled: true
             },
-            //onSelectItemEvent: function () {
-            //    $scope.newPlayer = $('#players').getSelectedItemData();
-            //},
             onChooseEvent: function() {
                 $scope.newPlayer = $('#players').getSelectedItemData();
                 $scope.addPlayer($scope.newPlayer);
@@ -26,6 +23,7 @@ function playerController($scope, $http) {
         }
     };
     $scope.resetSearch = function () {
+        $('#players').blur();
         $('#players').val('');
         return false
     };
